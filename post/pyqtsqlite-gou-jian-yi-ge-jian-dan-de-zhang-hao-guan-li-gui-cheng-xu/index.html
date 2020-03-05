@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>PyQt+SQLite构建一个简单的账号管理GUI程序 | Childlike</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1583422934355">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="背景
+相信有很多的测试同学，在日常的工作中都会需要去写一些辅助测试的小工具或者脚本，我们除了保证工具的可用性之外，有时还需要做一些图形界面上的开发以便在公司或者小组内推广。本文旨在以实战的形式，完成一个简单的账号管理GUI程序，实现完整的增..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://childlike2333.github.io">
+        <img src="https://childlike2333.github.io/images/avatar.png?v=1583422934355" class="site-logo">
+        <h1 class="site-title">Childlike</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://childlike2333.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PyQt+SQLite构建一个简单的账号管理GUI程序</h2>
+            <div class="post-date">2020-03-05</div>
+            
+            <div class="post-content" v-pre>
+              <h4 id="背景">背景</h4>
+<p>相信有很多的测试同学，在日常的工作中都会需要去写一些辅助测试的小工具或者脚本，我们除了保证工具的可用性之外，有时还需要做一些图形界面上的开发以便在公司或者小组内推广。本文旨在以实战的形式，完成一个简单的账号管理GUI程序，实现完整的增、删、改、查功能项，带大家了解如何系统的开发一个账号管理GUI程序。</p>
+<h4 id="最终效果">最终效果</h4>
+<p><img src="https://childlike2333.github.io/post-images/1583421503233.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583421506287.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583421510050.png" alt="" loading="lazy"></p>
+<h4 id="使用框架">使用框架</h4>
+<p><strong>PyQt5 + SQLite3</strong></p>
+<h4 id="代码设计">代码设计</h4>
+<ul>
+<li>UI代码和操作数据库的代码分开为两个文件，FirstApp类和Tools类。</li>
+</ul>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from Tools import *
+
+class FirstApp(QMainWindow):
+
+    def __init__(self):
+        super(FirstApp, self).__init__()
+
+        # 创建数据库
+        Tools.createDb()
+        # 创建ui布局
+        self.initMainUi()
+        # 初始化表格
+        self.initTable()
+    
+    def initTable(self):
+        pass
+    
+    def initTable(self):
+        pass
+          
+#程序主入口
+if __name__ == '__main__':
+    app=QApplication(sys.argv)
+    firstapp = FirstApp()
+    firstapp.show()
+    sys.exit(app.exec_())
+</code></pre>
+<ul>
+<li>启动程序时，检查同级路径下是否有SQLite数据库文件，如果没有则创建它，并插入示例数据，方法为Tools.createDb()</li>
+</ul>
+<pre><code class="language-python">import sqlite3
+import os
+
+class Tools():
+
+    @staticmethod
+    def createDb():
+
+        # 如果路径下没有db文件，重新创建并插入示例数据
+        if os.path.exists('mydata.db') == False:
+            connect = sqlite3.connect('mydata.db')
+            c = connect.cursor()
+            c.execute('''create table mydata(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Website varchar(1000),
+                username varchar(1000),
+                passwd varchar(1000)
+            );
+            ''')
+            connect.commit()
+            c.execute(&quot;insert into mydata values(1,'qq','qq','test123')&quot;)
+            connect.commit()
+            connect.close()
+</code></pre>
+<ul>
+<li>创建ui布局，主程序布局为一个table控件+三个按钮控件，用栅格布局方式排列，如下图，主界面QMainWindows中包含着一层QWidget，QWidget中使用栅格布局GridLayout，GridLayout中为y一个表格控件 + 三个按钮控件。</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583421527648.png" alt="" loading="lazy"></figure>
+<pre><code class="language-python">#布局
+    def initMainUi(self):
+        
+        # 设置主界面的大小，标题及图标
+        self.resize(450, 270)
+        self.setWindowTitle('FirstApp')
+        self.setWindowIcon(QIcon('icon.png'))
+        
+        # 第二层的QWidget控件
+        self.qwidget = QWidget()
+        
+        # 栅格布局
+        grid = QGridLayout()
+        
+        # 创建表格控件和按钮控件
+        self.tablewidget = QTableWidget()
+        self.addButton = QPushButton('新增')
+        self.editButton = QPushButton('修改')
+        self.delButton = QPushButton('删除')
+
+        # 设置控件在栅格中的位置
+        grid.addWidget(self.tablewidget,1,1,1,3)
+        grid.addWidget(self.addButton,2,1)
+        grid.addWidget(self.editButton,2,2)
+        grid.addWidget(self.delButton,2,3)
+        
+        # 添加栅格布局到qwidget
+        self.qwidget.setLayout(grid)
+        
+        # 设置qwidget到主界面中
+        self.setCentralWidget(self.qwidget)
+
+        #给按钮绑定点击方法
+        self.addButton.clicked.connect(self.addDef)
+        self.editButton.clicked.connect(self.editDef)
+        self.delButton.clicked.connect(self.delDef)
+</code></pre>
+<ul>
+<li>初始化表格</li>
+</ul>
+<pre><code class="language-python">def initTable(self):
+
+        # 设置表格的列数为4
+        self.tablewidget.setColumnCount(4)
+
+        # 水平和垂直方向设置为正好填满表格
+        self.tablewidget.horizontalHeader().setStretchLastSection(True)
+        self.tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        # 设置表格的表头，并设置为不可编辑
+        headerlabels = ['序号','网站', '账号', '密码']
+        self.tablewidget.setHorizontalHeaderLabels(headerlabels)
+        self.tablewidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        # 隐藏id列，不显示数据的id也就是主键，这里的主键只用来删除和修改数据时使用
+        self.tablewidget.setColumnHidden(0, True);
+
+        # 不显示单元格
+        self.tablewidget.setShowGrid(False)
+
+        # 设置表格选择行为为 只能一行一行选择
+        self.tablewidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        # 初始化表格数据
+        self.flushTable()
+</code></pre>
+<ul>
+<li>刷新表格数据</li>
+</ul>
+<pre><code class="language-python">def flushTable(self):
+
+        # 从数据表中获取数据
+        data_list = Tools.getData()
+
+        # 设置表格的行数，和数据的数量相关
+        self.tablewidget.setRowCount(len(data_list))
+
+        # 设置表格的数据
+        for index in range(len(data_list)):
+            self.tablewidget.setItem(index,0,QTableWidgetItem(str(data_list[index][0])))
+            self.tablewidget.setItem(index,1,QTableWidgetItem(data_list[index][1]))
+            self.tablewidget.setItem(index,2,QTableWidgetItem(data_list[index][2]))
+            self.tablewidget.setItem(index,3,QTableWidgetItem(data_list[index][3]))
+</code></pre>
+<pre><code class="language-python">@staticmethod
+    def getData():
+
+        conn = sqlite3.connect('mydata.db')
+        c = conn.cursor()
+        cursor = c.execute('select * from mydata')
+
+        data_list = []
+        for row in cursor:
+            temp_list = []
+            temp_list.append(row[0])
+            temp_list.append(row[1])
+            temp_list.append(row[2])
+            temp_list.append(row[3])
+            data_list.append(temp_list)
+        conn.close()
+        return data_list
+</code></pre>
+<ul>
+<li>新增按钮的功能设置，对话框的布局如下：<br>
+<img src="https://childlike2333.github.io/post-images/1583421574134.png" alt="" loading="lazy"></li>
+</ul>
+<pre><code class="language-python">def addDef(self):
+
+        # 新增的窗口,因为新增和修改共用一个对话框，所以需要在showDialog中参入参数表示这次点击的是新增按钮还是修改按钮
+        self.showDialog(1)
+    
+    def showDialog(self, status ,website='', username='', passwd=''):
+
+        self.dialog = QDialog(self)
+        self.dialog.setWindowIcon(QIcon('icon.png'))
+        if status == 1:
+            self.dialog.setWindowTitle('新增')
+        else:
+            self.dialog.setWindowTitle('修改')
+
+        # 创建一个group盒子
+        group = QGroupBox(self.dialog)
+
+        # 标签和输入框
+        lb1 = QLabel('网站:', group)
+        self.ed1 = QLineEdit(group)
+        self.ed1.setText(website)
+        lb2 = QLabel('账号:', group)
+        self.ed2 = QLineEdit(group)
+        self.ed2.setText(username)
+        lb3 = QLabel('密码:', group)
+        self.ed3 = QLineEdit(group)
+        self.ed3.setText(passwd)
+
+        # 创建确定和取消的按钮
+        ok_button = QPushButton('确定', self.dialog)
+        cancel_button = QPushButton('取消', self.dialog)
+
+        # 创建一个垂直布局，将标签和按钮控件都添加到垂直布局里
+        group_layout = QVBoxLayout()
+        group_item = [lb1, self.ed1, lb2, self.ed2, lb3, self.ed3]
+        for item in group_item:
+            group_layout.addWidget(item)
+
+        # 将垂直布局添加到groupbox中
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        # 创建一个水平布局，并将两个按钮添加到布局中
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+
+        # 创建一个最外层的dialog垂直布局，将盒子和按钮布局加到这个布局中
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+
+        # 设置这个对话框的布局
+        self.dialog.setLayout(dialog_layout)
+        self.dialog.setFixedSize(self.dialog.sizeHint())
+
+        # 按传入的状态绑定确定按钮的功能
+        if status == 1:
+            ok_button.clicked.connect(self.addDialogAccept)
+        else:
+            ok_button.clicked.connect(self.editDialogAccept)
+
+        # 默认选中ok按钮
+        ok_button.setDefault(True)
+
+        # 绑定取消按钮的功能
+        cancel_button.clicked.connect(self.dialog.reject)
+
+        self.dialog.exec_()
+        return False
+    
+   # 新增对话框的ok按钮
+   def addDialogAccept(self):
+
+        # 如果每个输入项都不为空的表示输入正确
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            # 关闭窗口
+            self.dialog.close()
+            # 在数据库中新增字段
+            Tools.new_data(self.ed1.text(), self.ed2.text(), self.ed3.text())
+            # 刷新表格
+            self.flushTable()
+            # 提示新增成功
+            self.showHint('新增成功')
+        else:
+            self.showHint('必填项不能为空')
+            
+    # 提示对话框
+    def showHint(self, message):
+
+        hint_msg = QMessageBox()
+        hint_msg.setText(message)
+        hint_msg.addButton(QMessageBox.Ok)
+        hint_msg.setWindowTitle(&quot;提示&quot;)
+        hint_msg.exec_()
+</code></pre>
+<ul>
+<li>新增的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def addData(website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        command = &quot;insert into mydata values(null,'%s','%s','%s')&quot; % (website, username, passwd)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<ul>
+<li>修改按钮的功能设置，和新增共用一个对话框，只是在点击ok按钮时有所不同</li>
+</ul>
+<pre><code class="language-python">def editDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+
+        # 如果当前选中的项数量为3时，表示只选取了一项
+        if len(selected_row) == 3:
+
+            # 获取该行行号
+            edit_row = self.tablewidget.row(selected_row[0])
+
+            # 记录当前选中项的id
+            self.id = self.tablewidget.item(edit_row, 0).text()
+            website = self.tablewidget.item(edit_row, 1).text()
+            username = self.tablewidget.item(edit_row, 2).text()
+            passwd = self.tablewidget.item(edit_row, 3).text()
+
+            # 将获取到的选中行的数据赋予给修改窗口的方法，同时返回新数据
+            self.showDialog(2, website, username, passwd)
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行编辑&quot;)
+
+    def editDialogAccept(self):
+
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            self.dialog.close()
+            # 修改数据
+            Tools.editData(self.id,self.ed1.text(), self.ed2.text(), self.ed3.text())
+            self.flushTable()
+            self.showHint('修改成功')
+        else:
+            self.showHint('必填项不能为空')
+</code></pre>
+<ul>
+<li>修改的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def editData(id, website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;update mydata set website='%s',username='%s',passwd='%s' where id=%s&quot; % (
+        website, username, passwd, id)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<ul>
+<li>删除的按钮功能设置</li>
+</ul>
+<pre><code class="language-python">def delDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+        if len(selected_row) == 3:
+
+            del_row = self.tablewidget.row(selected_row[0])
+            id = self.tablewidget.item(del_row, 0).text()
+            print(id)
+            # 如果返回值为True，表示点击了确定删除
+            if self.delDialog() == True:
+                Tools.delData(id)
+                self.flushTable()
+
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行删除&quot;)
+            
+    # 布局和新增修改相差不大，不详细赘述
+    def delDialog(self):
+        delDialog = QDialog(self)
+        delDialog.setWindowTitle(u'删除')
+        group = QGroupBox('', delDialog)
+        lb1 = QLabel(u'确定删除吗?删除后无法恢复')
+        
+        ok_button = QPushButton(u'确定', delDialog)
+        cancel_button = QPushButton(u'取消', delDialog)
+
+        ok_button.clicked.connect(delDialog.accept)
+        ok_button.setDefault(True)
+        cancel_button.clicked.connect(delDialog.reject)
+        group_layout = QVBoxLayout()
+        group_item = [lb1]
+        for item in group_item:
+            group_layout.addWidget(item)
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+        delDialog.setLayout(dialog_layout)
+        delDialog.setFixedSize(delDialog.sizeHint())
+
+        # 当点击ok是，表示确定删除返回True
+        if delDialog.exec_():
+            return True
+        # 否则返回False
+        return False
+</code></pre>
+<ul>
+<li>删除的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def delData(id):
+        print(33333)
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;delete from mydata where id = %s&quot; % id
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<h4 id="打包程序">打包程序</h4>
+<p>使用pyinstaller库将代码打包成exe可执行文件</p>
+<p>安装pyinstaller库：</p>
+<blockquote>
+<p>pip install pyinstaller</p>
+</blockquote>
+<p>打包命令：</p>
+<blockquote>
+<p>pyinstaller -F FirstApp.py --noconsole</p>
+</blockquote>
+<p>最后就会在 dist目录下生成exe可执行文件</p>
+<h4 id="源码下载">源码下载</h4>
+<p><a href="file://D:/FirstApp.py">FirstApp.py</a><br>
+<a href="file://D:/Tools.py">Tools.py</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://childlike2333.github.io/post/openpyxl-cao-zuo-excel/">
+                  <h3 class="post-title">
+                    Openpyxl操作Excel
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

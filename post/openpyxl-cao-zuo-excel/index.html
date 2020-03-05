@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Openpyxl操作Excel | Childlike</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1583422934355">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Python-openpyxl操作生成Excel
+Python-openpyxl操作生成Excel
+初识
+安装
+pip install openpyxl
+逻辑
+一个excel文档就是一个工作簿 Workbook，每个工作簿对应可以有很多个表..." />
+    <meta name="keywords" content="python" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://childlike2333.github.io">
+        <img src="https://childlike2333.github.io/images/avatar.png?v=1583422934355" class="site-logo">
+        <h1 class="site-title">Childlike</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://childlike2333.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Openpyxl操作Excel</h2>
+            <div class="post-date">2020-03-05</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="python-openpyxl操作生成excel">Python-openpyxl操作生成Excel</h1>
+<h1 id="python-openpyxl操作生成excel-2">Python-openpyxl操作生成Excel</h1>
+<h2 id="初识">初识</h2>
+<p>安装</p>
+<p><code>pip install openpyxl</code></p>
+<p>逻辑</p>
+<p>一个excel文档就是一个工作簿 Workbook，每个工作簿对应可以有很多个表格sheet，每个表格页，由单元格组成。openpyxl通过操作这三个层级，完成对excel的操作。</p>
+<p>工作簿：</p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583421259788.png" alt="" loading="lazy"></figure>
+<p>表格页：</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583421266125.png" alt="" loading="lazy"></figure>
+<p>单元格：</p>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583421273652.png" alt="" loading="lazy"></figure>
+<h2 id="基本用法">基本用法</h2>
+<h3 id="创建工作簿-workbook">创建工作簿 Workbook</h3>
+<pre><code class="language-python">from openpyxl import Workbook
+
+#创建一个工作簿对象
+workbook = Workbook()
+#保存这个工作簿，命名为test
+workbook.save('test.xlsx')
+</code></pre>
+<h3 id="打开现有工作簿">打开现有工作簿</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+</code></pre>
+<h3 id="创建表">创建表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#创建一个名字叫sheet的表格
+sheet = wb.create_sheet('test.xlsx')
+#任何操作都需要保存
+workbook.save('test.xlsx')
+</code></pre>
+<h3 id="选择现有的表">选择现有的表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#选择名字为first_sheet的表格页
+sheet = workbook['first_sheet']
+</code></pre>
+<h3 id="删除表">删除表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#选择名字为first_sheet的表格页
+sheet = workbook['first_sheet']
+#删除这张表
+workbook.remove(sheet)
+</code></pre>
+<h3 id="访问单元格">访问单元格</h3>
+<pre><code class="language-python">#方法1
+cell1 = sheet['A1']
+#方法2
+cell2 = sheet.cell(row=1,column=2)
+
+#设置单元格的值
+cell1.value = '123456'
+
+#合并A1和A2单元格
+sheet.merge_cells('A1:A2')
+</code></pre>
+<h2 id="高级用法">高级用法</h2>
+<h3 id="设置表格样式">设置表格样式</h3>
+<p>先设置表格的样式模板</p>
+<p>再将模板赋予需要更改样式的单元格</p>
+<pre><code class="language-python">from openpyxl.styles import *
+
+#先设置表格的样式模板，再将模板赋予需要更改样式的单元格
+#设置样式模板，这里只列举一部分常用的样式
+#表格边缘线的样式，thin表示有框线，框线颜色为黑色
+thin = Side(border_style=&quot;thin&quot;, color=&quot;000000&quot;)
+#设置表格上下左右都有黑色框线样式
+all_border = Border(top=thin, left=thin, right=thin, bottom=thin)
+#设置字体样式，设置字体为 微软雅黑，单下划线，颜色为蓝色,字体加粗
+yahei_font_u = Font(name=u'微软雅黑',underline='single',color='0000FF',bold=True)
+#设置背景颜色，设置充满方式为充满，颜色为黄色
+yellow_fill = PatternFill(fill_type='solid',fgColor='FFD700')
+#设置字体在表格中的位置，设置字体为上下区中，字符长度超过表格宽度时自动换行
+alignment_wrap_content = Alignment(wrap_text=True,horizontal='center',vertical='center')
+
+#设置完成后，改变单元格样式,这样这个单元格的样式就更改为模板的样式了
+cell = sheet.row(row=1,column=2)
+cell.fill = self.yellow_fill
+cell.font = self.yahei_font_u
+cell.border = self.all_border
+cell.alignment = self.alignment_wrap_content
+
+#如果要设置的单元格为合并后的，那么多个单元格样式都要设置
+</code></pre>
+<h3 id="隐藏和折叠">隐藏和折叠</h3>
+<pre><code class="language-python">#隐藏第二行
+sheet.row_dimensions[2].hidden=1
+#折叠第2行到第5行
+sheet.row_dimensions.group(2,5,hidden=True)
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583421295294.png" alt="" loading="lazy"></figure>
+<h3 id="设置超链接">设置超链接</h3>
+<pre><code>#设置这个单元格的超链接为 跳转到 test工作簿 Sheet表格的 A1单元格
+cell.hyperlink = 'test.xlsx#Sheet!A1'
+</code></pre>
+<h2 id="实战">实战</h2>
+<p>原始数据<br>
+<img src="https://childlike2333.github.io/post-images/1583421304404.png" alt="" loading="lazy"><br>
+转换效果<br>
+<img src="https://childlike2333.github.io/post-images/1583421309761.png" alt="" loading="lazy"></p>
+<pre><code class="language-python">from openpyxl import *
+from openpyxl.styles import *
+
+class MakeExcel():
+
+    def __init__(self):
+        self.dict = {
+        '英雄联盟':	'https://lol.qq.com/main.shtml',
+        '地下城与勇士':	'https://dnf.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '使命召唤Online':	'https://codol.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '疾风之刃':	'https://jf.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '冒险岛2':'https://mxd2.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '天涯明月刀':'https://wuxia.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '御龙在天':	'https://yl.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '剑灵':	'https://bns.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '流放之路':	'https://poe.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '轩辕传奇2':	'https://xy2.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '斗战神':	'https://dzs.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        'QQ三国':	'https://sg.qq.com/web201706/index.shtml?ADTAG=media.innerenter.gamecom.navigation',
+        }
+        self.excel_template()
+        self.make()
+
+    #表格样式模板
+    def excel_template(self):
+
+        # 表格边缘线的样式，thin表示有框线，框线颜色为黑色
+        self.thin = Side(border_style=&quot;thin&quot;, color=&quot;000000&quot;)
+
+        # 设置表格上下左右都有黑色框线样式
+        self.all_border = Border(top=self.thin, left=self.thin, right=self.thin, bottom=self.thin)
+
+        # 设置普通字体样式
+        self.yahei_normal = Font(name=u'微软雅黑')
+
+        #设置标题字体样式
+        self.yahei_title = Font(name=u'微软雅黑',bold=True)
+
+        # 设置链接字体样式，设置字体为 微软雅黑，单下划线，颜色为蓝色
+        self.yahei_u = Font(name=u'微软雅黑', underline='single', color='0000FF')
+
+        # 设置背景颜色，设置充满方式为充满，颜色为黄色
+        self.yellow_fill = PatternFill(fill_type='solid', fgColor='FFD700')
+
+        # 设置字体在表格中的位置，设置字体为上下区中，字符长度超过表格宽度时自动换行
+        self.alignment_wrap = Alignment(wrap_text=True, horizontal='center', vertical='center')
+
+    #设置表格样式，根据传入的样式设置传入的单元格对象的样式
+    def make_cell_style(self,cell,style):
+
+        #普通单元格样式
+        if style == 'normal':
+            cell.font = self.yahei_normal
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+        #标题单元格样式
+        elif style == 'title':
+            cell.fill = self.yellow_fill
+            cell.font = self.yahei_title
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+        #地址单元格样式
+        elif style == 'addr':
+            cell.font = self.yahei_u
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+
+    #生成表格
+    def make(self):
+        #创建一个工作簿，选用Sheet这张表
+        workbook = Workbook()
+        sheet = workbook['Sheet']
+
+        #设置标题的名称
+        cell1 = sheet['A1']
+        cell2 = sheet['B1']
+        cell1.value = '名称'
+        cell2.value = '地址'
+
+        #设置列框
+        sheet.column_dimensions['A'].width = 20.0
+        sheet.column_dimensions['B'].width = 100.0
+
+        #设置标题样式
+        self.make_cell_style(cell1, 'title')
+        self.make_cell_style(cell2, 'title')
+
+        #设置游戏和地址的样式
+        cur_row = 2
+        for key in self.dict.keys():
+
+            #设置名称和地址的值
+            temp_cell_A = sheet.cell(row=cur_row, column=1)
+            temp_cell_B = sheet.cell(row=cur_row, column=2)
+            temp_cell_A.value = key
+            temp_cell_B.value = self.dict[key]
+            #设置地址超链接
+            temp_cell_B.hyperlink = self.dict[key]
+            #设置名称和地址的样式
+            self.make_cell_style(temp_cell_A, 'normal')
+            self.make_cell_style(temp_cell_B, 'addr')
+            cur_row = cur_row + 1
+
+        #从第六行开始折叠
+        sheet.row_dimensions.group(6, cur_row, hidden=True)
+        
+        workbook.save('游戏.xlsx')
+
+MakeExcel()
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="tag">
+                    python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/">
+                  <h3 class="post-title">
+                    Gitlab入门与实践
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

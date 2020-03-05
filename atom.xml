@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://childlike2333.github.io</id>
     <title>Childlike</title>
-    <updated>2020-03-05T14:52:29.019Z</updated>
+    <updated>2020-03-05T15:42:36.796Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://childlike2333.github.io"/>
     <link rel="self" href="https://childlike2333.github.io/atom.xml"/>
@@ -10,4 +10,997 @@
     <logo>https://childlike2333.github.io/images/avatar.png</logo>
     <icon>https://childlike2333.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Childlike</rights>
+    <entry>
+        <title type="html"><![CDATA[从代码到安装包，python程序一站式打包教程]]></title>
+        <id>https://childlike2333.github.io/post/cong-dai-ma-dao-an-zhuang-bao-python-cheng-xu-yi-zhan-shi-da-bao-jiao-cheng/</id>
+        <link href="https://childlike2333.github.io/post/cong-dai-ma-dao-an-zhuang-bao-python-cheng-xu-yi-zhan-shi-da-bao-jiao-cheng/">
+        </link>
+        <updated>2020-03-05T15:34:56.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="引言">引言</h2>
+<p>在工作过程中，我们经常需要将自己开发的工具或者脚本迁移到其他机器或者发送给其他同事使用，如果不将代码打包成为可执行文件，你就需要在其他机器上安装Python环境和各种依赖的模块，非常繁琐，本文将详细描述如何从代码打包成为可执行文件，再打包成安装包文件的过程，同时解决图标、依赖文件等常见问题，打包出一个可以商用的安装包程序。</p>
+<h2 id="概述">概述</h2>
+<p>本教程是在 windows环境下，Python环境为 python3.7.4<br>
+整个打包过程分为两个阶段：</p>
+<ul>
+<li>将 <strong>代码文件</strong> 打包成为 <strong>可执行文件</strong>，这一阶段使用 Python的  **Pyinstaller **模块，打包生成的exe文件已经摆脱了Python环境的束缚，可以任意运行在其他的windows环境下，而不需要Python环境。</li>
+<li>将 <strong>可执行文件</strong> 打包成 <strong>安装包程序</strong>，这一阶段使用 <strong>Inoo Setup</strong> 软件进行打包，打包完成后会生成一个安装包程序，安装完成后就可以便捷的使用程序进行工作。</li>
+</ul>
+<h2 id="环境准备">环境准备</h2>
+<h3 id="python代码">Python代码</h3>
+<p>笔者从github上随意下了一个python代码，这是一个python实现的简单浏览器，主程序代码为MyBrowser.py，依赖文件为一些图片，启动的效果如下<br>
+<img src="https://childlike2333.github.io/post-images/1583422569361.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583422574593.png" alt="" loading="lazy"></figure>
+<h3 id="pyinstaller库">Pyinstaller库</h3>
+<p>使用pip直接安装pyinstaller库<br>
+<code>pip install pyinstaller</code></p>
+<h3 id="inno-setup">Inno Setup</h3>
+<blockquote>
+<p>Inno Setup<br>
+是一个免费的安装制作软件，小巧、简便、精美是其最大特点，支持pascal脚本，能快速制作出标准Windows2000风格的安装界面，足以完成一般安装任务。该软件用Delphi写成，其官方网站同时也提供源程序免费下载。它虽不能与Installshield这类恐龙级的安装制作软件相比，但也当之无愧算是后起之秀。</p>
+</blockquote>
+<p>百度搜索 Inno Setup编辑器下载，下载第一个即可，下载完成后安装程序<br>
+<img src="https://childlike2333.github.io/post-images/1583422583338.png" alt="" loading="lazy"></p>
+<h2 id="代码打包成可执行文件">代码打包成可执行文件</h2>
+<p>调出windows的cmd命令行程序，在命令行处进行打包操作，常用的打包命令有：</p>
+<p><strong>pyinstaller 代码路径</strong>	打包文件，可执行文件目录生成在 dist路径下<br>
+<strong>pyinstaller -F 代码路径</strong>	将代码打包成一个可执行文件<br>
+<strong>pyinstaller 代码路径 --noconsole</strong>	执行程序时没有控制台黑框<br>
+<strong>pyinstaller -i browser.ico 代码路径</strong>		带程序图标的可执行文件</p>
+<p>如下，进入代码路径，执行打包，打包成功后，提示successfully，并且在代码路径下会生成dist路径，可执行文件就在dist/MyBrowser路径下</p>
+<pre><code class="language-shell">cd F:\REQ\REQ-PyQt5
+pyinstaller MyBrowser.py
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583422591366.png" alt="" loading="lazy"></figure>
+<p>此时执行文件，可以看到在启动程序的同事，也会有一个黑色的控制台启动，并且对应的图片都没有成功加载，此时你需要将图片复制一份到可执行程序的同级目录下，方能成功加载，并且我们期望能够修改MyBrowser的程序图标为browser.ico。<br>
+<img src="https://childlike2333.github.io/post-images/1583422596129.png" alt="" loading="lazy"></p>
+<p>所以我们的正确打包姿势应该是</p>
+<pre><code>cd F:\REQ\REQ-PyQt5
+pyinstaller -i browser.ico MyBrowser.py --noconsole
+</code></pre>
+<p>虽然看起来图标没有变化，当你重命名或者移动时，该图标就会变化。<br>
+<img src="https://childlike2333.github.io/post-images/1583422602821.png" alt="" loading="lazy"></p>
+<p>将图片复制到可执行文件目录下的操作我们在下一步打包成安装包时来操作。</p>
+<h2 id="将可执行文件打包成安装包">将可执行文件打包成安装包</h2>
+<p>打开安装好的 Inno Setup编译器，选择用脚本向导创建新的脚本文件，点击确定<br>
+<img src="https://childlike2333.github.io/post-images/1583422607515.png" alt="" loading="lazy"></p>
+<p>点击下一步<br>
+<img src="https://childlike2333.github.io/post-images/1583422612874.png" alt="" loading="lazy"></p>
+<p>这里填入一些必要的项<br>
+<img src="https://childlike2333.github.io/post-images/1583422617199.png" alt="" loading="lazy"></p>
+<p>这里不需要改变什么，点击下一步<br>
+<img src="https://childlike2333.github.io/post-images/1583422622015.png" alt="" loading="lazy"></p>
+<p><strong>这里就是整个打包过程的关键步骤，你需要将exe文件替换成你的程序文件，并且将整个Mybrowser目录都添加到其他应用程序文件中，顺便将依赖的图标文件添加到到下面的其他应用程序文件中：</strong><br>
+<img src="https://childlike2333.github.io/post-images/1583422626497.png" alt="" loading="lazy"><br>
+接下来的几个选项页面，大家根据情况自行选择<br>
+<img src="https://childlike2333.github.io/post-images/1583422630705.png" alt="" loading="lazy"></p>
+<p><img src="https://childlike2333.github.io/post-images/1583422635841.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422640528.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422645379.png" alt="" loading="lazy"></p>
+<p>这里也是关键的步骤，你需要执行你的输出文件夹和输出文件名以及图标<br>
+<img src="https://childlike2333.github.io/post-images/1583422649071.png" alt="" loading="lazy"></p>
+<p>点击下一步一直到完成，点击是，确定，完成，此时会根据你的设置生成一份完整的编译脚本，并提示你是否要立即执行，点击确定即可，同时会提示你是否保存脚本，保存后开始执行编译，编译成功后，就会在你上一步设置的输出文件夹下生成安装包程序。<br>
+<img src="https://childlike2333.github.io/post-images/1583422653258.png" alt="" loading="lazy"></p>
+<p>此时你的程序就可以安装并使用啦。<br>
+<img src="https://childlike2333.github.io/post-images/1583422657373.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422661557.png" alt="" loading="lazy"></p>
+<p>最后的运行效果如下<br>
+<img src="https://childlike2333.github.io/post-images/1583422664816.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[9块钱从购买域名到签发SSL证书]]></title>
+        <id>https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/</id>
+        <link href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">
+        </link>
+        <updated>2020-03-05T15:24:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="购买域名">购买域名</h1>
+<p>我们在日常工作中，经常可能会部署一些网站或者执行一些测试工作，无论是公网还是内网环境，都可能需要一些正规机构签发的SSL证书，本教程将会详细描述，如何使用9块钱购买一年的域名并无限申请签发免费的SSL证书，同时感谢阿里爸爸提供了一整套便宜易用的解决方案~~</p>
+<blockquote>
+<p><a href="https://www.aliyun.com/">https://www.aliyun.com/</a></p>
+</blockquote>
+<ul>
+<li>进入阿里云官网，搜索域名注册，并点击进入</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583422102982.png" alt="" loading="lazy"></figure>
+<ul>
+<li>找到底下最便宜的top,一年只要9块钱，买不了吃亏，买不了上单~~</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583422108900.png" alt="" loading="lazy"></figure>
+<ul>
+<li>输入一个心仪的域名，进行检索，查看是否已经被别人注册过啦~（笔者这里只是随便输入一下），点击加入清单。</li>
+</ul>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583422113360.png" alt="" loading="lazy"></figure>
+<ul>
+<li>这里你可以选择使用你的支付宝账号登陆，因为需要购买付款，建议使用支付宝账户登陆即可，登陆完成后，点击立即结算。</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583422120818.png" alt="" loading="lazy"></figure>
+<ul>
+<li>勾选为个人持有，并勾选底下的我已阅读并理解域名服务条款，点击立即购买。</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://childlike2333.github.io/post-images/1583422125307.png" alt="" loading="lazy"></figure>
+<ul>
+<li>支付后完成购买，你就购买成功啦。</li>
+</ul>
+<h1 id="配置域名解析">配置域名解析</h1>
+<ul>
+<li>进入阿里云控制台</li>
+</ul>
+<figure data-type="image" tabindex="6"><img src="https://childlike2333.github.io/post-images/1583422131838.png" alt="" loading="lazy"></figure>
+<ul>
+<li>搜索DNS，进入云解析DNS菜单栏</li>
+</ul>
+<figure data-type="image" tabindex="7"><img src="https://childlike2333.github.io/post-images/1583422135859.png" alt="" loading="lazy"></figure>
+<ul>
+<li>这时你可以看到你的域名购买列表，点击解析设置</li>
+</ul>
+<figure data-type="image" tabindex="8"><img src="https://childlike2333.github.io/post-images/1583422142124.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击添加记录，这里可以配置DNS解析，配置主机记录（即你的域名），如你购买的域名为 abc.top，那么你这里配置你的域名可以为123456，那么你最终的域名就是 123456.abc.top，配置域名解析到你的公网服务器（如果你有购买云服务器的话）或者内网服务器（如公司内部服务器），点击确定，等待半分钟左右，你可以使用你的计算机ping一下这个域名。这时候，阿里已经帮你把域名解析到你期望的ip地址啦。</li>
+</ul>
+<figure data-type="image" tabindex="9"><img src="https://childlike2333.github.io/post-images/1583422147372.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://childlike2333.github.io/post-images/1583422151456.png" alt="" loading="lazy"></figure>
+<h1 id="ssl证书申请">SSL证书申请</h1>
+<ul>
+<li>从控制台查询SSL，点击SSL证书进入证书页面。</li>
+</ul>
+<figure data-type="image" tabindex="11"><img src="https://childlike2333.github.io/post-images/1583422155330.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击购买证书</li>
+</ul>
+<figure data-type="image" tabindex="12"><img src="https://childlike2333.github.io/post-images/1583422160072.png" alt="" loading="lazy"></figure>
+<ul>
+<li>选择免费的DV SSL证书</li>
+</ul>
+<figure data-type="image" tabindex="13"><img src="https://childlike2333.github.io/post-images/1583422181666.png" alt="" loading="lazy"></figure>
+<ul>
+<li>一阵确定后完成购买</li>
+</ul>
+<figure data-type="image" tabindex="14"><img src="https://childlike2333.github.io/post-images/1583422185634.png" alt="" loading="lazy"></figure>
+<ul>
+<li>购买完成后，你的证书列表里面会有一个未签发的证书，点击证书申请。</li>
+</ul>
+<figure data-type="image" tabindex="15"><img src="https://childlike2333.github.io/post-images/1583422189410.png" alt="" loading="lazy"></figure>
+<ul>
+<li>证书绑定域名即之前在阿里云填写的域名解析地址如 123456.abc.top，因为DNS解析也在阿里云做了，所以直接选择自动DNS验证即可（其他两种验证方式都相当的麻烦）点击下一步。</li>
+</ul>
+<figure data-type="image" tabindex="16"><img src="https://childlike2333.github.io/post-images/1583422193922.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击验证，提示验证成功，再点击提交审核。</li>
+</ul>
+<figure data-type="image" tabindex="17"><img src="https://childlike2333.github.io/post-images/1583422197628.png" alt="" loading="lazy"></figure>
+<ul>
+<li>提示申请审核中，稍等10分钟左右。</li>
+</ul>
+<figure data-type="image" tabindex="18"><img src="https://childlike2333.github.io/post-images/1583422201804.png" alt="" loading="lazy"></figure>
+<ul>
+<li>提示证书申请完成，点击下载。</li>
+</ul>
+<figure data-type="image" tabindex="19"><img src="https://childlike2333.github.io/post-images/1583422205430.png" alt="" loading="lazy"></figure>
+<ul>
+<li>按照你的部署方式选择下载对应的证书即可。</li>
+</ul>
+<figure data-type="image" tabindex="20"><img src="https://childlike2333.github.io/post-images/1583422208903.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PyQt+SQLite构建一个简单的账号管理GUI程序]]></title>
+        <id>https://childlike2333.github.io/post/pyqtsqlite-gou-jian-yi-ge-jian-dan-de-zhang-hao-guan-li-gui-cheng-xu/</id>
+        <link href="https://childlike2333.github.io/post/pyqtsqlite-gou-jian-yi-ge-jian-dan-de-zhang-hao-guan-li-gui-cheng-xu/">
+        </link>
+        <updated>2020-03-05T15:15:36.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="背景">背景</h4>
+<p>相信有很多的测试同学，在日常的工作中都会需要去写一些辅助测试的小工具或者脚本，我们除了保证工具的可用性之外，有时还需要做一些图形界面上的开发以便在公司或者小组内推广。本文旨在以实战的形式，完成一个简单的账号管理GUI程序，实现完整的增、删、改、查功能项，带大家了解如何系统的开发一个账号管理GUI程序。</p>
+<h4 id="最终效果">最终效果</h4>
+<p><img src="https://childlike2333.github.io/post-images/1583421503233.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583421506287.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583421510050.png" alt="" loading="lazy"></p>
+<h4 id="使用框架">使用框架</h4>
+<p><strong>PyQt5 + SQLite3</strong></p>
+<h4 id="代码设计">代码设计</h4>
+<ul>
+<li>UI代码和操作数据库的代码分开为两个文件，FirstApp类和Tools类。</li>
+</ul>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from Tools import *
+
+class FirstApp(QMainWindow):
+
+    def __init__(self):
+        super(FirstApp, self).__init__()
+
+        # 创建数据库
+        Tools.createDb()
+        # 创建ui布局
+        self.initMainUi()
+        # 初始化表格
+        self.initTable()
+    
+    def initTable(self):
+        pass
+    
+    def initTable(self):
+        pass
+          
+#程序主入口
+if __name__ == '__main__':
+    app=QApplication(sys.argv)
+    firstapp = FirstApp()
+    firstapp.show()
+    sys.exit(app.exec_())
+</code></pre>
+<ul>
+<li>启动程序时，检查同级路径下是否有SQLite数据库文件，如果没有则创建它，并插入示例数据，方法为Tools.createDb()</li>
+</ul>
+<pre><code class="language-python">import sqlite3
+import os
+
+class Tools():
+
+    @staticmethod
+    def createDb():
+
+        # 如果路径下没有db文件，重新创建并插入示例数据
+        if os.path.exists('mydata.db') == False:
+            connect = sqlite3.connect('mydata.db')
+            c = connect.cursor()
+            c.execute('''create table mydata(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Website varchar(1000),
+                username varchar(1000),
+                passwd varchar(1000)
+            );
+            ''')
+            connect.commit()
+            c.execute(&quot;insert into mydata values(1,'qq','qq','test123')&quot;)
+            connect.commit()
+            connect.close()
+</code></pre>
+<ul>
+<li>创建ui布局，主程序布局为一个table控件+三个按钮控件，用栅格布局方式排列，如下图，主界面QMainWindows中包含着一层QWidget，QWidget中使用栅格布局GridLayout，GridLayout中为y一个表格控件 + 三个按钮控件。</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583421527648.png" alt="" loading="lazy"></figure>
+<pre><code class="language-python">#布局
+    def initMainUi(self):
+        
+        # 设置主界面的大小，标题及图标
+        self.resize(450, 270)
+        self.setWindowTitle('FirstApp')
+        self.setWindowIcon(QIcon('icon.png'))
+        
+        # 第二层的QWidget控件
+        self.qwidget = QWidget()
+        
+        # 栅格布局
+        grid = QGridLayout()
+        
+        # 创建表格控件和按钮控件
+        self.tablewidget = QTableWidget()
+        self.addButton = QPushButton('新增')
+        self.editButton = QPushButton('修改')
+        self.delButton = QPushButton('删除')
+
+        # 设置控件在栅格中的位置
+        grid.addWidget(self.tablewidget,1,1,1,3)
+        grid.addWidget(self.addButton,2,1)
+        grid.addWidget(self.editButton,2,2)
+        grid.addWidget(self.delButton,2,3)
+        
+        # 添加栅格布局到qwidget
+        self.qwidget.setLayout(grid)
+        
+        # 设置qwidget到主界面中
+        self.setCentralWidget(self.qwidget)
+
+        #给按钮绑定点击方法
+        self.addButton.clicked.connect(self.addDef)
+        self.editButton.clicked.connect(self.editDef)
+        self.delButton.clicked.connect(self.delDef)
+</code></pre>
+<ul>
+<li>初始化表格</li>
+</ul>
+<pre><code class="language-python">def initTable(self):
+
+        # 设置表格的列数为4
+        self.tablewidget.setColumnCount(4)
+
+        # 水平和垂直方向设置为正好填满表格
+        self.tablewidget.horizontalHeader().setStretchLastSection(True)
+        self.tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        # 设置表格的表头，并设置为不可编辑
+        headerlabels = ['序号','网站', '账号', '密码']
+        self.tablewidget.setHorizontalHeaderLabels(headerlabels)
+        self.tablewidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        # 隐藏id列，不显示数据的id也就是主键，这里的主键只用来删除和修改数据时使用
+        self.tablewidget.setColumnHidden(0, True);
+
+        # 不显示单元格
+        self.tablewidget.setShowGrid(False)
+
+        # 设置表格选择行为为 只能一行一行选择
+        self.tablewidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        # 初始化表格数据
+        self.flushTable()
+</code></pre>
+<ul>
+<li>刷新表格数据</li>
+</ul>
+<pre><code class="language-python">def flushTable(self):
+
+        # 从数据表中获取数据
+        data_list = Tools.getData()
+
+        # 设置表格的行数，和数据的数量相关
+        self.tablewidget.setRowCount(len(data_list))
+
+        # 设置表格的数据
+        for index in range(len(data_list)):
+            self.tablewidget.setItem(index,0,QTableWidgetItem(str(data_list[index][0])))
+            self.tablewidget.setItem(index,1,QTableWidgetItem(data_list[index][1]))
+            self.tablewidget.setItem(index,2,QTableWidgetItem(data_list[index][2]))
+            self.tablewidget.setItem(index,3,QTableWidgetItem(data_list[index][3]))
+</code></pre>
+<pre><code class="language-python">@staticmethod
+    def getData():
+
+        conn = sqlite3.connect('mydata.db')
+        c = conn.cursor()
+        cursor = c.execute('select * from mydata')
+
+        data_list = []
+        for row in cursor:
+            temp_list = []
+            temp_list.append(row[0])
+            temp_list.append(row[1])
+            temp_list.append(row[2])
+            temp_list.append(row[3])
+            data_list.append(temp_list)
+        conn.close()
+        return data_list
+</code></pre>
+<ul>
+<li>新增按钮的功能设置，对话框的布局如下：<br>
+<img src="https://childlike2333.github.io/post-images/1583421574134.png" alt="" loading="lazy"></li>
+</ul>
+<pre><code class="language-python">def addDef(self):
+
+        # 新增的窗口,因为新增和修改共用一个对话框，所以需要在showDialog中参入参数表示这次点击的是新增按钮还是修改按钮
+        self.showDialog(1)
+    
+    def showDialog(self, status ,website='', username='', passwd=''):
+
+        self.dialog = QDialog(self)
+        self.dialog.setWindowIcon(QIcon('icon.png'))
+        if status == 1:
+            self.dialog.setWindowTitle('新增')
+        else:
+            self.dialog.setWindowTitle('修改')
+
+        # 创建一个group盒子
+        group = QGroupBox(self.dialog)
+
+        # 标签和输入框
+        lb1 = QLabel('网站:', group)
+        self.ed1 = QLineEdit(group)
+        self.ed1.setText(website)
+        lb2 = QLabel('账号:', group)
+        self.ed2 = QLineEdit(group)
+        self.ed2.setText(username)
+        lb3 = QLabel('密码:', group)
+        self.ed3 = QLineEdit(group)
+        self.ed3.setText(passwd)
+
+        # 创建确定和取消的按钮
+        ok_button = QPushButton('确定', self.dialog)
+        cancel_button = QPushButton('取消', self.dialog)
+
+        # 创建一个垂直布局，将标签和按钮控件都添加到垂直布局里
+        group_layout = QVBoxLayout()
+        group_item = [lb1, self.ed1, lb2, self.ed2, lb3, self.ed3]
+        for item in group_item:
+            group_layout.addWidget(item)
+
+        # 将垂直布局添加到groupbox中
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        # 创建一个水平布局，并将两个按钮添加到布局中
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+
+        # 创建一个最外层的dialog垂直布局，将盒子和按钮布局加到这个布局中
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+
+        # 设置这个对话框的布局
+        self.dialog.setLayout(dialog_layout)
+        self.dialog.setFixedSize(self.dialog.sizeHint())
+
+        # 按传入的状态绑定确定按钮的功能
+        if status == 1:
+            ok_button.clicked.connect(self.addDialogAccept)
+        else:
+            ok_button.clicked.connect(self.editDialogAccept)
+
+        # 默认选中ok按钮
+        ok_button.setDefault(True)
+
+        # 绑定取消按钮的功能
+        cancel_button.clicked.connect(self.dialog.reject)
+
+        self.dialog.exec_()
+        return False
+    
+   # 新增对话框的ok按钮
+   def addDialogAccept(self):
+
+        # 如果每个输入项都不为空的表示输入正确
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            # 关闭窗口
+            self.dialog.close()
+            # 在数据库中新增字段
+            Tools.new_data(self.ed1.text(), self.ed2.text(), self.ed3.text())
+            # 刷新表格
+            self.flushTable()
+            # 提示新增成功
+            self.showHint('新增成功')
+        else:
+            self.showHint('必填项不能为空')
+            
+    # 提示对话框
+    def showHint(self, message):
+
+        hint_msg = QMessageBox()
+        hint_msg.setText(message)
+        hint_msg.addButton(QMessageBox.Ok)
+        hint_msg.setWindowTitle(&quot;提示&quot;)
+        hint_msg.exec_()
+</code></pre>
+<ul>
+<li>新增的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def addData(website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        command = &quot;insert into mydata values(null,'%s','%s','%s')&quot; % (website, username, passwd)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<ul>
+<li>修改按钮的功能设置，和新增共用一个对话框，只是在点击ok按钮时有所不同</li>
+</ul>
+<pre><code class="language-python">def editDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+
+        # 如果当前选中的项数量为3时，表示只选取了一项
+        if len(selected_row) == 3:
+
+            # 获取该行行号
+            edit_row = self.tablewidget.row(selected_row[0])
+
+            # 记录当前选中项的id
+            self.id = self.tablewidget.item(edit_row, 0).text()
+            website = self.tablewidget.item(edit_row, 1).text()
+            username = self.tablewidget.item(edit_row, 2).text()
+            passwd = self.tablewidget.item(edit_row, 3).text()
+
+            # 将获取到的选中行的数据赋予给修改窗口的方法，同时返回新数据
+            self.showDialog(2, website, username, passwd)
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行编辑&quot;)
+
+    def editDialogAccept(self):
+
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            self.dialog.close()
+            # 修改数据
+            Tools.editData(self.id,self.ed1.text(), self.ed2.text(), self.ed3.text())
+            self.flushTable()
+            self.showHint('修改成功')
+        else:
+            self.showHint('必填项不能为空')
+</code></pre>
+<ul>
+<li>修改的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def editData(id, website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;update mydata set website='%s',username='%s',passwd='%s' where id=%s&quot; % (
+        website, username, passwd, id)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<ul>
+<li>删除的按钮功能设置</li>
+</ul>
+<pre><code class="language-python">def delDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+        if len(selected_row) == 3:
+
+            del_row = self.tablewidget.row(selected_row[0])
+            id = self.tablewidget.item(del_row, 0).text()
+            print(id)
+            # 如果返回值为True，表示点击了确定删除
+            if self.delDialog() == True:
+                Tools.delData(id)
+                self.flushTable()
+
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行删除&quot;)
+            
+    # 布局和新增修改相差不大，不详细赘述
+    def delDialog(self):
+        delDialog = QDialog(self)
+        delDialog.setWindowTitle(u'删除')
+        group = QGroupBox('', delDialog)
+        lb1 = QLabel(u'确定删除吗?删除后无法恢复')
+        
+        ok_button = QPushButton(u'确定', delDialog)
+        cancel_button = QPushButton(u'取消', delDialog)
+
+        ok_button.clicked.connect(delDialog.accept)
+        ok_button.setDefault(True)
+        cancel_button.clicked.connect(delDialog.reject)
+        group_layout = QVBoxLayout()
+        group_item = [lb1]
+        for item in group_item:
+            group_layout.addWidget(item)
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+        delDialog.setLayout(dialog_layout)
+        delDialog.setFixedSize(delDialog.sizeHint())
+
+        # 当点击ok是，表示确定删除返回True
+        if delDialog.exec_():
+            return True
+        # 否则返回False
+        return False
+</code></pre>
+<ul>
+<li>删除的数据库操作</li>
+</ul>
+<pre><code class="language-python">@staticmethod
+    def delData(id):
+        print(33333)
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;delete from mydata where id = %s&quot; % id
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+<h4 id="打包程序">打包程序</h4>
+<p>使用pyinstaller库将代码打包成exe可执行文件</p>
+<p>安装pyinstaller库：</p>
+<blockquote>
+<p>pip install pyinstaller</p>
+</blockquote>
+<p>打包命令：</p>
+<blockquote>
+<p>pyinstaller -F FirstApp.py --noconsole</p>
+</blockquote>
+<p>最后就会在 dist目录下生成exe可执行文件</p>
+<h4 id="源码下载">源码下载</h4>
+<p><a href="file://D:/FirstApp.py">FirstApp.py</a><br>
+<a href="file://D:/Tools.py">Tools.py</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Openpyxl操作Excel]]></title>
+        <id>https://childlike2333.github.io/post/openpyxl-cao-zuo-excel/</id>
+        <link href="https://childlike2333.github.io/post/openpyxl-cao-zuo-excel/">
+        </link>
+        <updated>2020-03-05T15:00:40.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="python-openpyxl操作生成excel">Python-openpyxl操作生成Excel</h1>
+<h1 id="python-openpyxl操作生成excel-2">Python-openpyxl操作生成Excel</h1>
+<h2 id="初识">初识</h2>
+<p>安装</p>
+<p><code>pip install openpyxl</code></p>
+<p>逻辑</p>
+<p>一个excel文档就是一个工作簿 Workbook，每个工作簿对应可以有很多个表格sheet，每个表格页，由单元格组成。openpyxl通过操作这三个层级，完成对excel的操作。</p>
+<p>工作簿：</p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583421259788.png" alt="" loading="lazy"></figure>
+<p>表格页：</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583421266125.png" alt="" loading="lazy"></figure>
+<p>单元格：</p>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583421273652.png" alt="" loading="lazy"></figure>
+<h2 id="基本用法">基本用法</h2>
+<h3 id="创建工作簿-workbook">创建工作簿 Workbook</h3>
+<pre><code class="language-python">from openpyxl import Workbook
+
+#创建一个工作簿对象
+workbook = Workbook()
+#保存这个工作簿，命名为test
+workbook.save('test.xlsx')
+</code></pre>
+<h3 id="打开现有工作簿">打开现有工作簿</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+</code></pre>
+<h3 id="创建表">创建表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#创建一个名字叫sheet的表格
+sheet = wb.create_sheet('test.xlsx')
+#任何操作都需要保存
+workbook.save('test.xlsx')
+</code></pre>
+<h3 id="选择现有的表">选择现有的表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#选择名字为first_sheet的表格页
+sheet = workbook['first_sheet']
+</code></pre>
+<h3 id="删除表">删除表</h3>
+<pre><code class="language-python">from openpyxl  import load_workbook
+#打开当前路径下的test表格
+workbook = load_workbook('test.xlsx')
+#选择名字为first_sheet的表格页
+sheet = workbook['first_sheet']
+#删除这张表
+workbook.remove(sheet)
+</code></pre>
+<h3 id="访问单元格">访问单元格</h3>
+<pre><code class="language-python">#方法1
+cell1 = sheet['A1']
+#方法2
+cell2 = sheet.cell(row=1,column=2)
+
+#设置单元格的值
+cell1.value = '123456'
+
+#合并A1和A2单元格
+sheet.merge_cells('A1:A2')
+</code></pre>
+<h2 id="高级用法">高级用法</h2>
+<h3 id="设置表格样式">设置表格样式</h3>
+<p>先设置表格的样式模板</p>
+<p>再将模板赋予需要更改样式的单元格</p>
+<pre><code class="language-python">from openpyxl.styles import *
+
+#先设置表格的样式模板，再将模板赋予需要更改样式的单元格
+#设置样式模板，这里只列举一部分常用的样式
+#表格边缘线的样式，thin表示有框线，框线颜色为黑色
+thin = Side(border_style=&quot;thin&quot;, color=&quot;000000&quot;)
+#设置表格上下左右都有黑色框线样式
+all_border = Border(top=thin, left=thin, right=thin, bottom=thin)
+#设置字体样式，设置字体为 微软雅黑，单下划线，颜色为蓝色,字体加粗
+yahei_font_u = Font(name=u'微软雅黑',underline='single',color='0000FF',bold=True)
+#设置背景颜色，设置充满方式为充满，颜色为黄色
+yellow_fill = PatternFill(fill_type='solid',fgColor='FFD700')
+#设置字体在表格中的位置，设置字体为上下区中，字符长度超过表格宽度时自动换行
+alignment_wrap_content = Alignment(wrap_text=True,horizontal='center',vertical='center')
+
+#设置完成后，改变单元格样式,这样这个单元格的样式就更改为模板的样式了
+cell = sheet.row(row=1,column=2)
+cell.fill = self.yellow_fill
+cell.font = self.yahei_font_u
+cell.border = self.all_border
+cell.alignment = self.alignment_wrap_content
+
+#如果要设置的单元格为合并后的，那么多个单元格样式都要设置
+</code></pre>
+<h3 id="隐藏和折叠">隐藏和折叠</h3>
+<pre><code class="language-python">#隐藏第二行
+sheet.row_dimensions[2].hidden=1
+#折叠第2行到第5行
+sheet.row_dimensions.group(2,5,hidden=True)
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583421295294.png" alt="" loading="lazy"></figure>
+<h3 id="设置超链接">设置超链接</h3>
+<pre><code>#设置这个单元格的超链接为 跳转到 test工作簿 Sheet表格的 A1单元格
+cell.hyperlink = 'test.xlsx#Sheet!A1'
+</code></pre>
+<h2 id="实战">实战</h2>
+<p>原始数据<br>
+<img src="https://childlike2333.github.io/post-images/1583421304404.png" alt="" loading="lazy"><br>
+转换效果<br>
+<img src="https://childlike2333.github.io/post-images/1583421309761.png" alt="" loading="lazy"></p>
+<pre><code class="language-python">from openpyxl import *
+from openpyxl.styles import *
+
+class MakeExcel():
+
+    def __init__(self):
+        self.dict = {
+        '英雄联盟':	'https://lol.qq.com/main.shtml',
+        '地下城与勇士':	'https://dnf.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '使命召唤Online':	'https://codol.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '疾风之刃':	'https://jf.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '冒险岛2':'https://mxd2.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '天涯明月刀':'https://wuxia.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '御龙在天':	'https://yl.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '剑灵':	'https://bns.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '流放之路':	'https://poe.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '轩辕传奇2':	'https://xy2.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        '斗战神':	'https://dzs.qq.com/?ADTAG=media.innerenter.gamecom.navigation',
+        'QQ三国':	'https://sg.qq.com/web201706/index.shtml?ADTAG=media.innerenter.gamecom.navigation',
+        }
+        self.excel_template()
+        self.make()
+
+    #表格样式模板
+    def excel_template(self):
+
+        # 表格边缘线的样式，thin表示有框线，框线颜色为黑色
+        self.thin = Side(border_style=&quot;thin&quot;, color=&quot;000000&quot;)
+
+        # 设置表格上下左右都有黑色框线样式
+        self.all_border = Border(top=self.thin, left=self.thin, right=self.thin, bottom=self.thin)
+
+        # 设置普通字体样式
+        self.yahei_normal = Font(name=u'微软雅黑')
+
+        #设置标题字体样式
+        self.yahei_title = Font(name=u'微软雅黑',bold=True)
+
+        # 设置链接字体样式，设置字体为 微软雅黑，单下划线，颜色为蓝色
+        self.yahei_u = Font(name=u'微软雅黑', underline='single', color='0000FF')
+
+        # 设置背景颜色，设置充满方式为充满，颜色为黄色
+        self.yellow_fill = PatternFill(fill_type='solid', fgColor='FFD700')
+
+        # 设置字体在表格中的位置，设置字体为上下区中，字符长度超过表格宽度时自动换行
+        self.alignment_wrap = Alignment(wrap_text=True, horizontal='center', vertical='center')
+
+    #设置表格样式，根据传入的样式设置传入的单元格对象的样式
+    def make_cell_style(self,cell,style):
+
+        #普通单元格样式
+        if style == 'normal':
+            cell.font = self.yahei_normal
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+        #标题单元格样式
+        elif style == 'title':
+            cell.fill = self.yellow_fill
+            cell.font = self.yahei_title
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+        #地址单元格样式
+        elif style == 'addr':
+            cell.font = self.yahei_u
+            cell.border = self.all_border
+            cell.alignment = self.alignment_wrap
+
+    #生成表格
+    def make(self):
+        #创建一个工作簿，选用Sheet这张表
+        workbook = Workbook()
+        sheet = workbook['Sheet']
+
+        #设置标题的名称
+        cell1 = sheet['A1']
+        cell2 = sheet['B1']
+        cell1.value = '名称'
+        cell2.value = '地址'
+
+        #设置列框
+        sheet.column_dimensions['A'].width = 20.0
+        sheet.column_dimensions['B'].width = 100.0
+
+        #设置标题样式
+        self.make_cell_style(cell1, 'title')
+        self.make_cell_style(cell2, 'title')
+
+        #设置游戏和地址的样式
+        cur_row = 2
+        for key in self.dict.keys():
+
+            #设置名称和地址的值
+            temp_cell_A = sheet.cell(row=cur_row, column=1)
+            temp_cell_B = sheet.cell(row=cur_row, column=2)
+            temp_cell_A.value = key
+            temp_cell_B.value = self.dict[key]
+            #设置地址超链接
+            temp_cell_B.hyperlink = self.dict[key]
+            #设置名称和地址的样式
+            self.make_cell_style(temp_cell_A, 'normal')
+            self.make_cell_style(temp_cell_B, 'addr')
+            cur_row = cur_row + 1
+
+        #从第六行开始折叠
+        sheet.row_dimensions.group(6, cur_row, hidden=True)
+        
+        workbook.save('游戏.xlsx')
+
+MakeExcel()
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gitlab入门与实践]]></title>
+        <id>https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/</id>
+        <link href="https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/">
+        </link>
+        <updated>2020-03-05T14:53:00.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="简介">简介</h2>
+<p>GitLab，是一个利用 Ruby on Rails 开发的开源应用程序，实现一个自托管的Git项目仓库，可通过Web界面进行访问公开的或者私人项目安装。 它拥有与GitHub类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。除了代码仓库管理的核心功能外，Gitlab还兼有议题、持续集成、Wiki等项目管理事务上的其他优秀模块。</p>
+<p>Gitlab提供的仓库管理、项目管理以及持续集成，可以完全取代现有类似的 jira + svn + Jenkins 项目管理架构，以达到一套系统管理项目开发的整个生命周期的目的。</p>
+<p>本文对Gitlab作简单介绍，更多详细的用法需要阅读gitlab官方wiki文档</p>
+<blockquote>
+<p>https://docs.gitlab.com/</p>
+</blockquote>
+<h2 id="部署">部署</h2>
+<h3 id="部署方式">部署方式</h3>
+<p>官网上有多种部署方式，直接部署步骤过于繁琐，而且由于环境的不同，可能出现未知错误，笔者推荐使用 docker的方式进行部署，步骤简单，不会有异常。安装docker的教程网上都有，大家根据自己的环境自行查阅。</p>
+<p>docker安装并启动完成后，搜索镜像。</p>
+<p><code>docker search gitlab</code></p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583420100706.png" alt="" loading="lazy"></figure>
+<p>大家视自己情况选择英文原版或者汉化版，为了方便演示，笔者这里选择安装社区汉化版</p>
+<h3 id="拉取镜像">拉取镜像</h3>
+<p><code>docker pull twang2218/gitlab-ce-zh</code></p>
+<p>如果下载速度极慢或者连接失败，请将docker镜像地址更改为 国内仓库或者使用阿里镜像仓库加速</p>
+<p>使用阿里镜像加速，登陆阿里云，选择容器镜像服务</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583420110895.png" alt="" loading="lazy"></figure>
+<h3 id="开始部署">开始部署</h3>
+<p>下载完成后，创建并启动容器，开放端口可以设置，443为https端口，80为http端口，我们直接使用http端口，映射到本地的80端口，如果需要配置https服务，前面可以用一层nginx代理，配置域名和证书。</p>
+<pre><code>sudo docker run --detach \
+
+ --publish 443:443 --publish 80:80 --publish 22:22 \
+
+ --name gitlab \
+
+ --restart always \
+
+ --volume /srv/gitlab/config:/etc/gitlab \
+
+ --volume /srv/gitlab/logs:/var/log/gitlab \
+
+ --volume /srv/gitlab/data:/var/opt/gitlab \
+
+ twang2218/gitlab-ce-zh
+</code></pre>
+<p>查看部署状态，安装过程中会显示 strating:health 表示正在健康的启动</p>
+<p><code>docker ps -a</code></p>
+<p>等待完全启动成功后，就部署成功了，访问linux的ip + http端口，即完成可以看到界面。</p>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583420120436.png" alt="" loading="lazy"></figure>
+<p>设置密码后，使用root账号和密码登陆界面，即可以看到首页</p>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583420128026.png" alt="" loading="lazy"></figure>
+<h2 id="基本用法">基本用法</h2>
+<h3 id="创建一个项目">创建一个项目</h3>
+<figure data-type="image" tabindex="5"><img src="https://childlike2333.github.io/post-images/1583420135592.png" alt="" loading="lazy"></figure>
+<h3 id="添加人员">添加人员</h3>
+<figure data-type="image" tabindex="6"><img src="https://childlike2333.github.io/post-images/1583420141323.png" alt="" loading="lazy"></figure>
+<h3 id="创建一个群组">创建一个群组</h3>
+<p>对于一个正常的公司或者组织，都会有多个项目和多个成员，需要用群组的概念来管理项目和人员之间的关系。</p>
+<p>群组是多个项目的集合</p>
+<p>只有群组的成员才有权查看项目</p>
+<p>群组项目的URL都会戴上群组的命名空间</p>
+<p>现有项目可以转移到群组</p>
+<figure data-type="image" tabindex="7"><img src="https://childlike2333.github.io/post-images/1583420149505.png" alt="" loading="lazy"></figure>
+<h3 id="配置gitlab">配置Gitlab</h3>
+<p>在这里完成对 项目、用户、群组的管理</p>
+<figure data-type="image" tabindex="8"><img src="https://childlike2333.github.io/post-images/1583420154921.png" alt="" loading="lazy"></figure>
+<h3 id="仓库管理">仓库管理</h3>
+<p>创建一个项目后，进入到项目页面。</p>
+<p>代码仓库是gitlab的核心功能，它提供和github一样的仓库管理功能，用法上也完全一致。</p>
+<p>关于git的操作，网上有很多教程，笔者这里就不做赘述。</p>
+<figure data-type="image" tabindex="9"><img src="https://childlike2333.github.io/post-images/1583420162178.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://childlike2333.github.io/post-images/1583420169525.png" alt="" loading="lazy"></figure>
+<h2 id="gitlab-cicd">Gitlab CI/CD</h2>
+<p>gitlab也提供了类似 jenkins的持续集成功能，通过配置，可以完成代码自动打包，部署，测试等流水线功能，触发机制完善。</p>
+<p>gitlab在系统上进行配置，但实际完成的持续集成是由 gitlab-runner来完成，runner采用go语言编写，因此可以很好的进行跨平台,并且支持在docker中使用，也提供了多种连接方式。</p>
+<h3 id="安装gitlab-runner">安装gitlab-runner</h3>
+<p>安装gitlab-runner，各个平台对应的安装方式如下：</p>
+<blockquote>
+<p>https://docs.gitlab.com/runner/install/linux-repository.html</p>
+</blockquote>
+<p>笔者linux是 ubuntu系统，直接</p>
+<p><code>apt-get install gitlab-runner</code></p>
+<h3 id="注册gitlab-runner到项目">注册gitlab-runner到项目</h3>
+<p>gitlab-runner需要通过注册的方式和gitlab上面的项目相关联，这样项目持续集成的时候才可以调用安装gitlab-runner的服务器进行操作</p>
+<p>获取项目token，点击 设置-CI/CD-General pinelines</p>
+<figure data-type="image" tabindex="11"><img src="https://childlike2333.github.io/post-images/1583420178801.png" alt="" loading="lazy"></figure>
+<p>linux生成ssh秘钥，输入ssh-keygen 一路回车，会在/root/.ssh/di_rsa下生成秘钥对</p>
+<figure data-type="image" tabindex="12"><img src="https://childlike2333.github.io/post-images/1583420186224.png" alt="" loading="lazy"></figure>
+<p>gitlab-runner注册</p>
+<p><code>gitlab-runner register</code></p>
+<figure data-type="image" tabindex="13"><img src="https://childlike2333.github.io/post-images/1583420193443.png" alt="" loading="lazy"></figure>
+<p>如果gitlab-runner和gitlab在同一linux上，请注意gitlab已经占用了22端口，避免冲突，请将ssh-server的端口改为其他端口</p>
+<p>注册完成后，回到项目中查看，已经可以在页面上看到注册的gitlab-runner</p>
+<figure data-type="image" tabindex="14"><img src="https://childlike2333.github.io/post-images/1583420207321.png" alt="" loading="lazy"></figure>
+<h3 id="使用gitlab-runner">使用gitlab-runner</h3>
+<p>配置hosts域名解析 如果你的地址是这个</p>
+<figure data-type="image" tabindex="15"><img src="https://childlike2333.github.io/post-images/1583420214470.png" alt="" loading="lazy"></figure>
+<p>需要在 /etc/host中添加 域名解析 （如果是显示gitlab也需要添加到域名解析中）</p>
+<pre><code>192.168.127.128   4244e17eba16
+
+192.168.127.128   gitlab
+</code></pre>
+<figure data-type="image" tabindex="16"><img src="https://childlike2333.github.io/post-images/1583420227284.png" alt="" loading="lazy"></figure>
+<h3 id="配置yml文件">配置yml文件</h3>
+<p>通过yml配置文件来调用gitlab-runner</p>
+<p>在项目根目录下创建一个文件名称为 .gitlab-ci.yml</p>
+<figure data-type="image" tabindex="17"><img src="https://childlike2333.github.io/post-images/1583420243250.png" alt="" loading="lazy"></figure>
+<pre><code>//三个阶段 build 、 deploy 、 test
+stages:
+    - build
+    - deploy
+    - test
+
+//设置三个全局变量，使用时 $+变量名即可
+
+variables:
+    BUILD_SAY: 'building'
+    DEPLOY_SAY: 'deploying'
+    TEST_SAY: 'testing'
+ 
+//构建任务  
+build_job:
+	//这个任务属于 build阶段
+  stage: build
+	//任务开始时的操作
+  before_script: 
+- echo 'build start'
+//任务操作
+  script:
+- echo $BUILD_SAY
+//任务完成后的操作
+  after_script:
+    - echo 'build end'
+    
+//部署任务
+deploy_job:
+  stage: deploy
+  before_script: 
+    - echo 'deploy start'
+  script:
+    - echo $DEPLOY_SAY
+  after_script:
+    - echo 'deploy end'
+    
+//测试任务
+test_job:
+  stage: test
+  before_script: 
+    - echo 'test start'
+  script:
+    - echo $TEST_SAY
+  after_script:
+- echo 'test end'
+
+</code></pre>
+<p>构建</p>
+<figure data-type="image" tabindex="18"><img src="https://childlike2333.github.io/post-images/1583420251973.png" alt="" loading="lazy"></figure>
+<p>三个任务会按顺序执行</p>
+<figure data-type="image" tabindex="19"><img src="https://childlike2333.github.io/post-images/1583420257182.png" alt="" loading="lazy"></figure>
+<p>点击可以查看每个任务的执行情况</p>
+<figure data-type="image" tabindex="20"><img src="https://childlike2333.github.io/post-images/1583420263302.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
 </feed>

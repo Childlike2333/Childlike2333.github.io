@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>9块钱从购买域名到签发SSL证书 | Childlike</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1583422934355">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="购买域名
+我们在日常工作中，经常可能会部署一些网站或者执行一些测试工作，无论是公网还是内网环境，都可能需要一些正规机构签发的SSL证书，本教程将会详细描述，如何使用9块钱购买一年的域名并无限申请签发免费的SSL证书，同时感谢阿里爸爸提供了一..." />
+    <meta name="keywords" content="网络" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://childlike2333.github.io">
+        <img src="https://childlike2333.github.io/images/avatar.png?v=1583422934355" class="site-logo">
+        <h1 class="site-title">Childlike</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://childlike2333.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">9块钱从购买域名到签发SSL证书</h2>
+            <div class="post-date">2020-03-05</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="购买域名">购买域名</h1>
+<p>我们在日常工作中，经常可能会部署一些网站或者执行一些测试工作，无论是公网还是内网环境，都可能需要一些正规机构签发的SSL证书，本教程将会详细描述，如何使用9块钱购买一年的域名并无限申请签发免费的SSL证书，同时感谢阿里爸爸提供了一整套便宜易用的解决方案~~</p>
+<blockquote>
+<p><a href="https://www.aliyun.com/">https://www.aliyun.com/</a></p>
+</blockquote>
+<ul>
+<li>进入阿里云官网，搜索域名注册，并点击进入</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583422102982.png" alt="" loading="lazy"></figure>
+<ul>
+<li>找到底下最便宜的top,一年只要9块钱，买不了吃亏，买不了上单~~</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583422108900.png" alt="" loading="lazy"></figure>
+<ul>
+<li>输入一个心仪的域名，进行检索，查看是否已经被别人注册过啦~（笔者这里只是随便输入一下），点击加入清单。</li>
+</ul>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583422113360.png" alt="" loading="lazy"></figure>
+<ul>
+<li>这里你可以选择使用你的支付宝账号登陆，因为需要购买付款，建议使用支付宝账户登陆即可，登陆完成后，点击立即结算。</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583422120818.png" alt="" loading="lazy"></figure>
+<ul>
+<li>勾选为个人持有，并勾选底下的我已阅读并理解域名服务条款，点击立即购买。</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://childlike2333.github.io/post-images/1583422125307.png" alt="" loading="lazy"></figure>
+<ul>
+<li>支付后完成购买，你就购买成功啦。</li>
+</ul>
+<h1 id="配置域名解析">配置域名解析</h1>
+<ul>
+<li>进入阿里云控制台</li>
+</ul>
+<figure data-type="image" tabindex="6"><img src="https://childlike2333.github.io/post-images/1583422131838.png" alt="" loading="lazy"></figure>
+<ul>
+<li>搜索DNS，进入云解析DNS菜单栏</li>
+</ul>
+<figure data-type="image" tabindex="7"><img src="https://childlike2333.github.io/post-images/1583422135859.png" alt="" loading="lazy"></figure>
+<ul>
+<li>这时你可以看到你的域名购买列表，点击解析设置</li>
+</ul>
+<figure data-type="image" tabindex="8"><img src="https://childlike2333.github.io/post-images/1583422142124.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击添加记录，这里可以配置DNS解析，配置主机记录（即你的域名），如你购买的域名为 abc.top，那么你这里配置你的域名可以为123456，那么你最终的域名就是 123456.abc.top，配置域名解析到你的公网服务器（如果你有购买云服务器的话）或者内网服务器（如公司内部服务器），点击确定，等待半分钟左右，你可以使用你的计算机ping一下这个域名。这时候，阿里已经帮你把域名解析到你期望的ip地址啦。</li>
+</ul>
+<figure data-type="image" tabindex="9"><img src="https://childlike2333.github.io/post-images/1583422147372.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://childlike2333.github.io/post-images/1583422151456.png" alt="" loading="lazy"></figure>
+<h1 id="ssl证书申请">SSL证书申请</h1>
+<ul>
+<li>从控制台查询SSL，点击SSL证书进入证书页面。</li>
+</ul>
+<figure data-type="image" tabindex="11"><img src="https://childlike2333.github.io/post-images/1583422155330.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击购买证书</li>
+</ul>
+<figure data-type="image" tabindex="12"><img src="https://childlike2333.github.io/post-images/1583422160072.png" alt="" loading="lazy"></figure>
+<ul>
+<li>选择免费的DV SSL证书</li>
+</ul>
+<figure data-type="image" tabindex="13"><img src="https://childlike2333.github.io/post-images/1583422181666.png" alt="" loading="lazy"></figure>
+<ul>
+<li>一阵确定后完成购买</li>
+</ul>
+<figure data-type="image" tabindex="14"><img src="https://childlike2333.github.io/post-images/1583422185634.png" alt="" loading="lazy"></figure>
+<ul>
+<li>购买完成后，你的证书列表里面会有一个未签发的证书，点击证书申请。</li>
+</ul>
+<figure data-type="image" tabindex="15"><img src="https://childlike2333.github.io/post-images/1583422189410.png" alt="" loading="lazy"></figure>
+<ul>
+<li>证书绑定域名即之前在阿里云填写的域名解析地址如 123456.abc.top，因为DNS解析也在阿里云做了，所以直接选择自动DNS验证即可（其他两种验证方式都相当的麻烦）点击下一步。</li>
+</ul>
+<figure data-type="image" tabindex="16"><img src="https://childlike2333.github.io/post-images/1583422193922.png" alt="" loading="lazy"></figure>
+<ul>
+<li>点击验证，提示验证成功，再点击提交审核。</li>
+</ul>
+<figure data-type="image" tabindex="17"><img src="https://childlike2333.github.io/post-images/1583422197628.png" alt="" loading="lazy"></figure>
+<ul>
+<li>提示申请审核中，稍等10分钟左右。</li>
+</ul>
+<figure data-type="image" tabindex="18"><img src="https://childlike2333.github.io/post-images/1583422201804.png" alt="" loading="lazy"></figure>
+<ul>
+<li>提示证书申请完成，点击下载。</li>
+</ul>
+<figure data-type="image" tabindex="19"><img src="https://childlike2333.github.io/post-images/1583422205430.png" alt="" loading="lazy"></figure>
+<ul>
+<li>按照你的部署方式选择下载对应的证书即可。</li>
+</ul>
+<figure data-type="image" tabindex="20"><img src="https://childlike2333.github.io/post-images/1583422208903.png" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="tag">
+                    网络
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://childlike2333.github.io/post/pyqtsqlite-gou-jian-yi-ge-jian-dan-de-zhang-hao-guan-li-gui-cheng-xu/">
+                  <h3 class="post-title">
+                    PyQt+SQLite构建一个简单的账号管理GUI程序
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

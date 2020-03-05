@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>从代码到安装包，python程序一站式打包教程 | Childlike</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1583422934355">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="引言
+在工作过程中，我们经常需要将自己开发的工具或者脚本迁移到其他机器或者发送给其他同事使用，如果不将代码打包成为可执行文件，你就需要在其他机器上安装Python环境和各种依赖的模块，非常繁琐，本文将详细描述如何从代码打包成为可执行文件，再..." />
+    <meta name="keywords" content="python" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://childlike2333.github.io">
+        <img src="https://childlike2333.github.io/images/avatar.png?v=1583422934355" class="site-logo">
+        <h1 class="site-title">Childlike</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://childlike2333.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">从代码到安装包，python程序一站式打包教程</h2>
+            <div class="post-date">2020-03-05</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="引言">引言</h2>
+<p>在工作过程中，我们经常需要将自己开发的工具或者脚本迁移到其他机器或者发送给其他同事使用，如果不将代码打包成为可执行文件，你就需要在其他机器上安装Python环境和各种依赖的模块，非常繁琐，本文将详细描述如何从代码打包成为可执行文件，再打包成安装包文件的过程，同时解决图标、依赖文件等常见问题，打包出一个可以商用的安装包程序。</p>
+<h2 id="概述">概述</h2>
+<p>本教程是在 windows环境下，Python环境为 python3.7.4<br>
+整个打包过程分为两个阶段：</p>
+<ul>
+<li>将 <strong>代码文件</strong> 打包成为 <strong>可执行文件</strong>，这一阶段使用 Python的  **Pyinstaller **模块，打包生成的exe文件已经摆脱了Python环境的束缚，可以任意运行在其他的windows环境下，而不需要Python环境。</li>
+<li>将 <strong>可执行文件</strong> 打包成 <strong>安装包程序</strong>，这一阶段使用 <strong>Inoo Setup</strong> 软件进行打包，打包完成后会生成一个安装包程序，安装完成后就可以便捷的使用程序进行工作。</li>
+</ul>
+<h2 id="环境准备">环境准备</h2>
+<h3 id="python代码">Python代码</h3>
+<p>笔者从github上随意下了一个python代码，这是一个python实现的简单浏览器，主程序代码为MyBrowser.py，依赖文件为一些图片，启动的效果如下<br>
+<img src="https://childlike2333.github.io/post-images/1583422569361.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583422574593.png" alt="" loading="lazy"></figure>
+<h3 id="pyinstaller库">Pyinstaller库</h3>
+<p>使用pip直接安装pyinstaller库<br>
+<code>pip install pyinstaller</code></p>
+<h3 id="inno-setup">Inno Setup</h3>
+<blockquote>
+<p>Inno Setup<br>
+是一个免费的安装制作软件，小巧、简便、精美是其最大特点，支持pascal脚本，能快速制作出标准Windows2000风格的安装界面，足以完成一般安装任务。该软件用Delphi写成，其官方网站同时也提供源程序免费下载。它虽不能与Installshield这类恐龙级的安装制作软件相比，但也当之无愧算是后起之秀。</p>
+</blockquote>
+<p>百度搜索 Inno Setup编辑器下载，下载第一个即可，下载完成后安装程序<br>
+<img src="https://childlike2333.github.io/post-images/1583422583338.png" alt="" loading="lazy"></p>
+<h2 id="代码打包成可执行文件">代码打包成可执行文件</h2>
+<p>调出windows的cmd命令行程序，在命令行处进行打包操作，常用的打包命令有：</p>
+<p><strong>pyinstaller 代码路径</strong>	打包文件，可执行文件目录生成在 dist路径下<br>
+<strong>pyinstaller -F 代码路径</strong>	将代码打包成一个可执行文件<br>
+<strong>pyinstaller 代码路径 --noconsole</strong>	执行程序时没有控制台黑框<br>
+<strong>pyinstaller -i browser.ico 代码路径</strong>		带程序图标的可执行文件</p>
+<p>如下，进入代码路径，执行打包，打包成功后，提示successfully，并且在代码路径下会生成dist路径，可执行文件就在dist/MyBrowser路径下</p>
+<pre><code class="language-shell">cd F:\REQ\REQ-PyQt5
+pyinstaller MyBrowser.py
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583422591366.png" alt="" loading="lazy"></figure>
+<p>此时执行文件，可以看到在启动程序的同事，也会有一个黑色的控制台启动，并且对应的图片都没有成功加载，此时你需要将图片复制一份到可执行程序的同级目录下，方能成功加载，并且我们期望能够修改MyBrowser的程序图标为browser.ico。<br>
+<img src="https://childlike2333.github.io/post-images/1583422596129.png" alt="" loading="lazy"></p>
+<p>所以我们的正确打包姿势应该是</p>
+<pre><code>cd F:\REQ\REQ-PyQt5
+pyinstaller -i browser.ico MyBrowser.py --noconsole
+</code></pre>
+<p>虽然看起来图标没有变化，当你重命名或者移动时，该图标就会变化。<br>
+<img src="https://childlike2333.github.io/post-images/1583422602821.png" alt="" loading="lazy"></p>
+<p>将图片复制到可执行文件目录下的操作我们在下一步打包成安装包时来操作。</p>
+<h2 id="将可执行文件打包成安装包">将可执行文件打包成安装包</h2>
+<p>打开安装好的 Inno Setup编译器，选择用脚本向导创建新的脚本文件，点击确定<br>
+<img src="https://childlike2333.github.io/post-images/1583422607515.png" alt="" loading="lazy"></p>
+<p>点击下一步<br>
+<img src="https://childlike2333.github.io/post-images/1583422612874.png" alt="" loading="lazy"></p>
+<p>这里填入一些必要的项<br>
+<img src="https://childlike2333.github.io/post-images/1583422617199.png" alt="" loading="lazy"></p>
+<p>这里不需要改变什么，点击下一步<br>
+<img src="https://childlike2333.github.io/post-images/1583422622015.png" alt="" loading="lazy"></p>
+<p><strong>这里就是整个打包过程的关键步骤，你需要将exe文件替换成你的程序文件，并且将整个Mybrowser目录都添加到其他应用程序文件中，顺便将依赖的图标文件添加到到下面的其他应用程序文件中：</strong><br>
+<img src="https://childlike2333.github.io/post-images/1583422626497.png" alt="" loading="lazy"><br>
+接下来的几个选项页面，大家根据情况自行选择<br>
+<img src="https://childlike2333.github.io/post-images/1583422630705.png" alt="" loading="lazy"></p>
+<p><img src="https://childlike2333.github.io/post-images/1583422635841.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422640528.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422645379.png" alt="" loading="lazy"></p>
+<p>这里也是关键的步骤，你需要执行你的输出文件夹和输出文件名以及图标<br>
+<img src="https://childlike2333.github.io/post-images/1583422649071.png" alt="" loading="lazy"></p>
+<p>点击下一步一直到完成，点击是，确定，完成，此时会根据你的设置生成一份完整的编译脚本，并提示你是否要立即执行，点击确定即可，同时会提示你是否保存脚本，保存后开始执行编译，编译成功后，就会在你上一步设置的输出文件夹下生成安装包程序。<br>
+<img src="https://childlike2333.github.io/post-images/1583422653258.png" alt="" loading="lazy"></p>
+<p>此时你的程序就可以安装并使用啦。<br>
+<img src="https://childlike2333.github.io/post-images/1583422657373.png" alt="" loading="lazy"><br>
+<img src="https://childlike2333.github.io/post-images/1583422661557.png" alt="" loading="lazy"></p>
+<p>最后的运行效果如下<br>
+<img src="https://childlike2333.github.io/post-images/1583422664816.png" alt="" loading="lazy"></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="tag">
+                    python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">
+                  <h3 class="post-title">
+                    9块钱从购买域名到签发SSL证书
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

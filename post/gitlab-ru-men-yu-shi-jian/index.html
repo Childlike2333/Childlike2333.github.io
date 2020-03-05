@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Gitlab入门与实践 | Childlike</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1583422934355">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="简介
+GitLab，是一个利用 Ruby on Rails 开发的开源应用程序，实现一个自托管的Git项目仓库，可通过Web界面进行访问公开的或者私人项目安装。 它拥有与GitHub类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对..." />
+    <meta name="keywords" content="工具" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://childlike2333.github.io">
+        <img src="https://childlike2333.github.io/images/avatar.png?v=1583422934355" class="site-logo">
+        <h1 class="site-title">Childlike</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://childlike2333.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Gitlab入门与实践</h2>
+            <div class="post-date">2020-03-05</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="简介">简介</h2>
+<p>GitLab，是一个利用 Ruby on Rails 开发的开源应用程序，实现一个自托管的Git项目仓库，可通过Web界面进行访问公开的或者私人项目安装。 它拥有与GitHub类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。除了代码仓库管理的核心功能外，Gitlab还兼有议题、持续集成、Wiki等项目管理事务上的其他优秀模块。</p>
+<p>Gitlab提供的仓库管理、项目管理以及持续集成，可以完全取代现有类似的 jira + svn + Jenkins 项目管理架构，以达到一套系统管理项目开发的整个生命周期的目的。</p>
+<p>本文对Gitlab作简单介绍，更多详细的用法需要阅读gitlab官方wiki文档</p>
+<blockquote>
+<p>https://docs.gitlab.com/</p>
+</blockquote>
+<h2 id="部署">部署</h2>
+<h3 id="部署方式">部署方式</h3>
+<p>官网上有多种部署方式，直接部署步骤过于繁琐，而且由于环境的不同，可能出现未知错误，笔者推荐使用 docker的方式进行部署，步骤简单，不会有异常。安装docker的教程网上都有，大家根据自己的环境自行查阅。</p>
+<p>docker安装并启动完成后，搜索镜像。</p>
+<p><code>docker search gitlab</code></p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1583420100706.png" alt="" loading="lazy"></figure>
+<p>大家视自己情况选择英文原版或者汉化版，为了方便演示，笔者这里选择安装社区汉化版</p>
+<h3 id="拉取镜像">拉取镜像</h3>
+<p><code>docker pull twang2218/gitlab-ce-zh</code></p>
+<p>如果下载速度极慢或者连接失败，请将docker镜像地址更改为 国内仓库或者使用阿里镜像仓库加速</p>
+<p>使用阿里镜像加速，登陆阿里云，选择容器镜像服务</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1583420110895.png" alt="" loading="lazy"></figure>
+<h3 id="开始部署">开始部署</h3>
+<p>下载完成后，创建并启动容器，开放端口可以设置，443为https端口，80为http端口，我们直接使用http端口，映射到本地的80端口，如果需要配置https服务，前面可以用一层nginx代理，配置域名和证书。</p>
+<pre><code>sudo docker run --detach \
+
+ --publish 443:443 --publish 80:80 --publish 22:22 \
+
+ --name gitlab \
+
+ --restart always \
+
+ --volume /srv/gitlab/config:/etc/gitlab \
+
+ --volume /srv/gitlab/logs:/var/log/gitlab \
+
+ --volume /srv/gitlab/data:/var/opt/gitlab \
+
+ twang2218/gitlab-ce-zh
+</code></pre>
+<p>查看部署状态，安装过程中会显示 strating:health 表示正在健康的启动</p>
+<p><code>docker ps -a</code></p>
+<p>等待完全启动成功后，就部署成功了，访问linux的ip + http端口，即完成可以看到界面。</p>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1583420120436.png" alt="" loading="lazy"></figure>
+<p>设置密码后，使用root账号和密码登陆界面，即可以看到首页</p>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1583420128026.png" alt="" loading="lazy"></figure>
+<h2 id="基本用法">基本用法</h2>
+<h3 id="创建一个项目">创建一个项目</h3>
+<figure data-type="image" tabindex="5"><img src="https://childlike2333.github.io/post-images/1583420135592.png" alt="" loading="lazy"></figure>
+<h3 id="添加人员">添加人员</h3>
+<figure data-type="image" tabindex="6"><img src="https://childlike2333.github.io/post-images/1583420141323.png" alt="" loading="lazy"></figure>
+<h3 id="创建一个群组">创建一个群组</h3>
+<p>对于一个正常的公司或者组织，都会有多个项目和多个成员，需要用群组的概念来管理项目和人员之间的关系。</p>
+<p>群组是多个项目的集合</p>
+<p>只有群组的成员才有权查看项目</p>
+<p>群组项目的URL都会戴上群组的命名空间</p>
+<p>现有项目可以转移到群组</p>
+<figure data-type="image" tabindex="7"><img src="https://childlike2333.github.io/post-images/1583420149505.png" alt="" loading="lazy"></figure>
+<h3 id="配置gitlab">配置Gitlab</h3>
+<p>在这里完成对 项目、用户、群组的管理</p>
+<figure data-type="image" tabindex="8"><img src="https://childlike2333.github.io/post-images/1583420154921.png" alt="" loading="lazy"></figure>
+<h3 id="仓库管理">仓库管理</h3>
+<p>创建一个项目后，进入到项目页面。</p>
+<p>代码仓库是gitlab的核心功能，它提供和github一样的仓库管理功能，用法上也完全一致。</p>
+<p>关于git的操作，网上有很多教程，笔者这里就不做赘述。</p>
+<figure data-type="image" tabindex="9"><img src="https://childlike2333.github.io/post-images/1583420162178.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://childlike2333.github.io/post-images/1583420169525.png" alt="" loading="lazy"></figure>
+<h2 id="gitlab-cicd">Gitlab CI/CD</h2>
+<p>gitlab也提供了类似 jenkins的持续集成功能，通过配置，可以完成代码自动打包，部署，测试等流水线功能，触发机制完善。</p>
+<p>gitlab在系统上进行配置，但实际完成的持续集成是由 gitlab-runner来完成，runner采用go语言编写，因此可以很好的进行跨平台,并且支持在docker中使用，也提供了多种连接方式。</p>
+<h3 id="安装gitlab-runner">安装gitlab-runner</h3>
+<p>安装gitlab-runner，各个平台对应的安装方式如下：</p>
+<blockquote>
+<p>https://docs.gitlab.com/runner/install/linux-repository.html</p>
+</blockquote>
+<p>笔者linux是 ubuntu系统，直接</p>
+<p><code>apt-get install gitlab-runner</code></p>
+<h3 id="注册gitlab-runner到项目">注册gitlab-runner到项目</h3>
+<p>gitlab-runner需要通过注册的方式和gitlab上面的项目相关联，这样项目持续集成的时候才可以调用安装gitlab-runner的服务器进行操作</p>
+<p>获取项目token，点击 设置-CI/CD-General pinelines</p>
+<figure data-type="image" tabindex="11"><img src="https://childlike2333.github.io/post-images/1583420178801.png" alt="" loading="lazy"></figure>
+<p>linux生成ssh秘钥，输入ssh-keygen 一路回车，会在/root/.ssh/di_rsa下生成秘钥对</p>
+<figure data-type="image" tabindex="12"><img src="https://childlike2333.github.io/post-images/1583420186224.png" alt="" loading="lazy"></figure>
+<p>gitlab-runner注册</p>
+<p><code>gitlab-runner register</code></p>
+<figure data-type="image" tabindex="13"><img src="https://childlike2333.github.io/post-images/1583420193443.png" alt="" loading="lazy"></figure>
+<p>如果gitlab-runner和gitlab在同一linux上，请注意gitlab已经占用了22端口，避免冲突，请将ssh-server的端口改为其他端口</p>
+<p>注册完成后，回到项目中查看，已经可以在页面上看到注册的gitlab-runner</p>
+<figure data-type="image" tabindex="14"><img src="https://childlike2333.github.io/post-images/1583420207321.png" alt="" loading="lazy"></figure>
+<h3 id="使用gitlab-runner">使用gitlab-runner</h3>
+<p>配置hosts域名解析 如果你的地址是这个</p>
+<figure data-type="image" tabindex="15"><img src="https://childlike2333.github.io/post-images/1583420214470.png" alt="" loading="lazy"></figure>
+<p>需要在 /etc/host中添加 域名解析 （如果是显示gitlab也需要添加到域名解析中）</p>
+<pre><code>192.168.127.128   4244e17eba16
+
+192.168.127.128   gitlab
+</code></pre>
+<figure data-type="image" tabindex="16"><img src="https://childlike2333.github.io/post-images/1583420227284.png" alt="" loading="lazy"></figure>
+<h3 id="配置yml文件">配置yml文件</h3>
+<p>通过yml配置文件来调用gitlab-runner</p>
+<p>在项目根目录下创建一个文件名称为 .gitlab-ci.yml</p>
+<figure data-type="image" tabindex="17"><img src="https://childlike2333.github.io/post-images/1583420243250.png" alt="" loading="lazy"></figure>
+<pre><code>//三个阶段 build 、 deploy 、 test
+stages:
+    - build
+    - deploy
+    - test
+
+//设置三个全局变量，使用时 $+变量名即可
+
+variables:
+    BUILD_SAY: 'building'
+    DEPLOY_SAY: 'deploying'
+    TEST_SAY: 'testing'
+ 
+//构建任务  
+build_job:
+	//这个任务属于 build阶段
+  stage: build
+	//任务开始时的操作
+  before_script: 
+- echo 'build start'
+//任务操作
+  script:
+- echo $BUILD_SAY
+//任务完成后的操作
+  after_script:
+    - echo 'build end'
+    
+//部署任务
+deploy_job:
+  stage: deploy
+  before_script: 
+    - echo 'deploy start'
+  script:
+    - echo $DEPLOY_SAY
+  after_script:
+    - echo 'deploy end'
+    
+//测试任务
+test_job:
+  stage: test
+  before_script: 
+    - echo 'test start'
+  script:
+    - echo $TEST_SAY
+  after_script:
+- echo 'test end'
+
+</code></pre>
+<p>构建</p>
+<figure data-type="image" tabindex="18"><img src="https://childlike2333.github.io/post-images/1583420251973.png" alt="" loading="lazy"></figure>
+<p>三个任务会按顺序执行</p>
+<figure data-type="image" tabindex="19"><img src="https://childlike2333.github.io/post-images/1583420257182.png" alt="" loading="lazy"></figure>
+<p>点击可以查看每个任务的执行情况</p>
+<figure data-type="image" tabindex="20"><img src="https://childlike2333.github.io/post-images/1583420263302.png" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="tag">
+                    工具
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
