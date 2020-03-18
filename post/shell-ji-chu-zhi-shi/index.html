@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>网络 | Childlike</title>
+<title>Shell基础知识 | Childlike</title>
 <meta name="description" content="不忘初心 方得始终">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
@@ -79,40 +80,100 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 网络</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">9块钱从购买域名到签发SSL证书</a>
-    </h2>
-    <p class="article-meta">
-      2020-03-05
-      
-        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
-          网络
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+          <article class="article">
+            <h1>Shell基础知识</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="grep">grep</h2>
+<p>--color=auto 或者 --color	表示对匹配到的文本着色显示<br>
+-i	在搜索时忽略大小写<br>
+-n	显示结果所在行号<br>
+-c	统计匹配到的行数，注意，是匹配到的总行数，不是匹配的次数<br>
+-o	只显示符合条件的字符串，但是不整行显示，每个符合条件的字符串单独显示一行<br>
+-v	输出不带关键字的行<br>
+-w	匹配整个单词，如果是字符串中包含这个单词，则不做匹配<br>
+-Ax	在输出的时候包含结果所在行之后的指定行数，这里指之后的x行 after<br>
+-Bx	在输出的时候包含结果所在行之前的指定行数，这里指之前的x行 before<br>
+-Cx	在输出的时候包含结果所在行之前和之后的指定行数，这里指之前和之后的x行，context<br>
+-e	实现多个选项的匹配，逻辑or关系<br>
+-q	静默匹配，不输出任何信息，当我们需要知道时候匹配到内容是，echo $?，输出0表示匹配到1表示没有匹配到<br>
+-P	表示使用兼容的perl的正则引擎</p>
+<h2 id="sed">sed</h2>
+<p>sed -n '3p' data		p 只打印第三行<br>
+sed -n '100,200p' data 	p 只打印100到200行<br>
+sed '2,5d' data		d 删除第2到第5行<br>
+sed '/My/,/You/d' data	d 删除包含‘My’的行到包含‘You’的行之间的行<br>
+sed '/My/,10d data		d 删除包含‘my‘的行到第十行的内容<br>
+sed '/my/p' data		p 先打印所有，再打印匹配到的行<br>
+sed -n '/my/p' data		p 取消sed的默认打印，只打印匹配到的行<br>
+sed '$d' data		d 删除最后一行<br>
+sed '/my/d' data		d 删除包含my的行<br>
+sed 's/My/You/g' data	s 替换 g表示全局替换，替换My为You<br>
+sed -e '1,10d' -e 's/My/Your/g' data	多个命令用-e隔开<br>
+sed '/My/r introduce.txt' data	r 读取 如果在文件data的某一行匹配到My,就在该行后面插入文件txt的内容<br>
+sed -n '/My/w me.txt' data	w 写入 如果在文件data的某一行匹配到My，就将这行写入到txt文件中<br>
+sed '/My'/a\</p>
+<blockquote>
+<p>hello' data	a 追加，在匹配到的行后面追加hello<br>
+sed '/My'/i<br>
+hello' data	i 插入，在匹配到的行前面追加hello<br>
+sed '3c<br>
+hello' data	c 修改，在将匹配的行内容更改成hello<br>
+sed 'y/abC/ABc'	y 把所有小写的a转换成A，小写的b转换成B，大写的C转换成c</p>
+</blockquote>
+<h2 id="awk">awk</h2>
+<p>awk -v FS='#' -v OFS='---' '{print $1,$2}' test	用#分隔字符，用---打印字符<br>
+内置变量：<br>
+FS	输入字段分隔符，默认为空白字符<br>
+OFS	输出字段分隔符，默认为空白字符<br>
+RS	输入记录分隔符，指定输入时的换行符<br>
+ORS	输出记录分隔符，输出时用指定符号替换换行符<br>
+NF	当前行的字段的个数，字段数量<br>
+NR	当前处理的文本号的行号<br>
+FNR	各文件分别计数的行号<br>
+FILENAME	当前文件名<br>
+ARGC	命令行参数的个数<br>
+ARGV	数组，保存的是命令行所给定的各参数</p>
+<p>awk 'NR<mark>5 {print $0}' test	打印第五行的内容<br>
+x &lt; y	小于<br>
+x&lt;=y	小于等于<br>
+x</mark>y	等于<br>
+x!=y	不等于<br>
+x&gt;=y	大等于<br>
+x&gt;y	大于<br>
+x ~ /正则/	正则匹配正确<br>
+x! ~ /正则/	正则匹配不正确<br>
+--re-interval  /  --posix	拓展正则匹配</p>
+<p>awk '/a/,/b/ {print $0}' data	打印匹配到a的行和匹配到b的行，之间的行，行范围模式<br>
+awk -F &quot;:&quot; '{ if($3 &lt; 500) {print $1,&quot;系统用户&quot;} else {print $1,&quot;普通用户&quot;}}' /etc/passwd<br>
+小于500打印为系统用户，否则打印为普通用户</p>
+<p>awk 'i=!i' data	打印奇数行<br>
+awk '{ if(NR==2){next}; print $0}' data	不打印第二行的数据</p>
 
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/quic-xie-yi-ji-chu-zhi-shi/">
+                <h3 class="post-title">
+                  QUIC协议基础知识
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
@@ -217,15 +278,15 @@
     </div>
     <div class="row">
       
-        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge secondary">
           python
         </a>
       
-        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge ">
           网络
         </a>
       
-        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge ">
           工具
         </a>
       
@@ -235,6 +296,7 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 

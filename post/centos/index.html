@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>FQA——Linux | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584542837672">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>FQA——Linux</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="centos6安装docker">Centos6安装docker</h3>
+<p>yum install https://get.docker.com/rpm/1.7.1/centos-6/RPMS/x86_64/docker-engine-1.7.1-1.el6.x86_64.rpm</p>
+<h3 id="centos只下载不安装rpm包">Centos只下载不安装rpm包</h3>
+<blockquote>
+<p>yumdownloader<br>
+sudo yum install yum-utils （工具包）<br>
+sudo yumdownloader <package-name></p>
+</blockquote>
+<h3 id="centos安装ffmpeg">Centos安装ffmpeg</h3>
+<ul>
+<li>
+<p>先安装yasm</p>
+<blockquote>
+<p>wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz<br>
+tar -zxvf yasm-1.3.0.tar.gz<br>
+cd yasm-1.3.0<br>
+./configure<br>
+make<br>
+make install</p>
+</blockquote>
+</li>
+<li>
+<p>再安装ffmpeg：</p>
+<blockquote>
+<p>wget http://www.ffmpeg.org/releases/ffmpeg-3.1.tar.gz<br>
+tar -zxvf ffmpeg-3.1.tar.gz<br>
+cd ffmpeg-3.1<br>
+./configure<br>
+make<br>
+make install</p>
+</blockquote>
+<h3 id="centos安装paramiko出错">Centos安装paramiko出错</h3>
+<blockquote>
+<p>'module' object has no attribute 'GSSException'</p>
+</blockquote>
+</li>
+</ul>
+<p>解决方法</p>
+<blockquote>
+<p>yum install python-paramiko</p>
+</blockquote>
+<h3 id="iptables流量统计">iptables流量统计</h3>
+<p>OUTPUT是出网流量，-s表示源 -d表示目的地 -p指定端口</p>
+<blockquote>
+<p>iptables -I OUTPUT -s 10.8.228.193 -d 10.8.228.191 -p udp</p>
+</blockquote>
+<p>INPUT是入网流量，-s表示源 -d表示目的地</p>
+<blockquote>
+<p>iptables -I INPUT -d 10.8.228.193 -s 10.8.228.191 -p udp</p>
+</blockquote>
+<p>查看当前的流量</p>
+<blockquote>
+<p>iptables -n -v -L -t filter</p>
+</blockquote>
+<p>删除INPUT的第一条</p>
+<blockquote>
+<p>iptables -D INPUT 1</p>
+</blockquote>
+<h3 id="linux下安装pip">linux下安装pip</h3>
+<p>$ wget https://bootstrap.pypa.io/get-pip.py<br>
+$ python get-pip.py<br>
+$ pip -V</p>
+<h3 id="linux出现name-or-service-not-known">linux出现Name-or-service-not-known</h3>
+<p>linux出现 gaierror: [Errno -2] Name or service not known:<br>
+/etc/hosts/ 中没有 127.0.0.1 localhost</p>
+<h3 id="linux创建普通用户">linux创建普通用户</h3>
+<pre><code>useradd ordinary    (ordinary为普通用户名)
+passwd ordinary     (给这个用户设置密码)
+</code></pre>
+<h3 id="linux升级python后yum无法使用">linux升级python后yum无法使用</h3>
+<p>问题：升级python后yum无法使用<br>
+No module named yum<br>
+方法：<br>
+nano /usr/bin/yum   将前面的 /usr/bin/python 改为python2.6<br>
+原因：<br>
+安装了两个版本的python，yum和python之间有关联，需要将yum的引用python修改为旧python</p>
+<h3 id="linux升级python后执行python失败问题">linux升级python后执行python失败问题</h3>
+<blockquote>
+<p>/usr/bin/python: error while loading shared libraries: libpython2.7.so.1.0: cannot open shared object file: No such file or directory</p>
+</blockquote>
+<p>解决方法：</p>
+<blockquote>
+<p>export LD_LIBRARY_PATH=&quot;/usr/local/Python2.7/lib&quot;</p>
+</blockquote>
+<h3 id="linux后台运行脚本">linux后台运行脚本</h3>
+<p>只输出错误信息到日志</p>
+<blockquote>
+<p>nohup ./program &gt;/dev/null 2&gt;log &amp;</p>
+</blockquote>
+<p>什么信息也不要</p>
+<blockquote>
+<p>nohup ./program &gt;/dev/null 2&gt;&amp;1 &amp;</p>
+</blockquote>
+<h3 id="linux回收cache">linux回收cache</h3>
+<p>cache使用过大时回收</p>
+<pre><code>echo 1 &gt; /proc/sys/vm/drop_caches:表示清除pagecache。
+echo 2 &gt; /proc/sys/vm/drop_caches:表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存）。slab分配器是内核中管理内存的一种机制，其中很多缓存数据实现都是用的pagecache。
+echo 3 &gt; /proc/sys/vm/drop_caches:表示清除pagecache和slab分配器中的缓存对象。
+</code></pre>
+<h3 id="linux检查端口连通性">linux检查端口连通性</h3>
+<p>TCP</p>
+<blockquote>
+<p>监听端口 nc -l 1080</p>
+<p>连接端口 nc 1080</p>
+</blockquote>
+<p>udp</p>
+<blockquote>
+<p>linux下 监听端口 nc -ul 1080</p>
+<p>给端口发送数据  nc -u x.x.x.x 1080</p>
+</blockquote>
+<h3 id="linux添加可执行文件到系统目录">linux添加可执行文件到系统目录</h3>
+<p>可执行文件添加到系统目录：<br>
+通过修改.bashrc文件:<br>
+vim ~/.bashrc<br>
+在最后一行添上：<br>
+export PATH=/usr/local/bin:$PATH<br>
+生效方法：（有以下两种）<br>
+1、关闭当前终端窗口，重新打开一个新终端窗口就能生效<br>
+2、输入“source ~/.bashrc”命令，立即生效</p>
+<h3 id="linux给网卡添加ip">linux给网卡添加ip</h3>
+<p>ip addr add 10.8.61.209/24 dev eth1 label eth1:0</p>
+<h3 id="linux设置依赖库">linux设置依赖库</h3>
+<ul>
+<li>
+<p>在/etc/ld.so.conf添加动态库的路径</p>
+<blockquote>
+<p>/home/quic/ffplay</p>
+</blockquote>
+</li>
+<li>
+<p>配置生效ldconfig</p>
+</li>
+</ul>
+<h3 id="linux设置网卡丢包率">linux设置网卡丢包率</h3>
+<p>增加20%的丢包</p>
+<blockquote>
+<p>tc qdisc add dev eth0 root netem loss 20%</p>
+</blockquote>
+<p>删除丢包设置</p>
+<blockquote>
+<p>tc qdisc del dev eth0 root netem loss 20%</p>
+</blockquote>
+<h3 id="nano用法">Nano用法</h3>
+<p>Ctrl + O	保存<br>
+Alt + 6	复制一整行<br>
+Ctrl + K	剪切一整行<br>
+Ctrl + U	粘贴<br>
+Ctrl + Y	翻到上一页<br>
+Ctrl + V	翻到下一页</p>
+<h3 id="安装python-devel后依然提示未安装">安装python-devel后依然提示未安装</h3>
+<ul>
+<li>
+<p>重新编译python</p>
+<blockquote>
+<p>./configure --prefix=/usr/local --enable-shared<br>
+make &amp;&amp; make altinstall</p>
+</blockquote>
+</li>
+<li>
+<p>在 ~/.bash_profile 中添加 export</p>
+<blockquote>
+<p>LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="设置ip访问白名单">设置ip访问白名单</h3>
+<p>设置ip访问白名单：  /etc/hosts.allow</p>
+<pre><code class="language-shell">sshd: 10.8.151.171:allow
+</code></pre>
+<h3 id="设置curl连接持续时间">设置curl连接持续时间</h3>
+<p>设置curl 连接超时时间10s，连接持续时间20s</p>
+<blockquote>
+<p>curl --connect-timeout 10 -m 20 &quot;http://XXXXXXX&quot;</p>
+</blockquote>
+<h3 id="设置ffmpeg持续时间">设置ffmpeg持续时间</h3>
+<blockquote>
+<p>ffmpeg -i rtmp://xxxx -c copy -t 10 rtmp1.flv</p>
+</blockquote>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">
+                <h3 class="post-title">
+                  基于模型的测试（MBT）探索
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/wang-luo-zhua-bao-gong-ju/">网络抓包工具</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/shell-ji-chu-zhi-shi/">Shell基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/quic-xie-yi-ji-chu-zhi-shi/">QUIC协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/qian-duan-ji-chu-zhi-shi/">前端基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/centos/">FQA——Linux</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">基于模型的测试（MBT）探索</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

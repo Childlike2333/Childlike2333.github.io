@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>FQA——Tools | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584542837672">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>FQA——Tools</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="eclipse关联git插件">eclipse关联git插件</h3>
+<ol>
+<li>首先windows电脑已经安装了git插件</li>
+<li>在外面找一个文件夹git一份代码</li>
+<li>然后在eclipse中新建一个 robot-framework项目</li>
+<li>右键项目-选 team小组-共享项目-在弹出框中选git</li>
+<li>弹出框中的 repository 点击create，选择刚才在外面git代码的路径，完成即可</li>
+</ol>
+<h3 id="eclipse导入一个git的django项目">eclipse导入一个git的django项目</h3>
+<ol>
+<li>在项目路径 右键导入 选择git project from git</li>
+<li>选择clone url</li>
+<li>填入路径、账号密码等信息，作为一个普通项目导入</li>
+<li>右键项目，pydev-设置这个项目为 python项目 django项目 并作为源路径使用</li>
+<li>右键项目，属性, pydev/django，设置TPlat/manage.py,设置manage路径就可以使用django跑服务</li>
+</ol>
+<h3 id="eclipse微软雅黑consolas字体设置">eclipse微软雅黑+Consolas字体设置</h3>
+<ul>
+<li>下载两种字体混合语言包，复制到c:/windows/fonts</li>
+<li>首选项-外观-颜色和字体-文本字体 选择字体为yahei consolas</li>
+</ul>
+<h3 id="eclipse设置所有txt文件用utf-8编码打开">eclipse设置所有txt文件用utf-8编码打开</h3>
+<p>首选项-常规-工作空间，设置文本默认打开编码（兼容远程模式）</p>
+<h3 id="eclipse配置git插件">eclipse配置git插件</h3>
+<ol>
+<li>安装git插件 Help - Install New Software - 点击Add添加。 软件名字：egit   http://download.eclipse.org/egit/updates</li>
+<li>勾选 全部. 点击Next. 继续等待，这个时间会比较久，请耐心等待。新的页面出来之后，选择install 安装</li>
+</ol>
+<h3 id="eclipse配置robot插件">eclipse配置robot插件</h3>
+<ol>
+<li>Help - Install New Software - 点击Add添加。 RED地址：http://master.dl.sourceforge.net/project/red-robot-editor/repository点击OK之后，名字加个robot吧。等待</li>
+<li>勾选 Robot Framework IDE. 点击Next. 继续等待，这个时间会比较久，请耐心等待。新的页面出来之后，选择install 安装。</li>
+<li>安装完成之后，开始配置RF标识，关键字，变量的自动补全。 windows - preference - RobotFramework - Editor - Content Assitant 加上如下内容： .abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@&amp;*:</li>
+</ol>
+<h3 id="git拉取远程分支">git拉取远程分支</h3>
+<ol>
+<li>找一个目录用来拉取</li>
+<li>git init   初始化一下</li>
+<li>git remote add origin git@gitlab:root/wscaddytest.git   与远程仓库建立连接</li>
+<li>git pull origin dev_yuzt     拉取分支</li>
+</ol>
+<h3 id="securecrt标签显示主机名">secureCRT标签显示主机名</h3>
+<p>secureCRT标签显示主机名：<br>
+把option中的Enable keypad mode switching这一项不要打钩即可</p>
+<h3 id="windows后台运行bat">Windows后台运行bat</h3>
+<pre><code>@echo off 　　
+　　if &quot;%1&quot; == &quot;h&quot; goto begin 
+　　    mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;%~nx0 h&quot;,0)(window.close)&amp;&amp;exit 
+　　:begin
+</code></pre>
+<h3 id="windows命令行返回字符编码异常">Windows命令行返回字符编码异常</h3>
+<p>windows cmd返回数据，print报错，字符编码问题：<br>
+windows cmd编码如果为gbk	 python解析时要 f.read().decode('gbk')<br>
+windows命令行执行命令的返回时要检索，str.find 也要转成gbk，不然rf会报错</p>
+<h3 id="windows查看路由">Windows查看路由</h3>
+<p>route print<br>
+显示出IP路由，将主要显示网络地址Network addres，子网掩码Netmask，网关地址Gateway addres，接口地址Interface<br>
+tracert -参数 ip(或计算机名)<br>
+跟踪路由（数据包），参数：“-w数字”用于设置超时间隔。</p>
+<h3 id="只单独调整win10字体大小的方法">只单独调整win10字体大小的方法</h3>
+<ul>
+<li>单击Windows开始菜单，在搜索框中输入“regedit”，在点击搜索结果的“regedit运行命令”，就会打开注册表</li>
+<li>按路径依次点开文件夹，找到WindowMetrics，路径为\HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics</li>
+<li>在右侧找到IconFont，双击或右键修改，注意，只修改0000和0010后面的值。Windows默认的字体大小为9号，改为12号最合适。CaptionFont活动、非活动窗口字体； IconFont图标字体；   MessageFont消息框字体；SmCaptionFont调色板标题字体 ，双击那个区域，修改</li>
+</ul>
+<h3 id="如何用git添加eclipse的robot项目">如何用git添加eclipse的robot项目</h3>
+<ul>
+<li>右键根目录-导入-复制项目的地址 配置完成</li>
+<li>导入来日文件夹或者归档文件的项目，层级选深入一级</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/fqa-python/">
+                <h3 class="post-title">
+                  FQA——Python
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/wang-luo-zhua-bao-gong-ju/">网络抓包工具</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/shell-ji-chu-zhi-shi/">Shell基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/quic-xie-yi-ji-chu-zhi-shi/">QUIC协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/qian-duan-ji-chu-zhi-shi/">前端基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/centos/">FQA——Linux</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">基于模型的测试（MBT）探索</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge secondary">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge warning">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>前端基础知识 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584542837672">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>前端基础知识</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h1 id="js基础知识">JS基础知识</h1>
+<p>x=document.getElementById(&quot;demo&quot;)  //查找元素<br>
+x.innerHTML=&quot;Hello JavaScript&quot;;    //改变内容</p>
+<p>大小写敏感<br>
+忽略空格</p>
+<p>脚本语言，读取代码时，逐行执行脚本代码，传统编程时，执行前需要对全部代码进行编译</p>
+<p>单行注释  //<br>
+多行注释 /*    */</p>
+<p>var a = 1.1 不带引号的  数字<br>
+var str = &quot;hello world&quot; 带引号的 字符串<br>
+var a = true 布尔<br>
+var cats = new Array();<br>
+cars[0]=&quot;Audi&quot;;<br>
+cars[1]=&quot;BMW&quot;;<br>
+cars[2]=&quot;Volvo&quot;; 基于下标</p>
+<p>函数定义<br>
+function functionname(){<br>
+执行代码块<br>
+}</p>
+<ul>
+<li>运算可以应用于字符串，数字与字符串相加，最后会变成字符串</li>
+</ul>
+<p>== 等于<br>
+===  全等  （值和类型都等于）<br>
+&amp;&amp; 与<br>
+|| 或<br>
+！ 非</p>
+<p>if (条件 1)<br>
+{<br>
+当条件 1 为 true 时执行的代码<br>
+}<br>
+else if (条件 2)<br>
+{<br>
+当条件 2 为 true 时执行的代码<br>
+}<br>
+else<br>
+{<br>
+当条件 1 和 条件 2 都不为 true 时执行的代码<br>
+}</p>
+<p>switch(n)<br>
+{<br>
+case 1:<br>
+执行代码块 1<br>
+break;<br>
+case 2:<br>
+执行代码块 2<br>
+break;<br>
+default:<br>
+n 与 case 1 和 case 2 不同时执行的代码<br>
+}</p>
+<p>for (var i=0; i&lt;5; i++)<br>
+{<br>
+x=x + &quot;The number is &quot; + i + &quot;<br>&quot;;<br>
+}</p>
+<p>while (条件)<br>
+{<br>
+需要执行的代码<br>
+}</p>
+<p>break 语句用于跳出循环<br>
+continue 用于跳过循环中的一个迭代</p>
+<p>try<br>
+{<br>
+//在这里运行代码<br>
+}<br>
+catch(err)<br>
+{<br>
+//在这里处理错误<br>
+}</p>
+<p>创建自定义错误<br>
+throw exception</p>
+<h1 id="jquery">JQuery</h1>
+<h2 id="基础语法">基础语法</h2>
+<p>$(selector).action()<br>
+美元符号定义 jQuery<br>
+选择符(selector)“查询’和”查找“HMTL元素<br>
+jQuery的action()执行对元素的操作</p>
+<p>$(&quot;#intor&quot;)	id为“intro”的元素<br>
+jQuery是为处理HTML事件而特别设计的</p>
+<h2 id="事件方法">事件方法</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mi>y</mi><mo>(</mo><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>)</mo><mi mathvariant="normal">将</mi><mi mathvariant="normal">函</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">绑</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">文</mi><mi mathvariant="normal">档</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">就</mi><mi mathvariant="normal">绪</mi><mi mathvariant="normal">事</mi><mi mathvariant="normal">件</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">文</mi><mi mathvariant="normal">档</mi><mi mathvariant="normal">完</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">载</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">(document).ready(function)	将函数绑定到文档的就绪事件（当文档完成加载时）
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord cjk_fallback">将</span><span class="mord cjk_fallback">函</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">绑</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">文</span><span class="mord cjk_fallback">档</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">绪</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">文</span><span class="mord cjk_fallback">档</span><span class="mord cjk_fallback">完</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">）</span></span></span></span>(selector).click(function)		触发或将函数绑定到被选元素的点击事件<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>d</mi><mi>b</mi><mi>l</mi><mi>c</mi><mi>l</mi><mi>i</mi><mi>c</mi><mi>k</mi><mo>(</mo><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>)</mo><mi mathvariant="normal">触</mi><mi mathvariant="normal">发</mi><mi mathvariant="normal">或</mi><mi mathvariant="normal">将</mi><mi mathvariant="normal">函</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">绑</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">被</mi><mi mathvariant="normal">选</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">双</mi><mi mathvariant="normal">击</mi><mi mathvariant="normal">事</mi><mi mathvariant="normal">件</mi></mrow><annotation encoding="application/x-tex">(selector).dblclick(function)	触发或将函数绑定到被选元素的双击事件
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault">d</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord cjk_fallback">触</span><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">将</span><span class="mord cjk_fallback">函</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">绑</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">双</span><span class="mord cjk_fallback">击</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span></span></span></span>(selector).focus(function)	触发或将函数绑定到被选元素的获得焦点事件<br>
+$(selector).mouseover(function)	触发或将函数绑定到被选元素的鼠标悬停事件</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>h</mi><mi>i</mi><mi>d</mi><mi>e</mi><mo>(</mo><mi>s</mi><mi>p</mi><mi>e</mi><mi>e</mi><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">(selector).hide(speed,callback);	
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span>(selector).show(speed,callback);<br>
+$(selector).toggle(speed,callback);<br>
+隐藏/显示的切换，speed是切换速度，callback是切换结束后执行的函数</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>f</mi><mi>a</mi><mi>d</mi><mi>e</mi><mi>I</mi><mi>n</mi><mo>(</mo><mi>s</mi><mi>p</mi><mi>e</mi><mi>e</mi><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">淡</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">已</mi><mi mathvariant="normal">隐</mi><mi mathvariant="normal">藏</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi></mrow><annotation encoding="application/x-tex">(selector).fadeIn(speed,callback);	淡入已隐藏的元素
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">淡</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">隐</span><span class="mord cjk_fallback">藏</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span></span></span></span>(selector).fadeOut(speed,callback);	淡出未隐藏的元素<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>f</mi><mi>a</mi><mi>d</mi><mi>e</mi><mi>T</mi><mi>o</mi><mi>g</mi><mi>g</mi><mi>l</mi><mi>e</mi><mo>(</mo><mi>s</mi><mi>p</mi><mi>e</mi><mi>e</mi><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">淡</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">和</mi><mi mathvariant="normal">淡</mi><mi mathvariant="normal">出</mi><mi mathvariant="normal">之</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">切</mi><mi mathvariant="normal">换</mi></mrow><annotation encoding="application/x-tex">(selector).fadeToggle(speed,callback);	淡入和淡出之间的切换
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">淡</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">淡</span><span class="mord cjk_fallback">出</span><span class="mord cjk_fallback">之</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">切</span><span class="mord cjk_fallback">换</span></span></span></span>(selector).fadeTo(speed,opacity,callback);	opacity不透明度，0-1之间，透明显示</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>s</mi><mi>l</mi><mi>i</mi><mi>d</mi><mi>e</mi><mi>D</mi><mi>o</mi><mi>w</mi><mi>n</mi><mo>(</mo><mi>s</mi><mi>p</mi><mi>e</mi><mi>e</mi><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">滑</mi><mi mathvariant="normal">动</mi><mi mathvariant="normal">已</mi><mi mathvariant="normal">隐</mi><mi mathvariant="normal">藏</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi></mrow><annotation encoding="application/x-tex">(selector).slideDown(speed,callback);	滑动已隐藏的元素
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">滑</span><span class="mord cjk_fallback">动</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">隐</span><span class="mord cjk_fallback">藏</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span></span></span></span>(selector).slideUp(speed,callback);	滑出已隐藏的元素<br>
+$(selector).slideToggle(speed,callback);	滑入和滑出之间切换</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>a</mi><mi>n</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>e</mi><mo>(</mo><mrow><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi></mrow><mo separator="true">,</mo><mi>s</mi><mi>p</mi><mi>e</mi><mi>e</mi><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">自</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">义</mi><mi mathvariant="normal">动</mi><mi mathvariant="normal">画</mi><mi mathvariant="normal">必</mi><mi mathvariant="normal">需</mi><mi mathvariant="normal">的</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">义</mi><mi mathvariant="normal">形</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">动</mi><mi mathvariant="normal">画</mi><mi mathvariant="normal">的</mi><mi>C</mi><mi>S</mi><mi>S</mi><mi mathvariant="normal">属</mi><mi mathvariant="normal">性</mi></mrow><annotation encoding="application/x-tex">(selector).animate({params},speed,callback);	自定义动画
+必需的 params 参数定义形成动画的 CSS 属性
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">s</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">自</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">动</span><span class="mord cjk_fallback">画</span><span class="mord cjk_fallback">必</span><span class="mord cjk_fallback">需</span><span class="mord cjk_fallback">的</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">s</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">形</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">动</span><span class="mord cjk_fallback">画</span><span class="mord cjk_fallback">的</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord cjk_fallback">属</span><span class="mord cjk_fallback">性</span></span></span></span>(selector).stop(stopAll,goToEnd);<br>
+stopAll	即停止活动的动画，允许任何排入队列的动画向后执行，默认为false<br>
+goToEnd	是否立即完成当前动画，默认为false</p>
+<h2 id="操作html内容和属性">操作HTML内容和属性</h2>
+<p>text() - 设置或返回所选元素的文本内容<br>
+html() - 设置或返回所选元素的内容（包括 HTML 标记）<br>
+val() - 设置或返回表单字段的值<br>
+attr()- 设置或返回元素的属性<br>
+append() - 在被选元素的结尾插入内容<br>
+prepend() - 在被选元素的开头插入内容<br>
+after() - 在被选元素之后插入内容<br>
+before() - 在被选元素之前插入内容</p>
+<p>remove(agr) - 删除被选元素（及其子元素） agr支持过滤元素，选择器<br>
+empty() - 从被选元素中删除子元素</p>
+<p>addClass() - 向被选元素添加一个或多个类<br>
+removeClass() - 从被选元素删除一个或多个类<br>
+toggleClass() - 对被选元素进行添加/删除类的切换操作<br>
+css() - 设置或返回样式属性</p>
+<p>width()		方法设置或返回元素的宽度（不包括内边距、边框或外边距）<br>
+height()		方法设置或返回元素的高度（不包括内边距、边框或外边距）<br>
+innerWidth()	方法返回元素的宽度（包括内边距）<br>
+innerHeight()	方法返回元素的高度（包括内边距）<br>
+outerWidth() 	方法返回元素的宽度（包括内边距和边框）<br>
+outerHeight()	 方法返回元素的高度（包括内边距和边框）</p>
+<h2 id="遍历">遍历</h2>
+<h3 id="祖先">祖先</h3>
+<p>parent()		直接上级祖先<br>
+parents('div')	所有祖先，支持过滤</p>
+<h3 id="后代">后代</h3>
+<p>parentsUntil('div')	当前与div之间的所有祖先元素	<br>
+children()		支持过滤<br>
+find(*)		*时表示返回所有后代</p>
+<h3 id="同胞">同胞</h3>
+<p>siblings()		所有同胞，支持过滤<br>
+next()		下一个同胞<br>
+nextAll()		下面的所有同胞<br>
+nextUntil(&quot;h6&quot;)	返回当前与之间的所有同胞<br>
+prev()		前一个同胞<br>
+prevAll()		前面的所有同胞</p>
+<h3 id="过滤">过滤</h3>
+<p>返回多个元素时的过滤<br>
+first()		第一个元素<br>
+lase()		最后一个元素<br>
+eq()		索引<br>
+filter()		过滤<br>
+not()		与上面相反的过滤<br>
+prevUntil()	返回当前与前面的所有同胞</p>
+<h2 id="ajax">ajax</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">.</mi><mi>g</mi><mi>e</mi><mi>t</mi><mo>(</mo><mi>U</mi><mi>R</mi><mi>L</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">.get(URL,callback);
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span>.get(URL,function(data,status){});	get请求url 回调函数中，第一个参数为返回的数据，第二个为请求的状态<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">.</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>U</mi><mi>R</mi><mi>L</mi><mo separator="true">,</mo><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mo separator="true">,</mo><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mo>)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">.post(URL,data,callback);
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span>.post(URL,data,function(data,status){}); 	post请求url 回调函数中，参数为需要传到后台的数据，回调函数中，第一个为参数返回的数据，第二个为请求的状态</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/centos/">
+                <h3 class="post-title">
+                  FQA——Linux
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/wang-luo-zhua-bao-gong-ju/">网络抓包工具</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/shell-ji-chu-zhi-shi/">Shell基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/quic-xie-yi-ji-chu-zhi-shi/">QUIC协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/qian-duan-ji-chu-zhi-shi/">前端基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/centos/">FQA——Linux</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">基于模型的测试（MBT）探索</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge warning">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

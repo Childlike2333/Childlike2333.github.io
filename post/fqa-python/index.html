@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>网络 | Childlike</title>
+<title>FQA——Python | Childlike</title>
 <meta name="description" content="不忘初心 方得始终">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
@@ -79,40 +80,106 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 网络</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">9块钱从购买域名到签发SSL证书</a>
-    </h2>
-    <p class="article-meta">
-      2020-03-05
-      
-        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
-          网络
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+          <article class="article">
+            <h1>FQA——Python</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="django-gunicorn配置使用">Django-gunicorn配置使用</h3>
+<ul>
+<li>安装</li>
+</ul>
+<p>pip install gunicorn</p>
+<p>在项目的setting注册应用  gunicorn</p>
+<p>在manage.py所在目录下：</p>
+<p>gunicorn TPlat.wsgi:application -b 10.8.210.30:61030</p>
+<p>-b 指定运行ip及端口</p>
+<p>--workers 8  启用8个线程来运行程序，一般看CPU的核数</p>
+<p>--worker-class gevent  使用gevent异步工作模式来运行程序</p>
+<p>使用前需要安装 pip install gevent</p>
+<p>静态文件加载问题：<br>
+在TPlat/urls.py中加入,注意位置</p>
+<pre><code class="language-python">from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns = [
+     url('^admin/', admin.site.urls),
+]
+urlpatterns += staticfiles_urlpatterns()
+</code></pre>
+<h3 id="layui弹出层下拉框遮挡问题">Layui弹出层，下拉框遮挡问题</h3>
+<p>弹出层，会使用到layui-layer-content，在新增、修改按钮，弹出弹出层后，设置layui-layer-content的一个属性为</p>
+<pre><code>$('#edit_ip').parent().attr('style','overflow:visible !important');
+</code></pre>
+<h3 id="linux多线程连接数据库时抛出异常">linux多线程连接数据库时抛出异常</h3>
+<p>在linux下，多线程去连接数据库时会异常（windows下不会有这种情况）2006 mysql server has gone away<br>
+需要先关闭旧的数据库连接</p>
+<p><code>from django.db import close_old_connections</code></p>
+<p>然后在进程开始后的第一句中,将旧的数据库连接关闭</p>
+<p><code>close_old_connections()</code></p>
+<h3 id="rf无法执行用例">RF无法执行用例</h3>
+<p>在C:\Python27\Scripts 目录下建立一个pybot.bat<br>
+@Echo off<br>
+python -m robot.run %*</p>
+<h3 id="rf无法获取w10管理员执行权限">RF无法获取w10管理员执行权限</h3>
+<p>建立一个runrobot.bat,然后以管理员权限运行这个bat<br>
+python C:\Python27\Scripts\ride.py</p>
+<h3 id="robot命令执行优化">robot命令执行优化</h3>
+<p>指定报告标题，运行整个目录下的suites<br>
+robot --logtitle TestReport --reporttitle TestReport suites [目录]</p>
+<h3 id="robot字典取值">robot字典取值</h3>
+<p>&amp;{log_dict}[pid]    中间不需要加引号</p>
+<h3 id="robot执行时编码异常">robot执行时编码异常</h3>
+<p>reload(sys)<br>
+sys.setdefaultencoding('utf8')</p>
+<h3 id="str和unicode字符转换">str和unicode字符转换</h3>
+<p>python str 和 unicode字符转换：<br>
+unicode转化为str，采用encode 编码：<br>
+str = u.encode('gbk')<br>
+str转化为unicode ，采用decode 解码：<br>
+unicode = s.decode('gbk')</p>
+<h3 id="创建有顺序的字典">创建有顺序的字典</h3>
+<pre><code class="language-python">import collections
+dic = collections.OrderedDict()
+</code></pre>
+<h3 id="前端导出excel失败">前端导出excel失败</h3>
+<p>因为ajax无法直接接收文件流</p>
+<pre><code class="language-html">window.open('/export_excel/')
+</code></pre>
+<h3 id="获取当前路径">获取当前路径</h3>
+<pre><code class="language-python">#获取当前路径
+os.getcwd()
+#组合路径
+os.path.join(os.getcwd(),'lib','action_event.yaml')  
+</code></pre>
+<h3 id="linux在另一个进程中使用models">linux在另一个进程中使用models</h3>
+<p>linux要在另一个进程中使用models 需要在文件的最前面导入这些：<br>
+import django<br>
+import os</p>
+<p>os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;TPlat.settings&quot;)<br>
+django.setup()</p>
 
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/wang-luo-zhua-bao-gong-ju/">
+                <h3 class="post-title">
+                  网络抓包工具
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
@@ -217,11 +284,11 @@
     </div>
     <div class="row">
       
-        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
           python
         </a>
       
-        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge secondary">
           网络
         </a>
       
@@ -235,6 +302,7 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 

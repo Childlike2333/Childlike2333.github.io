@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>网络 | Childlike</title>
+<title>nginx代理配置https源站并支持quic协议 | Childlike</title>
 <meta name="description" content="不忘初心 方得始终">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
@@ -79,40 +80,73 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 网络</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">9块钱从购买域名到签发SSL证书</a>
-    </h2>
-    <p class="article-meta">
-      2020-03-05
-      
-        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
-          网络
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+          <article class="article">
+            <h1>nginx代理配置https源站并支持quic协议</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <pre><code>events {
+    worker_connections  1024;
+}
 
+http {
+    include mime.types; 
+    default_type application/octet-stream;
+    sendfile on;
+    keepalive_timeout 65;
 
+server {
+            listen       443 ssl;
+            add_header alt-svc 'quic=&quot;:443&quot;; ma=2592000; v=&quot;44,43,39&quot;';
+            server_name  wangsu.tplat.top;
+            ssl_certificate    2551488_wangsu.tplat.top.pem;
+            ssl_certificate_key  2551488_wangsu.tplat.top.key;
+            ssl_session_cache    shared:SSL:1m;
+            ssl_session_timeout  5m;
+            ssl_ciphers  HIGH:!aNULL:!MD5;
+            ssl_prefer_server_ciphers  on;
+            error_page   500 502 503 504  /50x.html;
+            location / {
+                proxy_pass  http://10.8.210.30:61030;
+            }
+            location /static/ {
+                alias  /home/TPlat/TPlat/static/;
+            }
+        }
+
+server {
+    listen 80;
+    server_name wangsu.tplat.top;
+      location / {
+                proxy_pass  http://10.8.210.30:61030;
+            }
+     }
+}
+</code></pre>
+
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">
+                <h3 class="post-title">
+                  FQA——Tools
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
@@ -217,7 +251,7 @@
     </div>
     <div class="row">
       
-        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
           python
         </a>
       
@@ -235,6 +269,7 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 

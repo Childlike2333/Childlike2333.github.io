@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>HTTP协议基础知识 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584542837672">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>HTTP协议基础知识</h1>
+            <p class="article-meta">
+              2020-03-18
+              
+            </p>
+            
+            <div class="post-content">
+              <h4 id="http协议-超文本传输协议-基于tcpip通讯协议来传递数据">HTTP协议 超文本传输协议 基于TCP/IP通讯协议来传递数据</h4>
+<p>主要特点：</p>
+<ol>
+<li>
+<p>简单快速</p>
+</li>
+<li>
+<p>灵活</p>
+</li>
+<li>
+<p>无连接</p>
+</li>
+<li>
+<p>无状态</p>
+</li>
+<li>
+<p>支持B/S及C/S模式</p>
+</li>
+</ol>
+<h4 id="url-统一资源定位符">URL 统一资源定位符</h4>
+<blockquote>
+<p>http://www.aspxfans.com:8080/news/index.asp?boardID=5&amp;ID=24618&amp;page=1#name</p>
+</blockquote>
+<ol>
+<li>
+<p>http: 协议名称</p>
+</li>
+<li>
+<p>www.aspxfans.com     域名部分</p>
+</li>
+<li>
+<p>8080     端口部分</p>
+</li>
+<li>
+<p>/news/     虚拟目录部分</p>
+</li>
+<li>
+<p>index.asp     文件名部分</p>
+</li>
+<li>
+<p>#到最后     锚部分</p>
+</li>
+<li>
+<p>？到#中间的部分     参数部分</p>
+</li>
+</ol>
+<h4 id="http-请求消息request格式包括">HTTP 请求消息Request，格式包括</h4>
+<ol>
+<li>
+<p>请求行     请求类型，访问的资源及HTTP版本（不同请求区别在与请求行的 GET/POST请求头）</p>
+</li>
+<li>
+<p>请求头部     说明服务器要使用的附加信息，浏览器相关的内容，由浏览器来自己定义</p>
+</li>
+<li>
+<p>空行     请求头部后面的空行是必须的</p>
+</li>
+<li>
+<p>请求数据     请求数据如name=多少 id等于多少等等</p>
+</li>
+</ol>
+<pre><code>GET /562f25980001b1b106000338.jpg HTTP/1.1
+Host    img.mukewang.com
+User-Agent    Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36
+Accept    image/webp,image/*,*/*;q=0.8
+Referer    http://www.imooc.com/
+Accept-Encoding    gzip, deflate, sdch
+Accept-Language    zh-CN,zh;q=0.8、
+</code></pre>
+<h4 id="http响应消息response格式包括">HTTP响应消息Response,格式包括</h4>
+<ol>
+<li>
+<p>状态行，由HTTP协议版本号、状态码、状态消息组成</p>
+</li>
+<li>
+<p>消息报头，用来说明客户端要使用的一些附加信息</p>
+</li>
+<li>
+<p>空行</p>
+</li>
+<li>
+<p>响应正文，服务器返回给客户端的文本信息</p>
+</li>
+</ol>
+<p>HTTP/1.1 200 OK<br>
+Date: Fri, 22 May 2009 06:07:21 GMT<br>
+Content-Type: text/html; charset=UTF-8</p>
+<pre><code>&lt;html&gt;
+      &lt;head&gt;&lt;/head&gt;
+      &lt;body&gt;
+            &lt;!--body goes here--&gt;
+      &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="http之状态码三位数字组成第一个数字定义响应的类别">HTTP之状态码：三位数字组成，第一个数字定义响应的类别</h4>
+<p>1xx：指示信息--表示请求已经接受，继续处理</p>
+<p>2xx：成功，表示请求已被成功接收、理解、接受</p>
+<p>3xx:  重定向，要完成请求必须进行更进一步的操作</p>
+<p>4xx: 客户端错误，请求有语法错误或请求无法实现</p>
+<p>5xx:  服务器端错误，服务器未能实现合法的请求</p>
+<h4 id="常见状态码">常见状态码</h4>
+<p>200 OK     客户端请求成功</p>
+<p>400 Bad Request     客户端请求有语法错误，不能被服务器所理解</p>
+<p>403 Forbidden     服务器收到请求，但是拒绝提供服务</p>
+<p>404 Not Found     请求资源不存在，输入了错误的URL</p>
+<p>500 Internal Server Error     服务器发生了不可预期的错误</p>
+<p>503 Server Unavailable     服务器当前不能处理客服端的请求，一段时间后可能恢复正常</p>
+<h4 id="http请求方法">HTTP请求方法：</h4>
+<p>1.0定义了三种请求方法：</p>
+<p>GET：请求指定的页面信息，并返回实体主体</p>
+<p>POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）</p>
+<p>HEAD：类似get请求，只不过返回的响应中没有具体的内容，用于获取报头</p>
+<h4 id="http工作原理">HTTP工作原理：</h4>
+<p>工作步骤：</p>
+<ol>
+<li>
+<p>一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口，建立一个TCP套接字连接</p>
+</li>
+<li>
+<p>发送HTTP请求，即上面的上面的request等</p>
+</li>
+<li>
+<p>服务器接受请求并返回HTTP响应，Web服务器解析请求，定位请求资源，即response</p>
+</li>
+<li>
+<p>释放连接TCP</p>
+</li>
+<li>
+<p>客户端解析服务器返回的HTML内容</p>
+</li>
+</ol>
+<h4 id="浏览器输入url按下回车之后会经历以下流程">浏览器输入URL，按下回车之后会经历以下流程：</h4>
+<ol>
+<li>
+<p>浏览器像DNS服务器请求解析该URL中的域名所对应的IP地址</p>
+</li>
+<li>
+<p>解析IP地址后，根据ip地址和端口，和服务器建立TCP连接</p>
+</li>
+<li>
+<p>浏览器发出读取文件的HTTP请求，改请求报文作为TCP三次握手的第三个报文的数据发给服务器；</p>
+</li>
+<li>
+<p>服务器对浏览器请求做出响应，并把对应的html文本发送给浏览器；</p>
+</li>
+<li>
+<p>释放TCP连接</p>
+</li>
+<li>
+<p>浏览器将该html文本并显示内容</p>
+</li>
+</ol>
+<h4 id="get-post的区别">GET、POST的区别</h4>
+<ol>
+<li>
+<p>GET会将参数附加到地址上，而POST请求不会</p>
+</li>
+<li>
+<p>浏览器和服务器对URL长度一般来说会有限制，所以采用GET方法提交的时候，传输数据就会受到URL长度的限制。</p>
+</li>
+<li>
+<p>POST的安全性要比GET的安全性高，通过GET提交数据，数据会明文显示在URL上</p>
+</li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">
+                <h3 class="post-title">
+                  nginx代理配置https源站并支持quic协议
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1584542837672" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/wang-luo-zhua-bao-gong-ju/">网络抓包工具</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/shell-ji-chu-zhi-shi/">Shell基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/quic-xie-yi-ji-chu-zhi-shi/">QUIC协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/qian-duan-ji-chu-zhi-shi/">前端基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/centos/">FQA——Linux</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">基于模型的测试（MBT）探索</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
