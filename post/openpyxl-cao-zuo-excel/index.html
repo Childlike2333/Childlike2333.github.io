@@ -1,104 +1,98 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Openpyxl操作Excel | Childlike</title>
-<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584539791726">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1584540040613">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Openpyxl操作Excel | Childlike - Atom Feed" href="https://childlike2333.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    <meta name="description" content="Python-openpyxl操作生成Excel
-Python-openpyxl操作生成Excel
-初识
-安装
-pip install openpyxl
-逻辑
-一个excel文档就是一个工作簿 Workbook，每个工作簿对应可以有很多个表..." />
-    <meta name="keywords" content="python" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://childlike2333.github.io">
-  <img class="avatar" src="https://childlike2333.github.io/images/avatar.png?v=1584539791726" alt="">
-  </a>
-  <h1 class="site-title">
-    Childlike
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
+</nav>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Openpyxl操作Excel
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-03-05
-              </span>
-              <span>
-                7 min read
-              </span>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Openpyxl操作Excel</h1>
+            <p class="article-meta">
+              2020-03-05
               
-                <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="post-tag">
-                  # python
+                <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
+                  python
                 </a>
               
-            </div>
+            </p>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="python-openpyxl操作生成excel">Python-openpyxl操作生成Excel</h1>
+            <div class="post-content">
+              <h1 id="python-openpyxl操作生成excel">Python-openpyxl操作生成Excel</h1>
 <h1 id="python-openpyxl操作生成excel-2">Python-openpyxl操作生成Excel</h1>
 <h2 id="初识">初识</h2>
 <p>安装</p>
@@ -317,102 +311,130 @@ class MakeExcel():
 MakeExcel()
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#python-openpyxl%E6%93%8D%E4%BD%9C%E7%94%9F%E6%88%90excel">Python-openpyxl操作生成Excel</a></li>
-<li><a href="#python-openpyxl%E6%93%8D%E4%BD%9C%E7%94%9F%E6%88%90excel-2">Python-openpyxl操作生成Excel</a>
-<ul>
-<li><a href="#%E5%88%9D%E8%AF%86">初识</a></li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a>
-<ul>
-<li><a href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%B0%BF-workbook">创建工作簿 Workbook</a></li>
-<li><a href="#%E6%89%93%E5%BC%80%E7%8E%B0%E6%9C%89%E5%B7%A5%E4%BD%9C%E7%B0%BF">打开现有工作簿</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BA%E8%A1%A8">创建表</a></li>
-<li><a href="#%E9%80%89%E6%8B%A9%E7%8E%B0%E6%9C%89%E7%9A%84%E8%A1%A8">选择现有的表</a></li>
-<li><a href="#%E5%88%A0%E9%99%A4%E8%A1%A8">删除表</a></li>
-<li><a href="#%E8%AE%BF%E9%97%AE%E5%8D%95%E5%85%83%E6%A0%BC">访问单元格</a></li>
-</ul>
-</li>
-<li><a href="#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95">高级用法</a>
-<ul>
-<li><a href="#%E8%AE%BE%E7%BD%AE%E8%A1%A8%E6%A0%BC%E6%A0%B7%E5%BC%8F">设置表格样式</a></li>
-<li><a href="#%E9%9A%90%E8%97%8F%E5%92%8C%E6%8A%98%E5%8F%A0">隐藏和折叠</a></li>
-<li><a href="#%E8%AE%BE%E7%BD%AE%E8%B6%85%E9%93%BE%E6%8E%A5">设置超链接</a></li>
-</ul>
-</li>
-<li><a href="#%E5%AE%9E%E6%88%98">实战</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/">
+                <h3 class="post-title">
+                  Gitlab入门与实践
+                </h3>
+              </a>
+            </div>
+          
+        </div>
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/">
-              <h3 class="post-title">
-                Gitlab入门与实践
-              </h3>
-            </a>
-          </div>
-        
+      </div>
 
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1584540040613" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
         
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo/">基于模型的测试（MBT）探索</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/cong-dai-ma-dao-an-zhuang-bao-python-cheng-xu-yi-zhan-shi-da-bao-jiao-cheng/">从代码到安装包，python程序一站式打包教程</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/9-kuai-qian-cong-gou-mai-yu-ming-dao-qian-fa-ssl-zheng-shu/">9块钱从购买域名到签发SSL证书</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/pyqtsqlite-gou-jian-yi-ge-jian-dan-de-zhang-hao-guan-li-gui-cheng-xu/">PyQt+SQLite构建一个简单的账号管理GUI程序</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/openpyxl-cao-zuo-excel/">Openpyxl操作Excel</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/gitlab-ru-men-yu-shi-jian/">Gitlab入门与实践</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge success">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge success">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
-      </div>
+
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+<script type="application/javascript">
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+AOS.init();
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+hljs.initHighlightingOnLoad()
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+</script>
 
-    </script>
+
+
+
   </body>
 </html>
