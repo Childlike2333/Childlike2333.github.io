@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>03——PyQt基础 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>03——PyQt基础</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge ">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="pyqt框架介绍">PyQt框架介绍</h3>
+<h4 id="pyqt框架简介">PyQt框架简介</h4>
+<p>在目前的软件设计过程中，图形用户界面GUI的设计相当重要，美观、易用的用户界面能够在很大程度上提高软件的使用量。在介绍PyQt框架之前，我们先来了解什么是 GUI 用户图形界面。</p>
+<blockquote>
+<p>图形用户界面（Graphical User Interface，简称 GUI，又称图形用户接口）是指采用图形方式显示的计算机操作用户界面。<br>
+与早期计算机使用的命令行界面相比，图形界面对于用户来说在视觉上更易于接受。然而这界面若要通过在显示屏的特定位置，以”各种美观而不单调的视觉消息“提示用户”状态的改变“，势必得比简单的消息呈现花上更多的计算能力。</p>
+</blockquote>
+<p>PyQt最初是作为一门脚本语言开发的，并不具备GUI功能，但由于其本身具有良好的可拓展性，能够不断地通过C/C++模块进行功能性拓展，因此目前已经有相当多的GUI控件集可以在Python中使用。</p>
+<p>常用的GUI控件有PyQt、Tkinter、wxPython、Kivy等，其中PyQt是Qt为Python专门提供的GUI拓展。</p>
+<blockquote>
+<p>PyQt是一个创建GUI应用程序的工具包。它是Python编程语言和Qt库的成功融合。Qt库是目前最强大的库之一。PyQt是由Phil Thompson 开发。<br>
+PyQt实现了一个Python模块集。它有超过300类，将近6000个函数和方法。它是一个多平台的工具包，可以运行在所有主要操作系统上，包括UNIX，Windows和Mac。 PyQt采用双许可证，开发人员可以选择GPL和商业许可。在此之前，GPL的版本只能用在Unix上，从PyQt的版本4开始，GPL许可证可用于所有支持的平台。</p>
+</blockquote>
+<h4 id="pyqt的特点">PyQt的特点</h4>
+<ul>
+<li>基于高性能的Qt的GUI控件集</li>
+<li>能够跨平台运行在Windows、Linux、Mac OS等系统上</li>
+<li>对Qt库的完全封装</li>
+<li>可以使用Qt成熟的IED（Qt Designer）进行图形界面设计，并自动生成可执行的Python代码</li>
+<li>提供了一整套种类繁多，功能齐备的窗口控件。</li>
+</ul>
+<h4 id="在windows下搭建pyqt5环境">在Windows下搭建PyQt5环境</h4>
+<pre><code class="language-python">pip install PyQt5
+pip install PyQt5-tools
+</code></pre>
+<h3 id="基本窗口控件和第一个gui程序">基本窗口控件和第一个GUI程序</h3>
+<h4 id="常用窗口类型介绍">常用窗口类型介绍</h4>
+<p>QWidget 基础窗口控件是所有用户界面对象的基类，所有的窗口和控件都是直接或者间接继承自QWidget类。窗口指：没有嵌入到其他控件中的控件称为窗口，一般窗口都会有边框、标题栏、工具栏、关闭按钮、最小化按钮等。控件指：按钮、复选框、文本框、表格、进度条等这些组成程序的基本元素。</p>
+<p>QMainWindow 主窗口，包含菜单栏、工具栏、状态栏、标题栏等，是最常见的窗口形式，也可以说是GUI程序的主窗口</p>
+<p>QDialog 是对话框窗口的基类，主要用于执行短期任务，与用户进行互动，这种窗口没有菜单栏、工具栏、状态栏等。</p>
+<ul>
+<li>如果是主窗口就使用QMainWindow类</li>
+<li>如果是对话框，就是用QDialog类</li>
+<li>如果不确定用途，有可能作为顶层窗口，也有可能嵌入到其他窗口中的，那么就使用QWidget类</li>
+</ul>
+<h4 id="第一个helloworld">第一个helloworld</h4>
+<p>面向过程的方式</p>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow
+#这里引入了PyQt5.QtWidgets模块，这个模块包含了基本的组件。
+
+if __name__ == '__main__':
+
+    #每个PyQt5应用都必须创建一个应用对象。sys.argv是一组命令行参数的列表。
+    app = QApplication(sys.argv)
+
+    #QWidge控件是一个用户界面的基本控件，它提供了基本的应用构造器。默认情况下，构造器是没有父级的，没有父级的构造器被称为窗口（window）
+    mywindow = QMainWindow()
+
+    #resize()方法能改变控件的大小，这里的意思是窗口宽250px，高150px。
+    mywindow.resize(500, 500)
+
+    #我们给这个窗口添加了一个标题，标题在标题栏展示
+    mywindow.setWindowTitle('第一个hello程序')
+
+    #move()是修改控件位置的的方法。它把控件放置到屏幕坐标的(300, 300)的位置。注：屏幕坐标系的原点是屏幕的左上角。
+    mywindow.move(300, 300)
+
+    #show()能让控件在桌面上显示出来。控件在内存里创建，之后才能在显示器上显示出来
+    mywindow.show()
+
+    #最后，我们进入了应用的主循环中，事件处理器这个时候开始工作。主循环从窗口上接收事件，并把事件传入到派发到应用控件里。当调用exit()方法或直接销毁主控件时，主循环就会结束。sys.exit()方法能确保主循环安全退出。外部环境能通知主控件怎么结束。
+    #exec_()之所以有个下划线，是因为exec是一个Python的关键字。
+    sys.exit(app.exec_())
+</code></pre>
+<p>面向对象的方式</p>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
+
+class Example(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+        # setGeometry()有两个作用：把窗口放到屏幕上并且设置窗口大小。参数分别代表屏幕坐标的x、y和窗口大小的宽、高。也就是说这个方法是resize()和move()的合体。
+        self.setGeometry(300, 300, 300, 220)
+
+        self.setWindowTitle('第一个hello程序')
+
+        # 设置窗口的图标
+        self.setWindowIcon(QIcon('test.png'))
+
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
+
+class Example(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+        # setGeometry()有两个作用：把窗口放到屏幕上并且设置窗口大小。参数分别代表屏幕坐标的x、y和窗口大小的宽、高。也就是说这个方法是resize()和move()的合体。
+        self.setGeometry(300, 300, 500, 500)
+
+        self.setWindowTitle('第一个hello程序')
+
+        # 设置窗口的图标
+        self.setWindowIcon(QIcon('test.png'))
+
+        # 1.创建状态栏
+        self.status = self.statusBar()
+        self.status.showMessage('这是提示信息', 4000)
+
+        newAction = QAction(QIcon('test.png'), '新增', self)
+
+        # 2.创建菜单栏
+        self.menubar = self.menuBar()
+        self.menubar.addAction(newAction)
+
+        # 3.创建工具栏
+        self.toolbar = self.addToolBar('New')
+        self.toolbar.addAction(newAction)
+
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h3 id="控件类型和布局方式">控件类型和布局方式</h3>
+<p>前面我们讲述了PyQt的两种控件类型，一种为窗口控件，另一种就是基础控件，那这些控件在开发时之间的层级关系和布局的逻辑关系是怎么样的呢。</p>
+<p>窗口控件： QMainWindow QWidget QDialog</p>
+<p>基本控件： 标签（QLable）	文本框（QLineEdit）  多行文本框（QTextEdit）  按钮（QPushButton）。。。。</p>
+<p>常用布局方式：</p>
+<ul>
+<li>绝对布局，按照像素位置进行绝对定位</li>
+<li>盒布局，水平布局和垂直布局 （QHBoxLayout  QVBoxLayout）</li>
+<li>栅格布局，把窗口分为行和列。 QGridLayout</li>
+</ul>
+<p>注意的是QMainWindow不能直接使用使用布局，常用的方式是在主窗口中添加一个中心控件QWidget，然后再使用布局。</p>
+<h4 id="绝对布局">绝对布局</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import QWidget, QLabel, QApplication
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+
+    def initUI(self):
+
+        lbl1 = QLabel('hello',self)
+        lbl1.move(15, 10)
+
+        lbl2 = QLabel('world',self)
+        lbl2.move(35, 40)
+
+        lbl3 = QLabel('good day',self)
+        lbl3.move(55, 70)
+
+        self.setGeometry(300, 300, 250, 150)
+        self.setWindowTitle('Absolute')
+        self.show()
+
+
+if __name__ == '__main__':
+
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="盒布局">盒布局</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+        lbl1 = QLabel('hello')
+
+        lbl2 = QLabel('world')
+
+        lbl3 = QLabel('good day')
+		
+		# 创建盒布局
+        hbox = QHBoxLayout()
+        hbox.addWidget(lbl1)
+        hbox.addWidget(lbl2)
+        hbox.addWidget(lbl3)
+        self.setLayout(hbox)
+
+        self.setGeometry(300, 300, 250, 150)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="栅格布局">栅格布局</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+        lbl1 = QLabel('hello')
+
+        lbl2 = QLabel('world')
+
+        lbl3 = QLabel('good day')
+
+        lt1 = QLineEdit('hello')
+        lt2 = QLineEdit('world')
+        lt3 = QLineEdit('good day')
+
+        # 创建栅格布局
+        grid = QGridLayout()
+        grid.addWidget(lbl1,1,1)
+        grid.addWidget(lt1,1,2)
+        grid.addWidget(lbl2,2,1)
+        grid.addWidget(lt2,2,2)
+        grid.addWidget(lbl3,3,1)
+        grid.addWidget(lt3,3,2)
+        self.setLayout(grid)
+
+        self.setGeometry(500, 500, 500, 500)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="在mainwindow中使用布局">在Mainwindow中使用布局</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+
+
+class Example(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        widget = QWidget()
+
+        lbl1 = QLabel('hello')
+
+        lbl2 = QLabel('world')
+
+        lbl3 = QLabel('good day')
+
+        lt1 = QLineEdit('hello')
+        lt2 = QLineEdit('world')
+        lt3 = QLineEdit('good day')
+
+        # 创建盒布局
+        grid = QGridLayout()
+        grid.addWidget(lbl1,1,1)
+        grid.addWidget(lt1,1,2)
+        grid.addWidget(lbl2,2,1)
+        grid.addWidget(lt2,2,2)
+        grid.addWidget(lbl3,3,1)
+        grid.addWidget(lt3,3,2)
+        widget.setLayout(grid)
+
+        self.setCentralWidget(widget)
+        self.setGeometry(500, 500, 500, 500)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1586141828087.png" alt="" loading="lazy"></figure>
+<h3 id="基本控件详解">基本控件详解</h3>
+<h4 id="qlabel-标签类">QLabel 标签类</h4>
+<blockquote>
+<p>QLabel对象作为一个占位符可以显示不可编辑的文本或者图片。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAignment()</td>
+<td>按固定值方式对其文本<br />- Qt.AlignLeft  水平方向靠左对齐<br />- Qt.AlignRight 水平方向靠右对齐<br />- Qt.AlignCenter  水平方向居中对齐<br />- Qt.AlignJustify  水平方向调整间距两端对齐<br />- Qt.AlignTop  垂直方向靠上对齐<br />- Qt.AlignBottom  垂直方向靠下对齐<br />- Qt.AlignVCenter  垂直方向居中对齐<br /></td>
+</tr>
+<tr>
+<td>setToolTip()</td>
+<td>设置提示</td>
+</tr>
+<tr>
+<td>setPixmap()</td>
+<td>设置QLabel为一个图片</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>获取QLabel的文本内容</td>
+</tr>
+<tr>
+<td>setText()</td>
+<td>设置QLable的文本内容</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+from PyQt5.Qt import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+        lbl1 = QLabel('hello')
+
+        lbl2 = QLabel('world')
+
+        lbl3 = QLabel('good day')
+
+        #设置文本居中
+        lbl1.setAlignment(Qt.AlignCenter)
+        lbl1.setText('设置为 hello')
+
+        lbl2.setToolTip('这是一个提示')
+        print (lbl2.text())
+        lbl3.setPixmap(QPixmap(&quot;test.png&quot;))
+
+        # 创建盒布局
+        hbox = QHBoxLayout()
+        hbox.addWidget(lbl1)
+        hbox.addWidget(lbl2)
+        hbox.addWidget(lbl3)
+        self.setLayout(hbox)
+
+        self.setGeometry(300, 300, 250, 150)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qlineedit-单行文本框">QLineEdit 单行文本框</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAignment()</td>
+<td>按固定值方式对其文本<br />- Qt.AlignLeft  水平方向靠左对齐<br />- Qt.AlignRight 水平方向靠右对齐<br />- Qt.AlignCenter  水平方向居中对齐<br />- Qt.AlignJustify  水平方向调整间距两端对齐<br />- Qt.AlignTop  垂直方向靠上对齐<br />- Qt.AlignBottom  垂直方向靠下对齐<br />- Qt.AlignVCenter  垂直方向居中对齐<br /></td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清楚文本</td>
+</tr>
+<tr>
+<td>setMaxLength()</td>
+<td>设置文本框允许输入的最大字符</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>返回文本框的输入内容</td>
+</tr>
+<tr>
+<td>setText()</td>
+<td>设置文本框的输入内容</td>
+</tr>
+<tr>
+<td>selectAll()</td>
+<td>全选</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selectionChanged</td>
+<td>选择改变了，这个事件就会被触发</td>
+</tr>
+<tr>
+<td>textChanged</td>
+<td>当修改文本内容时，这个事件就会被触发</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+from PyQt5.Qt import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        #创建对象，文本框输入有默认值
+        lt1 = QLineEdit('hello')
+
+        lt2 = QLineEdit()
+        lt2.setText('world')
+
+        #获取文本框的值
+        print (lt2.text())
+
+        #设置最大长度
+        self.lt3 = QLineEdit()
+        self.lt3.setMaxLength(10)
+        self.lt3.selectionChanged.connect(self.selectionChangedAction)
+        self.lt3.textChanged.connect(self.textChangedAction)
+
+        #设置lt2全选
+        lt1.selectAll()
+
+        #设置button
+        button1 = QPushButton('clear lt3')
+        button1.clicked.connect(self.lt3.clear)
+
+        # 创建盒布局
+        hbox = QVBoxLayout()
+        hbox.addWidget(lt1)
+        hbox.addWidget(lt2)
+        hbox.addWidget(self.lt3)
+        hbox.addWidget(button1)
+
+
+        self.setLayout(hbox)
+
+        self.setGeometry(300, 300, 400, 400)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def selectionChangedAction(self):
+
+        print ('文本选中改变')
+
+    def textChangedAction(self):
+
+        print ('文本修改')
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qtextedit-多行文本框">QTextEdit 多行文本框</h4>
+<p>多行文本框和单行文本框的用法上基本上没有差别，不多做赘述。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAignment()</td>
+<td>按固定值方式对其文本<br />- Qt.AlignLeft  水平方向靠左对齐<br />- Qt.AlignRight 水平方向靠右对齐<br />- Qt.AlignCenter  水平方向居中对齐<br />- Qt.AlignJustify  水平方向调整间距两端对齐<br />- Qt.AlignTop  垂直方向靠上对齐<br />- Qt.AlignBottom  垂直方向靠下对齐<br />- Qt.AlignVCenter  垂直方向居中对齐<br /></td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清除文本</td>
+</tr>
+<tr>
+<td>toPlainText()</td>
+<td>返回文本框的输入内容</td>
+</tr>
+<tr>
+<td>setText()</td>
+<td>设置文本框的输入内容</td>
+</tr>
+<tr>
+<td>selectAll()</td>
+<td>全选</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selectionChanged</td>
+<td>选择改变了，这个事件就会被触发</td>
+</tr>
+<tr>
+<td>textChanged</td>
+<td>当修改文本内容时，这个事件就会被触发</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+from PyQt5.Qt import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        #创建对象，文本框输入有默认值
+        lt1 = QTextEdit('hello')
+
+        lt2 = QTextEdit()
+        lt2.setText('world')
+
+        #获取文本框的值
+        print (lt2.toPlainText())
+
+        #设置最大长度
+        self.lt3 = QTextEdit()
+        self.lt3.selectionChanged.connect(self.selectionChangedAction)
+        self.lt3.textChanged.connect(self.textChangedAction)
+
+        #设置lt2全选
+        lt1.selectAll()
+
+        #设置button
+        button1 = QPushButton('clear lt3')
+        button1.clicked.connect(self.lt3.clear)
+
+        # 创建盒布局
+        hbox = QVBoxLayout()
+        hbox.addWidget(lt1)
+        hbox.addWidget(lt2)
+        hbox.addWidget(self.lt3)
+        hbox.addWidget(button1)
+
+
+        self.setLayout(hbox)
+
+        self.setGeometry(300, 300, 400, 400)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def selectionChangedAction(self):
+
+        print ('文本选中改变')
+
+    def textChangedAction(self):
+
+        print ('文本修改')
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="按钮类控件-qabstractbutton">按钮类控件 QAbstractButton</h4>
+<blockquote>
+<p>QAbstractButton类为抽象类，不能实例化，必须由其他的按钮类继承QAbstractButton类，来实现不同的功能和表现形式，常见的按钮QPushButton，QToolButton，QRadioButton和QCheckBox这些按钮均继承自QAbstractButton类，根据各自的使用场景通过图形显示出来</p>
+</blockquote>
+<h4 id="qpushbutton-按钮">QPushButton 按钮</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setIcon</td>
+<td>设置按钮上的图标</td>
+</tr>
+<tr>
+<td>setEnabled</td>
+<td>设置按钮是否可用</td>
+</tr>
+<tr>
+<td>setText</td>
+<td>设置按钮的显示文本</td>
+</tr>
+<tr>
+<td>text</td>
+<td>返回按钮的显示文本</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pressed</td>
+<td>当鼠标指针在按钮上并按下左键时触发该事件</td>
+</tr>
+<tr>
+<td>released</td>
+<td>当鼠标左键被释放时触发该信号</td>
+</tr>
+<tr>
+<td>clicked</td>
+<td>当鼠标左键被按下然后释放时触发该信号</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+
+        bt1 = QPushButton('1')
+        bt2 = QPushButton('2')
+        bt3 = QPushButton('3')
+
+        #返回按钮显示的文本
+        bt1.setText('按钮1')
+        print (bt1.text())
+
+        bt2.setEnabled(False)
+
+        bt3.setIcon(QIcon('test.png'))
+
+        vlayout.addWidget(bt1)
+        vlayout.addWidget(bt2)
+        vlayout.addWidget(bt3)
+
+        bt3.pressed.connect(self.pressedAction)
+        bt3.released.connect(self.releasedAction)
+        bt3.clicked.connect(self.clickedAction)
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 400, 400)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def pressedAction(self):
+
+        print ('press')
+
+    def releasedAction(self):
+
+        print ('released')
+
+    def clickedAction(self):
+
+        print ('clicked')
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qradiobutton-单选按钮">QRadioButton 单选按钮</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setChecked()</td>
+<td>设置按钮是否已经被选中</td>
+</tr>
+<tr>
+<td>isChecked()</td>
+<td>返回单选按钮的状态</td>
+</tr>
+<tr>
+<td>setText()</td>
+<td>设置单选按钮的文本</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>返回单选按钮的显示文本</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+
+        bt1 = QRadioButton('1')
+        bt2 = QRadioButton('2')
+        bt3 = QRadioButton('3')
+
+        #返回按钮显示的文本
+        bt1.setText('按钮1')
+        print (bt1.text())
+        bt1.setChecked(True)
+        print (bt1.isChecked())
+        bt2.setEnabled(False)
+
+        print (bt2.isChecked())
+        bt3.setIcon(QIcon('test.png'))
+
+        vlayout.addWidget(bt1)
+        vlayout.addWidget(bt2)
+        vlayout.addWidget(bt3)
+
+        bt3.pressed.connect(self.pressedAction)
+        bt3.released.connect(self.releasedAction)
+        bt3.clicked.connect(self.clickedAction)
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 400, 400)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def pressedAction(self):
+
+        print ('press')
+
+    def releasedAction(self):
+
+        print ('released')
+
+    def clickedAction(self):
+
+        print ('clicked')
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qcheckbox-复选框">QCheckBox 复选框</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setChecked()</td>
+<td>设置复选框的状态</td>
+</tr>
+<tr>
+<td>setText()</td>
+<td>设置复选框的文本</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>返回复选框的显示文本</td>
+</tr>
+<tr>
+<td>isChecked()</td>
+<td>是否被选中</td>
+</tr>
+<tr>
+<td>setTriState()</td>
+<td>设置为三态复选框</td>
+</tr>
+<tr>
+<td>setCheckState()</td>
+<td>设置为三态复选框的状态 2 1 0</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+
+        bt1 = QCheckBox('1')
+        bt2 = QCheckBox('2')
+        bt3 = QCheckBox('3')
+
+        bt4 = QCheckBox('4')
+        bt4.setTristate()
+        bt4.setCheckState(1)
+
+        #返回按钮显示的文本
+        bt1.setText('按钮1')
+        print (bt1.text())
+        bt1.setChecked(True)
+        print (bt1.isChecked())
+        bt2.setEnabled(False)
+
+        print (bt2.isChecked())
+        bt3.setIcon(QIcon('test.png'))
+
+        vlayout.addWidget(bt1)
+        vlayout.addWidget(bt2)
+        vlayout.addWidget(bt3)
+        vlayout.addWidget(bt4)
+
+        bt3.pressed.connect(self.pressedAction)
+        bt3.released.connect(self.releasedAction)
+        bt3.clicked.connect(self.clickedAction)
+
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 400, 400)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def pressedAction(self):
+
+        print ('press')
+
+    def releasedAction(self):
+
+        print ('released')
+
+    def clickedAction(self):
+
+        print ('clicked')
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qcombobox-下拉框">QComboBox 下拉框</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addItem()</td>
+<td>添加一个下拉选项</td>
+</tr>
+<tr>
+<td>addItems()</td>
+<td>从列表中添加下拉选项</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>删除下拉选项集合中的所有选项</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>返回下拉选项集合中的数据</td>
+</tr>
+<tr>
+<td>currentText()</td>
+<td>返回选中选项的文本</td>
+</tr>
+<tr>
+<td>itemText(i)</td>
+<td>获取索引为i的item的选项文本</td>
+</tr>
+<tr>
+<td>currentIndex()</td>
+<td>返回选中项的索引</td>
+</tr>
+<tr>
+<td>setItemText(int index,text)</td>
+<td>改变序号列为index的文本</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activated</td>
+<td>当用户选中一个下拉选项时发射该信号</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+
+        self.cb1 = QComboBox()
+
+        #增加一个下拉选项
+        self.cb1.addItem('1')
+
+        #增加一个下拉列表
+        list1 = ['2','3','4']
+        self.cb1.addItems(list1)
+
+        print (self.cb1.count())
+
+        #改变序号为index的文本
+        print (self.cb1.itemText(2))
+
+        self.cb1.setItemText(3,'hello')
+
+        self.cb1.activated.connect(self.changeIndex)
+
+        vlayout.addWidget(self.cb1)
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 100, 100)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def changeIndex(self):
+
+        print (self.cb1.currentIndex())
+        print (self.cb1.currentText())
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qdialog-对话框">QDialog 对话框</h4>
+<blockquote>
+<p>为了更好的实现人机交互，pyqt提供了一些对话框，来进行实现和用户的临时交互任务，比如经常会提示的，你是否确定关闭的对话框，就是其中的一种</p>
+</blockquote>
+<p>QDialog类的子类主要有QMessageBox,QFileDialog,QColorDialog等</p>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+        self.bt = QPushButton('弹出对话框')
+        self.bt.clicked.connect(self.dialog)
+
+        vlayout.addWidget(self.bt)
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 100, 100)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def dialog(self):
+
+        # 创建QDialog对象
+        dialog = QDialog()
+
+        # 创建按钮到新创建的dialog对象中
+        btn1 = QPushButton('确定', dialog)
+        btn2 = QPushButton('取消', dialog)
+
+        # 移动按钮，设置dialog的标题
+        btn1.move(50, 50)
+        btn2.move(150, 50)
+        dialog.setWindowTitle(&quot;Dialog&quot;)
+
+        btn1.clicked.connect(dialog.accept)
+        btn2.clicked.connect(dialog.reject)
+
+        # 设置窗口的属性为ApplicationModal模态，用户只有关闭弹窗后，才能关闭主界面
+        dialog.setWindowModality(Qt.ApplicationModal)
+
+        if dialog.exec_():
+            print ('确定')
+        else:
+            print ('取消')
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="qmessagebox-提示框">QMessageBox 提示框</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+
+class Example(QWidget):
+
+    def __init__(self):
+        super().__init__()
+
+        self.initUI()
+
+    def initUI(self):
+
+        vlayout = QVBoxLayout()
+        self.bt = QPushButton('弹出对话框')
+        self.bt.clicked.connect(self.dialog)
+
+        vlayout.addWidget(self.bt)
+
+        self.setLayout(vlayout)
+        self.setGeometry(300, 300, 100, 100)
+        self.setWindowTitle('BoxLayout')
+        self.show()
+
+    def dialog(self):
+
+        hint_msg = QMessageBox()
+        hint_msg.setText('这是一个提示框')
+        #hint_msg.addButton(QMessageBox.Ok)
+        hint_msg.setWindowTitle(&quot;提示&quot;)
+        hint_msg.exec_()
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
+</code></pre>
+<h3 id="高级控件之表格-qtablewidget">高级控件之表格 QTableWidget</h3>
+<pre><code class="language-python">import sys
+from PyQt5.QtWidgets import *
+
+class Table(QWidget):
+    def __init__(self):
+        super(Table, self).__init__()
+        self.initUI()
+    def initUI(self):
+        self.setWindowTitle(&quot;QTableWidget例子&quot;)
+        self.resize(400,300)
+        layout=QHBoxLayout()
+
+        #实现的效果是一样的，四行三列，所以要灵活运用函数，这里只是示范一下如何单独设置行列
+        TableWidget=QTableWidget(4,3)
+
+        # TableWidget = QTableWidget()
+        # TableWidget.setRowCount(4)
+        # TableWidget.setColumnCount(3)
+
+
+
+        #设置水平方向的表头标签与垂直方向上的表头标签，注意必须在初始化行列之后进行，否则，没有效果
+        TableWidget.setHorizontalHeaderLabels(['姓名','性别','体重（kg）'])
+        #Todo 优化1 设置垂直方向的表头标签
+        #TableWidget.setVerticalHeaderLabels(['行1', '行2', '行3', '行4'])
+
+        #TODO 优化 2 设置水平方向表格为自适应的伸缩模式
+        ##TableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        #TODO 优化3 将表格变为禁止编辑
+        #TableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        #TODO 优化 4 设置表格整行选中
+        #TableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        #TODO 优化 5 将行与列的高度设置为所显示的内容的宽度高度匹配
+        #QTableWidget.resizeColumnsToContents(TableWidget)
+        #QTableWidget.resizeRowsToContents(TableWidget)
+
+        #TODO 优化 6 表格头的显示与隐藏
+        #TableWidget.verticalHeader().setVisible(False)
+        #TableWidget.horizontalHeader().setVisible(False)
+
+        #TOdo 优化7 在单元格内放置控件
+        # comBox=QComboBox()
+        # comBox.addItems(['男','女'])
+        # comBox.addItem('未知')
+        # comBox.setStyleSheet('QComboBox{margin:3px}')
+        # TableWidget.setCellWidget(0,1,comBox)
+        #
+        # searchBtn=QPushButton('修改')
+        # searchBtn.setDown(True)
+        # searchBtn.setStyleSheet('QPushButton{margin:3px}')
+        # TableWidget.setCellWidget(0,2,searchBtn)
+
+
+        #添加数据
+        newItem=QTableWidgetItem('张三')
+        TableWidget.setItem(0,0,newItem)
+
+        newItem=QTableWidgetItem('男')
+        TableWidget.setItem(0,1,newItem)
+
+        newItem=QTableWidgetItem('160')
+        TableWidget.setItem(0,2,newItem)
+
+        layout.addWidget(TableWidget)
+
+        self.setLayout(layout)
+if __name__ == '__main__':
+    app=QApplication(sys.argv)
+    win=Table()
+    win.show()
+    sys.exit(app.exec_())
+
+</code></pre>
+<h3 id="实战">实战</h3>
+<h4 id="firstapppy">FirstApp.py</h4>
+<pre><code class="language-python">import sys
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from Tools import *
+
+
+class FirstApp(QMainWindow):
+
+    def __init__(self):
+        super(FirstApp, self).__init__()
+
+        Tools.create_db()
+        # 创建ui布局
+        self.init_main_ui()
+        # 创建表格
+        self.init_table()
+
+    #布局
+    def init_main_ui(self):
+
+        self.resize(450, 270)
+        self.setWindowTitle('FirstApp')
+        self.qwidget = QWidget()
+        self.tablewidget = QTableWidget()
+
+        grid = QGridLayout()
+        self.addButton = QPushButton('新增')
+        self.editButton = QPushButton('修改')
+        self.delButton = QPushButton('删除')
+
+        #设置跨3列
+        grid.addWidget(self.tablewidget,1,1,1,3)
+        grid.addWidget(self.addButton,2,1)
+        grid.addWidget(self.editButton,2,2)
+        grid.addWidget(self.delButton,2,3)
+
+        self.qwidget.setLayout(grid)
+
+        self.setCentralWidget(self.qwidget)
+
+        #给按钮绑定方法
+        self.addButton.clicked.connect(self.addDef)
+        self.editButton.clicked.connect(self.editDef)
+        self.delButton.clicked.connect(self.delDef)
+
+    def init_table(self):
+
+        print ('初始化表格')
+
+        self.tablewidget.setColumnCount(4)
+
+        # 水平和垂直方向设置为正好填满表格
+        self.tablewidget.horizontalHeader().setStretchLastSection(True)
+        self.tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        headerlabels = ['序号','网站', '账号', '密码']
+        self.tablewidget.setHorizontalHeaderLabels(headerlabels)
+        self.tablewidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        # 隐藏id列
+        self.tablewidget.setColumnHidden(0, True);
+        self.tablewidget.setShowGrid(False)
+        # 隐藏表头
+        #self.tablewidget.verticalHeader().hide()
+        self.tablewidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        self.flushTable()
+
+    def flushTable(self):
+
+        data_list = Tools.get_data()
+        self.tablewidget.setRowCount(len(data_list))
+        print (data_list)
+        for index in range(len(data_list)):
+            self.tablewidget.setItem(index,0,QTableWidgetItem(str(data_list[index][0])))
+            self.tablewidget.setItem(index,1,QTableWidgetItem(data_list[index][1]))
+            self.tablewidget.setItem(index,2,QTableWidgetItem(data_list[index][2]))
+            self.tablewidget.setItem(index,3,QTableWidgetItem(data_list[index][3]))
+
+
+    def addDef(self):
+
+        return_tulpe = self.addDialog()
+
+
+
+
+    def addDialogAccept(self):
+
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            self.dialog.close()
+            Tools.new_data(self.ed1.text(), self.ed2.text(), self.ed3.text())
+            self.flushTable()
+            self.showHint('新增成功')
+        else:
+            self.showHint('必填项不能为空')
+
+
+    def addDialog(self, category='', content='', command=''):
+
+        self.dialog = QDialog(self)
+        group = QGroupBox(self.dialog)
+
+        self.dialog.setWindowTitle('操作')
+        # dialog.setWindowFlag(Qt.FramelessWindowHint)
+        # 创建事件的标签和输入框
+        lb1 = QLabel('类别:', group)
+        self.ed1 = QLineEdit(group)
+        self.ed1.setText(category)
+
+        # 创建状态的标签和输入框
+        lb2 = QLabel('名称:', group)
+        self.ed2 = QLineEdit(group)
+        self.ed2.setText(content)
+
+        lb3 = QLabel('命令:', group)
+        self.ed3 = QLineEdit(group)
+        self.ed3.setText(command)
+        # 创建确定和取消的按钮
+        ok_button = QPushButton('确定', self.dialog)
+        cancel_button = QPushButton('取消', self.dialog)
+
+        # 布局
+        group_layout = QVBoxLayout()
+        group_item = [lb1, self.ed1, lb2, self.ed2, lb3, self.ed3]
+        for item in group_item:
+            group_layout.addWidget(item)
+
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+        self.dialog.setLayout(dialog_layout)
+        self.dialog.setFixedSize(self.dialog.sizeHint())
+
+        # 绑定确定和取消按钮的功能
+        ok_button.clicked.connect(self.addDialogAccept)
+        ok_button.setDefault(True)
+        cancel_button.clicked.connect(self.dialog.reject)
+
+        self.dialog.exec_()
+        return False
+
+    def addDialogAccept(self):
+
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            self.dialog.close()
+            Tools.new_data(self.ed1.text(), self.ed2.text(), self.ed3.text())
+            self.flushTable()
+            self.showHint('新增成功')
+        else:
+            self.showHint('必填项不能为空')
+
+    def editDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+
+        if len(selected_row) == 3:
+
+            # 获取该行行号
+            edit_row = self.tablewidget.row(selected_row[0])
+
+            self.id = self.tablewidget.item(edit_row, 0).text()
+            category = self.tablewidget.item(edit_row, 1).text()
+            content = self.tablewidget.item(edit_row, 2).text()
+            command = self.tablewidget.item(edit_row, 3).text()
+
+            # 将获取到的选中行的数据赋予给修改窗口的方法，同时返回新数据
+            self.editDialog(category, content, command)
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行编辑&quot;)
+
+
+    def editDialog(self, category='', content='', command=''):
+
+        self.dialog = QDialog(self)
+        group = QGroupBox(self.dialog)
+
+        self.dialog.setWindowTitle('操作')
+        # dialog.setWindowFlag(Qt.FramelessWindowHint)
+        # 创建事件的标签和输入框
+        lb1 = QLabel('类别:', group)
+        self.ed1 = QLineEdit(group)
+        self.ed1.setText(category)
+
+        # 创建状态的标签和输入框
+        lb2 = QLabel('名称:', group)
+        self.ed2 = QLineEdit(group)
+        self.ed2.setText(content)
+
+        lb3 = QLabel('命令:', group)
+        self.ed3 = QLineEdit(group)
+        self.ed3.setText(command)
+        # 创建确定和取消的按钮
+        ok_button = QPushButton('确定', self.dialog)
+        cancel_button = QPushButton('取消', self.dialog)
+
+        # 布局
+        group_layout = QVBoxLayout()
+        group_item = [lb1, self.ed1, lb2, self.ed2, lb3, self.ed3]
+        for item in group_item:
+            group_layout.addWidget(item)
+
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+        self.dialog.setLayout(dialog_layout)
+        self.dialog.setFixedSize(self.dialog.sizeHint())
+
+        # 绑定确定和取消按钮的功能
+        ok_button.clicked.connect(self.editDialogAccept)
+        ok_button.setDefault(True)
+        cancel_button.clicked.connect(self.dialog.reject)
+
+        self.dialog.exec_()
+        return False
+
+    def editDialogAccept(self):
+
+        if self.ed1.text() != '' and self.ed2.text() != '' and self.ed3.text() != '':
+            self.dialog.close()
+            Tools.edit_data(self.id,self.ed1.text(), self.ed2.text(), self.ed3.text())
+            self.flushTable()
+            self.showHint('修改成功')
+        else:
+            self.showHint('必填项不能为空')
+
+    def showHint(self, message):
+
+        hint_msg = QMessageBox()
+        hint_msg.setText(message)
+        hint_msg.addButton(QMessageBox.Ok)
+        hint_msg.setWindowTitle(&quot;提示&quot;)
+        hint_msg.exec_()
+
+    def delDef(self):
+        # 选中某行
+        selected_row = self.tablewidget.selectedItems()
+        if len(selected_row) == 3:
+
+            del_row = self.tablewidget.row(selected_row[0])
+            id = self.tablewidget.item(del_row, 0).text()
+            print(id)
+            if self.del_dialog() == True:
+                Tools.del_data(id)
+                self.flushTable()
+
+        else:
+            # 如果没有选中改行时，点击编辑，弹出提示框
+            self.showHint(&quot;请选中一行进行删除&quot;)
+
+    def del_dialog(self):
+        del_dialog = QDialog(self)
+        del_dialog.setWindowTitle(u'删除')
+        group = QGroupBox('', del_dialog)
+        lb1 = QLabel(u'确定删除吗?删除后无法恢复')
+        # 创建确定和取消的按钮
+        ok_button = QPushButton(u'确定', del_dialog)
+        cancel_button = QPushButton(u'取消', del_dialog)
+
+        # 绑定确定和取消按钮的功能
+        ok_button.clicked.connect(del_dialog.accept)
+        ok_button.setDefault(True)
+        cancel_button.clicked.connect(del_dialog.reject)
+        group_layout = QVBoxLayout()
+        group_item = [lb1]
+        for item in group_item:
+            group_layout.addWidget(item)
+        group.setLayout(group_layout)
+        group.setFixedSize(group.sizeHint())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+        dialog_layout = QVBoxLayout()
+        dialog_layout.addWidget(group)
+        dialog_layout.addLayout(button_layout)
+        del_dialog.setLayout(dialog_layout)
+        del_dialog.setFixedSize(del_dialog.sizeHint())
+        if del_dialog.exec_():
+            return True
+        return False
+
+if __name__ == '__main__':
+    app=QApplication(sys.argv)
+    table=FirstApp()
+    table.show()
+    sys.exit(app.exec_())
+</code></pre>
+<h4 id="toolspy">Tools.py</h4>
+<pre><code class="language-python">import sqlite3
+import os
+
+import codecs
+import sqlite3
+import os
+import time
+
+
+class Tools():
+
+    @staticmethod
+    def create_db():
+
+        if os.path.exists('mydata.db') == False:
+            connect = sqlite3.connect('mydata.db')
+            c = connect.cursor()
+            # 创建自增列
+            c.execute('''create table mydata(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Website varchar(1000),
+                username varchar(1000),
+                passwd varchar(1000)
+            );
+            ''')
+            connect.commit()
+            c.execute(&quot;insert into mydata values(1,'www.qq.com','1231412','test123')&quot;)
+            connect.commit()
+            connect.close()
+
+    @staticmethod
+    def get_data():
+
+        conn = sqlite3.connect('mydata.db')
+        c = conn.cursor()
+        cursor = c.execute('select * from mydata')
+
+        data_list = []
+        for row in cursor:
+            temp_list = []
+            temp_list.append(row[0])
+            temp_list.append(row[1])
+            temp_list.append(row[2])
+            temp_list.append(row[3])
+            data_list.append(temp_list)
+        conn.close()
+        return data_list
+
+    @staticmethod
+    def new_data(website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        command = &quot;insert into mydata values(null,'%s','%s','%s')&quot; % (website, username, passwd)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+
+    @staticmethod
+    def edit_data(id, website, username, passwd):
+
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;update mydata set website='%s',username='%s',passwd='%s' where id=%s&quot; % (
+        website, username, passwd, id)
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+
+    @staticmethod
+    def del_data(id):
+        print(33333)
+        connect = sqlite3.connect('mydata.db')
+        c = connect.cursor()
+        print(1)
+        command = &quot;delete from mydata where id = %s&quot; % id
+        print(command)
+        c.execute(command)
+        connect.commit()
+        connect.close()
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">
+                <h3 class="post-title">
+                  02——数据库基础
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge secondary">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge warning">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>07——Django实战 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>07——Django实战</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge warning">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="项目创建及准备">项目创建及准备</h3>
+<h4 id="创建">创建</h4>
+<pre><code class="language-python"># 创建项目
+django-admin startproject MPlat
+# 创建app
+python manage.py startapp machine
+
+# 设置
+# 1.安装app
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'machine',
+]
+# 2.allowed_hosts
+ALLOWED_HOSTS = ['*']
+# 3.templates_dir，并在路径下创建templates文件夹，及machine文件夹
+'DIRS': [os.path.join(BASE_DIR,'templates')],
+# 4.注释掉csrf
+#'django.middleware.csrf.CsrfViewMiddleware',
+# 5.汉化
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+</code></pre>
+<h4 id="数据库配置使用mysql">数据库配置使用mysql</h4>
+<p>在数据库创建mplat</p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1586142649396.png" alt="" loading="lazy"></figure>
+<pre><code class="language-python">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mplat',
+        'USER': 'root',
+        'PASSWORD':'root',
+        'HOST':'192.168.1.3',
+        'PORT':'3306',
+    }
+}
+
+# 初始化数据库
+python manage.py migrate
+</code></pre>
+<h4 id="后台密码创建">后台密码创建</h4>
+<pre><code class="language-python">python manage.py createsuperuser
+</code></pre>
+<h3 id="模型设计及创建">模型设计及创建</h3>
+<h4 id="user表">user表</h4>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>usernum</td>
+<td>char</td>
+<td>64</td>
+<td>用户账号</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>char</td>
+<td>64</td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>username</td>
+<td>char</td>
+<td>64</td>
+<td>用户昵称</td>
+</tr>
+</tbody>
+</table>
+<h4 id="machine表">machine表</h4>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>长度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ip</td>
+<td>char</td>
+<td>15</td>
+<td>ip地址</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>foreiginkey</td>
+<td></td>
+<td>指向用户id</td>
+</tr>
+<tr>
+<td>asset_num</td>
+<td>char</td>
+<td>64</td>
+<td>资产编号</td>
+</tr>
+<tr>
+<td>device_location</td>
+<td>char</td>
+<td>64</td>
+<td>机柜位置</td>
+</tr>
+<tr>
+<td>os</td>
+<td>char</td>
+<td>64</td>
+<td>操作系统</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>time</td>
+<td></td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>time</td>
+<td></td>
+<td>更新时间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="models表">models表</h4>
+<pre><code class="language-python">from django.db import models
+
+# Create your models here.
+class User(models.Model):
+    class Meta:
+        db_table = 'user'
+
+    usernum = models.CharField(max_length=64,db_column='usernum')
+    passwd = models.CharField(max_length=64,db_column='passwd')
+    username = models.CharField(max_length=64,db_column='username')
+
+
+class Machine(models.Model):
+    class Meta:
+        db_table = 'machine'
+
+    ip = models.CharField(max_length=15,db_column='ip')
+    user_id = models.ForeignKey(User,db_column='user_id',on_delete=models.CASCADE)
+    asset_num = models.CharField(max_length=64, db_column='asset_num')
+    device_location = models.CharField(max_length=64, db_column='device_location')
+    os = models.CharField(max_length=64, db_column='os')
+    create_time = models.DateTimeField(db_column='create_time')
+    update_time = models.DateTimeField(db_column='update_time')
+</code></pre>
+<h4 id="admin">admin</h4>
+<pre><code class="language-python">from django.contrib import admin
+
+# Register your models here.
+from machine.models import *
+
+class UserInfoAdmin(admin.ModelAdmin):
+
+    list_display = ['id','usernum','passwd','username']
+
+class MachineInfoAdmin(admin.ModelAdmin):
+
+    list_display = ['ip','user_id','asset_num','device_location','create_time','update_time']
+
+admin.site.register(User,UserInfoAdmin)
+admin.site.register(Machine,MachineInfoAdmin)
+</code></pre>
+<pre><code class="language-python">python manage.py makemigrations
+python manage.py migrate	
+</code></pre>
+<h4 id="增加账号">增加账号</h4>
+<p>增加两个账号密码 ming  和 hong</p>
+<h3 id="登陆功能">登陆功能</h3>
+<h4 id="路径准备">路径准备</h4>
+<h5 id="根目录下的urls">根目录下的urls</h5>
+<pre><code class="language-python">from django.contrib import admin
+from django.urls import path
+from django.conf.urls import include,url
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    url(r'^',include('machine.urls',namespace='machine')),
+]
+</code></pre>
+<h5 id="machine下的url">machine下的url</h5>
+<pre><code class="language-python">from django.conf.urls import url
+
+from machine import views
+
+app_name = 'machine'
+urlpatterns = [
+    url(r'^$',views.index,name='index'),
+]
+</code></pre>
+<h5 id="view">view</h5>
+<pre><code class="language-python">def index(request):
+    return render(request,'index.html',{})
+</code></pre>
+<h5 id="indexhtml">index.html</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+这是登陆界面
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="登陆页面">登陆页面</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/layui/css/layui.css&quot; media=&quot;all&quot;&gt;
+    &lt;title&gt;登录界面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    body {
+        background-image: url(/static/images/login-bg.jpg);
+    }
+&lt;/style&gt;
+&lt;div class=&quot;layui-col-xs6&quot;&gt;
+    &lt;div class=&quot;grid-demo&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;layui-col-xs6&quot; style=&quot;padding-top: 15%;&quot;&gt;
+    &lt;div style=&quot;width:50%;margin:0 auto;text-align: center&quot;&gt;
+        &lt;form class=&quot;layui-form&quot; method=&quot;POST&quot; action=&quot;login&quot;&gt;
+            &lt;div class=&quot;layui-form-item&quot; style=&quot;margin:0 auto&quot;&gt;
+                &lt;div class=&quot;layui-input-inline&quot;&gt;
+                    用户登录&lt;br&gt;&lt;br&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;div class=&quot;layui-input-inline&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;title&quot; required lay-verify=&quot;required&quot; placeholder=&quot;请输入账号&quot;
+                           autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;div class=&quot;layui-input-inline&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;password&quot; required lay-verify=&quot;required&quot; placeholder=&quot;请输入密码&quot;
+                           autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;layui-form-item&quot; style=&quot;margin:0 auto&quot;&gt;
+                &lt;div class=&quot;layui-input-inline&quot;&gt;
+                    &lt;button class=&quot;layui-btn&quot; lay-submit lay-filter=&quot;formDemo&quot; style=&quot;padding:0 42%&quot;&gt;登录&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;/static/layui/layui.all.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            
+            return false;
+        });
+    });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>到这一步，我们简单登陆页面就写完了。我们接下来要继续完成，登陆界面的功能。</p>
+<p>比如我点击登陆后，我们要进行账号密码的校验及校验完成后的跳转。我们先简单顶一个跳转页面。在模板下创建文件。</p>
+<pre><code class="language-python">def machine(request):
+    return render(request,'machine/machine.html',{})
+</code></pre>
+<pre><code class="language-python">urlpatterns = [
+    url(r'^$',views.index,name='index'),
+    url(r'^machine',views.machine,name='machine'),
+]
+</code></pre>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+这是机器展示页面
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="登陆的接口">登陆的接口</h4>
+<p>这里我们需要定义登录的接口。login</p>
+<pre><code class="language-python">url(r'^login$',views.login,name='login')
+</code></pre>
+<pre><code class="language-python">from django.http import JsonResponse
+
+
+def login(request):
+    return JsonResponse({})
+</code></pre>
+<p>我们在index,html中使用jquery,将登陆信息传到后台，进行登陆校验，校验通过返回1，前端接收到1后进行跳转，跳转到指定的页面。</p>
+<pre><code class="language-python">import json
+from machine.models import *
+
+def login(request):
+    field = request.POST.get('field')
+    field = json.loads(field)
+    usernum = field['usernum']
+    password = field['password']
+
+    # 和数据库中的对比，检查是否正确
+    obj = User.objects.filter(usernum=usernum)
+    if len(obj) == 0:
+        return JsonResponse({'message':0})
+    elif obj[0].passwd != password:
+        return JsonResponse({'message':0})
+    else:
+        return JsonResponse({'message':1})
+</code></pre>
+<pre><code class="language-html">&lt;script src=&quot;/static/jquery-1.12.4.min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            var field = JSON.stringify(data.field)
+               $.post(
+                           '{% url 'machine:login' %}',
+                           {
+                               field:field,
+                            },
+                           function (data) {//修改成功后需要关闭弹窗并且重载表格
+                               if (data.message == 1){
+                                   layer.msg('登录成功', {icon: 1,time:1000})
+                                     setTimeout(function(){window.location.href = 'machine';},1000)
+                               }else if (data.message == 0){
+                                   layer.msg('用户名或者密码错误', {icon: 5,time:1000})
+                               }
+                           }
+               )
+            return false;
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="机器管理页面">机器管理页面</h3>
+<h4 id="框架搭建">框架搭建</h4>
+<p>机器管理页面就是我们的核心页面。由登陆跳转到这里后，直接展示我们的机器管理平台。</p>
+<p>先从layui首页复制过来，看看它的样子</p>
+<pre><code class="language-python">def home(request):
+    return render(request,'home.html',{})
+
+url(r'^home$',views.home,name='home')
+</code></pre>
+<p>删除掉部分内容，发现主体框架没有移动过去，故修改之。添加父类模板标签</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;
+  &lt;title&gt;MPlat&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/layui/css/layui.css&quot;&gt;
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+  &lt;div class=&quot;layui-header&quot;&gt;
+    &lt;div class=&quot;layui-logo&quot;&gt;MPlat&lt;/div&gt;
+    &lt;!-- 头部区域（可配合layui已有的水平导航） --&gt;
+    &lt;ul class=&quot;layui-nav layui-layout-left&quot;&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;控制台&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;
+        &lt;a href=&quot;javascript:;&quot;&gt;
+          &lt;img src=&quot;http://t.cn/RCzsdCq&quot; class=&quot;layui-nav-img&quot;&gt;
+          贤心
+        &lt;/a&gt;
+        &lt;dl class=&quot;layui-nav-child&quot;&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;基本资料&lt;/a&gt;&lt;/dd&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;安全设置&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;退出&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;layui-body&quot; style=&quot;left: 15px ; right:0px&quot;&gt;
+    {% block home%}
+      {% endblock home%}
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;layui-footer&quot; style=&quot;left: 0px;&quot;&gt;
+    &lt;!-- 底部固定区域 --&gt;
+    © MPlat.com
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code>{% extends 'home.html'%}
+{%block home%}
+这是机器界面
+{%endblock home%}
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="file://C:%5CUsers%5C86189%5CDocuments%5CGridea%5Cpost-images%5CMPlat.zip" alt="MPlat.zip" loading="lazy"></figure>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">
+                <h3 class="post-title">
+                  06——Django基础
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge success">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge secondary">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge ">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

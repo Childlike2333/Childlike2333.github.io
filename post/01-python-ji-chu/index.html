@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>01——Python基础 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>01——Python基础</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge secondary">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="python简介">Python简介</h3>
+<h4 id="起源">起源</h4>
+<p>Python的创始人为 吉多·范罗苏姆（Guido van Rossum）。1989年圣诞节期间，他为了打发时间，决心开发一个新的脚本解释程序，在1991年，第一个python解释器诞生，他是用c语言实现的。</p>
+<h4 id="设计哲学">设计哲学</h4>
+<p>明确、优雅、简单</p>
+<h4 id="主要应用领域">主要应用领域</h4>
+<p>云计算：云计算最火的语言，典型应用OpenStack</p>
+<p>Web开发：众多优秀的Web框架，Django、flask Youtube、豆瓣</p>
+<p>科学运算、人工智能：NumPy, SciPy, Matplotlib, Enthought</p>
+<p>系统运维：运维人员必备语言</p>
+<p>图形GUI：PyQt、WxPython、Tkinter</p>
+<h4 id="分类">分类</h4>
+<ul>
+<li>
+<p>编译型： 把源程序的每一条语句都编译成机器语言，并保存成二进制文件  c  c++ go ...</p>
+</li>
+<li>
+<p>解释型： 只有，在执行程序时才一条一条的解释成机器语言给计算机去执行  python ruby php javascript</p>
+</li>
+<li>
+<p>混合型： java c#</p>
+</li>
+</ul>
+<h4 id="编译和解释的区别">编译和解释的区别</h4>
+<p>编译器：是把源程序的每一条语句都编译成机器语言，并保存二进制文件，这样运行时，计算器可以直接以机器语言来运行此程序，速度很快。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高。缺点，如果需要修改，就需要整个模块重新编译。</p>
+<p>解释器：只是在执行程序时，才一条一条的解释成机器语言来计算机来执行，所有运行速度是不如编译后的程序运行的快。优点，有良好的平台兼容性，在任何安装了解释器的平台都可以使用。缺点，每次运行的时候都要解释一遍，性能上不如编译性语言。</p>
+<h4 id="优点">优点</h4>
+<ul>
+<li>
+<p>优雅、明确、简单，快速入门</p>
+</li>
+<li>
+<p>开发效率非常高，有非常强大的第三方库，避免重复造轮子</p>
+</li>
+<li>
+<p>高级语言，开发的时候无需关心，内存一类的底层细节</p>
+</li>
+<li>
+<p>可移植性强，如果的代码不依赖系统特性，那么你的python程序无需修改就可以在市场上所有的系统平台上运行 ifconfig ipconfig</p>
+</li>
+<li>
+<p>可拓展性，如果你的一段关键代码需要运行的很快，那么你可以你这段代码用C或者C++来写，然后用Python调用他们就可以</p>
+</li>
+</ul>
+<h4 id="缺点">缺点</h4>
+<ul>
+<li>
+<p>速度慢，运行度相对于C和C++ 甚至java都要慢很多</p>
+</li>
+<li>
+<p>假多线程，线程不能利用多核CPU，GIL全局解释锁，由于这个锁的存在，使得任何时刻仅有一个线程在执行</p>
+</li>
+</ul>
+<h3 id="环境安装">环境安装</h3>
+<h4 id="重大版本">重大版本</h4>
+<p>Python2 和 Python3，主要差异在 print、编码、整数相除等，为了对Python3进行推广，预计 Python 2 到 2020 年 4 月 12 日就不再维护了，Python 2 将停止所有的更新，包括安全性更新。所以后续我们直接使用Python3就可以了。其实语法上差别并不大，稍微注意一下就可以了。</p>
+<h4 id="下载">下载</h4>
+<figure data-type="image" tabindex="1"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img" loading="lazy"></figure>
+<p>一路确定即可</p>
+<h3 id="第一个python程序">第一个Python程序</h3>
+<h4 id="交互模式">交互模式</h4>
+<p>输入python进入交互模式，这时候我们可以直接编写Python程序</p>
+<figure data-type="image" tabindex="3"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img" loading="lazy"></figure>
+<h4 id="文件模式">文件模式</h4>
+<p>创建一个文件，文件后缀为.py ,在文件中编写代码，通过python命令来执行解释这个文件，运行代码</p>
+<figure data-type="image" tabindex="4"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg" alt="img" loading="lazy"></figure>
+<h4 id="pycharm">PyCharm</h4>
+<p>后续我们会在 集成开发环境Pycharm中来进行学习，在官网中下载这个软件，安装后打开即可，默认情况下Pycharm会自动关联python解释器，不需要进行额外的配置，直接创建一个项目，就可以开始编写代码了。</p>
+<figure data-type="image" tabindex="5"><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img" loading="lazy"></figure>
+<h3 id="基础语法">基础语法</h3>
+<h4 id="引入变量和数据类型">引入变量和数据类型</h4>
+<pre><code>a = 1
+
+b = 2
+
+c = a + b
+
+print (c)
+</code></pre>
+<p>abc为变量  1、2是整数</p>
+<h4 id="变量">变量</h4>
+<p>变量的定义：</p>
+<p>将运算的中间结果暂存到内存，以便后续程序调用</p>
+<p>变量的命名规则：</p>
+<ul>
+<li>
+<p>变量一般由 字母、数字、下划线搭配组成</p>
+</li>
+<li>
+<p>可以用数字开头，更不能是全数字</p>
+</li>
+<li>
+<p>不能是python的关键字，关键字就是被python占用的单词，不可以使用</p>
+</li>
+</ul>
+<pre><code>['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+</code></pre>
+<ul>
+<li>
+<p>可以是中文，但不要用中文</p>
+</li>
+<li>
+<p>名字要有意义</p>
+</li>
+<li>
+<p>不要太长</p>
+</li>
+<li>
+<p>区分大小写，大写的A 和小写的 a是两个不一样的变量</p>
+</li>
+</ul>
+<p>变量命名方法:</p>
+<p>下划线： student_first_name</p>
+<p>小驼峰： studentFirstName</p>
+<p>大驼峰： StudentFirstName</p>
+<h4 id="常量">常量</h4>
+<p>在python中不存在绝对的常量，我们约定，所有字母大写的变量，就是常量</p>
+<p>PI = 3.141592635</p>
+<h4 id="注释">注释</h4>
+<p>有时候我们写的东西不一定都是给用户看的，或者不希望解释器执行，那么我们就注释掉代码，被注释的内容是不会被执行的。</p>
+<pre><code>   单行注释： # 注释内容
+
+   多行注释：
+      '''
+                  这里面的内容都是被注释掉的
+      '''
+</code></pre>
+<h3 id="数字类型">数字类型</h3>
+<h4 id="定义">定义</h4>
+<p>我们人类可以很容易的分清楚数字和字符的区别，但计算机并不能，我们要明确的告诉他，1是数字，a是字符，所以在每个编程语言里面，都会有一个叫数据类型的东西，其实就是对常用的各种数据类型进行了明确的划分。</p>
+<h4 id="分类-2">分类</h4>
+<ul>
+<li>
+<p>数字型  int float bool complex</p>
+</li>
+<li>
+<p>字符串  str</p>
+</li>
+<li>
+<p>列表   list</p>
+</li>
+<li>
+<p>元组   tuple</p>
+</li>
+<li>
+<p>字典   dict</p>
+</li>
+<li>
+<p>集合   set</p>
+</li>
+</ul>
+<h4 id="数字类型-int-float-bool-complex">数字类型 （int float bool complex）</h4>
+<p>整数 int</p>
+<p>就是 -1 -2 -3 ，1 2 3 …</p>
+<p>在32位机器上，int的范围是 -2<strong>31～2</strong>31-1，即-2147483648～2147483647</p>
+<p>在64位机器上，int的范围是 -2<strong>63～2</strong>63-1，即-9223372036854775808～9223372036854775807</p>
+<p>浮点 float</p>
+<p>其实就是我们说的小数 1.2 -2.3 …</p>
+<pre><code>a = 1
+
+b = 1.1
+
+c = a + b
+</code></pre>
+<p>整数 + 浮点数 = 浮点数</p>
+<p>布尔 bool</p>
+<p>真 或 假</p>
+<p>True  False</p>
+<p>复数 complex</p>
+<p>a = 4+3j</p>
+<h4 id="基本运算符">基本运算符</h4>
+<ul>
+<li>算数运算：</li>
+</ul>
+<p>+  加</p>
+<p>-   减</p>
+<p>*  乘</p>
+<p>/  除</p>
+<p>%  取模   返回除法的余数</p>
+<p>** 幂</p>
+<p>// 取整除，返回商的整数部分</p>
+<ul>
+<li>比较运算：</li>
+</ul>
+<p>==    比较对象是否相等 相等 返回true</p>
+<p>！=    判断对象是否不相等</p>
+<p>&gt;     判断大于</p>
+<p>&lt;     判断小于</p>
+<p>&gt;=    判断大于等于</p>
+<p>&lt;=    判断小于等于</p>
+<ul>
+<li>赋值运算：</li>
+</ul>
+<p>​      =  赋值</p>
+<p>​      += 加法赋值运算符      c+=a   c=c+a</p>
+<p>​      类似的还有   -=    *=   /=   %=   //=</p>
+<ul>
+<li>
+<p>逻辑运算：</p>
+<p>and  与    如果x为False,  x and y返回False，否则返回y的计算值</p>
+</li>
+</ul>
+<p>​      (3 and (2+2))  // 如果是0 ，直接返回 0</p>
+<p>or 或     如果x是True，他返回x，否则它返回y的计算值</p>
+<p>​      (4 or (3))</p>
+<p>not   非</p>
+<ul>
+<li>
+<p>逻辑常用：</p>
+<p>and   True and False  只要有一个是假，那么结果就是假</p>
+<p>or    True and False  只要有一个是真，那么结果就是真</p>
+</li>
+</ul>
+<h3 id="字符串">字符串</h3>
+<h4 id="字符串定义">字符串定义</h4>
+<p>在Python中，凡是用引号引起来的，全部都是字符串</p>
+<p>引号可以是 单引号、双引号和三引号</p>
+<pre><code>   a = 'Hello'
+
+   b = 'World'
+</code></pre>
+<h4 id="字符运算符">字符运算符</h4>
+<p>​      +  字符串连接   a+b    'HelloWorld'</p>
+<p>​      *  重复输出字符串   a * 2 'HelloHello'</p>
+<p>​      [] 通过索引获取字符串中的字符  a[2]  l   a[-1] o</p>
+<p>​      [:]   截取字符串中的一部分内容，遵循左闭右开原则</p>
+<p>​            a[1:3]   el</p>
+<p>​            a[:3]    Hell</p>
+<p>​            a[3:]    lo</p>
+<p>​            a[1:-2]   el</p>
+<p>​      in 成员运算符    如果字符串中包含给定的字符，返回True</p>
+<p>​      not in   如果字符串中不包含给定的字符串，就返回True</p>
+<h4 id="字符串常用的方法">字符串常用的方法</h4>
+<pre><code class="language-python">   lower()  #全部转为小写
+
+   upper()  #全部转为大写
+
+   swapcase()   #大小写互相转换
+
+   strip()  #去掉两端的空格
+
+   lstrip()  #去掉左边空格
+
+   rstrip()  #去掉右边空格
+
+   len('hello') #计算字符串的长度
+
+   replace('a','b')   #字符串替换
+
+   split(' ')   #字符串切割    转为列表
+</code></pre>
+<h4 id="格式化输出">格式化输出</h4>
+<p>int  %d</p>
+<p>float %f</p>
+<p>string %s</p>
+<pre><code class="language-python">a = 1
+
+b = 2
+
+c = 1.2
+
+d = 2.3
+
+e = 'JONE'
+
+f = 'TACA'
+
+print ('a= %d,b= %d'%(a,b))
+
+print ('c= %f,c= %f'%(c,d))
+
+print ('e= %s,d= %s'%(e,f))
+
+print ('a= %d,d= %s'%(a,f))
+</code></pre>
+<h3 id="流程控制">流程控制</h3>
+<h4 id="条件控制引入">条件控制引入</h4>
+<p>我们在生活中经常会遇到各种各样的选择，比如玩骰子，石头剪刀布时，你就需要做出你的选择，在写代码的时候，我们也会遇到这种情况，这就需要用到if条件控制语句。</p>
+<h4 id="条件控制语法">条件控制语法</h4>
+<ul>
+<li>
+<p>语法1</p>
+<pre><code class="language-python">if 条件1:		#冒号后换行，将条件与结果分开
+	结果1		#用一个tab或者四个空格的代码缩进来控制代码作用域
+结果2
+
+scores = 60
+if scores &gt;= 60:
+	print ('及格了')
+print ('6666')
+</code></pre>
+</li>
+<li>
+<p>语法2</p>
+<pre><code class="language-python">if 条件1:
+	结果1
+else:
+	结果2
+	
+scores = 59
+if scores &gt;= 60:
+	print ('及格了，6666')
+else:
+	print ('不及格，gg')
+</code></pre>
+</li>
+<li>
+<p>语法3</p>
+<pre><code class="language-python">if 条件1：
+	结果1
+elif 条件2：
+	结果2
+...
+else:
+	结果3
+	
+scores = 80
+if scores &gt;= 90:
+	print ('牛逼')
+elif scores &gt;= 80:
+	print ('优秀')
+elif scores &gt;= 60:
+	print ('及格')
+else:
+	print ('不及格')
+</code></pre>
+</li>
+<li>
+<p>语法4</p>
+<pre><code class="language-python">if 条件1:
+	结果2
+	if 条件2:
+		结果2
+	else 条件3：
+		结果3
+else:
+	结果4
+
+#可以无限的嵌套，但是在实际开发中，尽量不要超过三层
+scores = 99
+if scores &gt;= 80:
+	print ('优秀')
+	if scores &gt;= 90:
+		print ('牛逼')
+	else:
+		print ('不够牛逼')
+else:
+	print ('不够优秀')
+</code></pre>
+</li>
+</ul>
+<h4 id="循环语句引入">循环语句引入</h4>
+<p>在代码，我们有时需要重复的去做一些事情，比如打印100次hello，此时写 100遍print显然不太合适，这是我们会用到循环。</p>
+<h4 id="循环语句语法">循环语句语法</h4>
+<pre><code class="language-python">#当判断条件为真的时候，执行语句
+while 判断条件:
+    语句
+
+a = 1
+while a &lt; 10:
+    print (a)
+    a = a + 1
+else:
+    print a
+
+while True:
+    print (100)
+    
+</code></pre>
+<pre><code class="language-python">#for循环
+for 变量 in 范围:
+    语句
+
+a = 'helloworld'
+for var in a:
+    print (var)
+
+#在0-10的范围内，遵循左闭右开原则
+for var in range(10):
+    print (var)
+</code></pre>
+<h4 id="跳出循环">跳出循环</h4>
+<p>break 语句可以跳出for和while的循环体，从循环中终止</p>
+<pre><code class="language-python">for var in range(10):
+    print (var)
+    if var == 5:
+        break
+#当变量==5时，跳出循环
+</code></pre>
+<p>continue语句用来告诉Python跳过当次循环中的剩余语句，直接执行下一次循环</p>
+<pre><code class="language-python">for var in range(10):
+	if var == 5:
+		continue
+	print (var)
+</code></pre>
+<p>Pass语句是空语句，是为了保持程序结果的完整性，不做任何的事情，一般用作占位语句</p>
+<pre><code class="language-python">for var in range(10):
+	if var == 5:
+		pass
+	else:
+		print (var)
+</code></pre>
+<h3 id="列表">列表</h3>
+<h4 id="列表的引入">列表的引入</h4>
+<p>列表是最常用的Python数据类型之一。</p>
+<p>创建一个列表，只需要把逗号分隔的不同的数据项，使用方括号括起来即可。</p>
+<pre><code class="language-python">list1 = ['Hello','World',1997,6.6]
+list2 = [1,2,3,4,5]
+</code></pre>
+<h4 id="访问列表中的值">访问列表中的值</h4>
+<p>可以使用下表索引来访问列表中的值，同样也可以使用方括号的形式切片截图列表的值，这样会生成一个新的列表，和字符串的索引、切片用法一致。切片时，同样遵循左闭右开的原则。</p>
+<pre><code>list1 = ['Hello','World',1997,6.6]
+print (list1[1])
+print (list1[1:-1])
+</code></pre>
+<h4 id="增加列表的项">增加列表的项</h4>
+<p>注意，list和str是不一样的，list是可以发生改变的，直接操作原来的对象，那么对象就会直接改变</p>
+<pre><code class="language-python">var = 'hello'
+var + 'world'
+print (var)
+
+list1 = ['hello','test','good']
+list1.append('yes')
+print (list1)
+
+#在最后增加 append
+list1.append('no')
+print (list1)
+
+#在中间插入
+list1.insert(2,'get')
+print (list1)
+
+#列表拓展，在最后插入一个列表
+extend_list = ['make','gppp']
+list1.extend(extend_list)
+print (list1)
+</code></pre>
+<h4 id="删除列表的项">删除列表的项</h4>
+<pre><code class="language-python">list1 = ['hello','test','good','make','yes']
+
+#pop(),如果不写参数默认删除最后一项，写参数可以指定删除的项
+list1.pop()
+print (list1)
+
+list1.pop(3)
+print (list1)
+
+#remove,删除指定元素
+list1.remove('test')
+print (list1)
+
+#del,按下表或者索引删除
+list1 = ['hello','test','good','make','yes']
+del list1[1]
+print (list1)
+del list1[1:3]
+print (list1)
+
+#clear 清空整个列表
+list1.clear()
+</code></pre>
+<h4 id="修改列表的值">修改列表的值</h4>
+<p>通过索引和切片的方式直接修改</p>
+<pre><code class="language-python">list1 = ['hello','test','good','make','yes']
+list1[2] = 'no'
+print (list1)
+
+#如果长度不够，直接往后增加
+list1[1:2] = ['thanks','you']
+print (list1)
+
+#如果长度太长，直接删除
+list1[1:4] = ['thanks','you']
+print (list1)
+
+#几乎不这么用，知道就行
+</code></pre>
+<h4 id="其他操作">其他操作</h4>
+<pre><code class="language-python">list1 = [1,2,3,4,1,2,3,3,4]
+# 计算1在列表中出现的次数
+num = list1.count(1)	
+print (num)
+# 排序
+list1.sort()
+print (list1)
+# 倒序
+list1.sort(reverse=True)
+print (list1)
+list1 = [1,2,3,4,1,2,3,3,4]
+
+# 列表反转
+list1.reverse()
+print (list1)
+print (len(list1))
+
+#如果是字符串，会按照字母顺序来排序
+list1 = ['speed','test','as','country']
+list1.sort()
+print (list1)
+
+#遍历列表
+for var in list1:
+    print (var)
+</code></pre>
+<h4 id="列表的嵌套">列表的嵌套</h4>
+<pre><code>list1 = [1,2,3,4]
+list2 = [1,2,3,4,list1]
+
+#一层一层看即可，并不复杂
+print (list2[4][1])
+</code></pre>
+<h3 id="字典">字典</h3>
+<h4 id="字典的简单介绍">字典的简单介绍</h4>
+<p>字典是python中唯一的一个映射类型，他是以大括号括起来的键值对组成。</p>
+<pre><code>dict1 = {'a':11 , 'b': 222,'123':'22'}
+</code></pre>
+<p>在字典中，键是唯一的，值可以重复。在保存的时候，根据key来计算出一个内存地址，然后将key-value保存在这个地址中，这种算法被称为hash算法，所以，在dict中，这个key必须是可哈希的，如果你现在还搞不懂什么是可哈希的，暂时可以这样记，可以改变的都是不可哈希的，可以哈希的都不可以变。</p>
+<p>可哈希（不可变）：	num  str  tuple  bool</p>
+<p>不可哈希的 （可变的）：	list   dict  set</p>
+<p>字典保存的时候，并不是按照我们添加进入的顺序保存的，是按照hash表的顺序保存的，而hash表不是连续的，所以它是不支持下表索引和切片的，它只能通过key来获取dict中的数据。</p>
+<h4 id="访问字典的值">访问字典的值</h4>
+<pre><code class="language-python">dict1 = {'name':'xiaoming','sex':'man'}
+print (dict1['name'])
+
+# print (dict1['test'])	没有这个值的时候会报错
+
+print (dict1.get('sex'))
+# 没有找到时打出 None
+print (dict1.get('test'))
+</code></pre>
+<h4 id="增加和修改">增加和修改</h4>
+<pre><code class="language-python">dict1 = {}
+# 如果字典中没有出现这个key，就会新增一个这个键值对 
+dict1['name'] = 'xiaoming'
+
+#如果字典中已经有这个key，就会修改这个值
+dict1['name'] = 'xiaohua'
+
+dict2 = {'name':'xiaowang','sex':'man'}
+dict1.update(dict2)
+#把dict2中的内容更新到dict1中，如果key存在，就替换，如果key不存在，就新增
+print (dict1)
+</code></pre>
+<h4 id="删除">删除</h4>
+<pre><code class="language-python">dict1 = {'name':'xiaoming','sex':'man','scores':88}
+#索引删除
+del dict1['name']
+print (dict)
+
+#随机删除
+dict.popitem()
+print (dict)
+
+#清空字典
+dict.clear()
+print (dict)
+</code></pre>
+<h4 id="其他操作-2">其他操作</h4>
+<pre><code class="language-python">#获取字典的键列表
+dict1 = {'name':'xiaoming','sex':'man','scores':88}
+print (dict1.keys())
+
+#获取字典的值列表
+print (dict1.values())
+
+#遍历字典
+for temp in dict1.keys():
+	print (temp)
+	print (dict1[temp])
+    
+#字典嵌套
+dict2 = {'name':'xiaohua','sex':'girl','dict1':dict1}
+print (dict2['dict1']['name'])
+</code></pre>
+<h3 id="元组">元组</h3>
+<h4 id="元组的简单介绍">元组的简单介绍</h4>
+<p>元组和列表类似，不同之处在于元组的元素不能修改，元组使用小括号</p>
+<pre><code class="language-python">tup1 = (50)
+#不加逗号，类型为整数
+print type(tup1)
+
+#加上逗号，才是元组
+tup2 = (50,)
+print type(tup2)
+</code></pre>
+<h4 id="访问元组的值">访问元组的值</h4>
+<p>元组可以通过索引和切片的方式来访问值，和列表一致，不作拓展</p>
+<h4 id="删除-2">删除</h4>
+<pre><code class="language-python">#元组不允许修改和删除单个值，只能整个删除
+tup1 = (50,20)
+del tup1
+print (tup1)
+
+</code></pre>
+<h3 id="集合">集合</h3>
+<h4 id="集合的基本介绍">集合的基本介绍</h4>
+<p>set集合是python的一个基本数据类型，一般不是很常用，简单了解一下即可</p>
+<p>用大括号括起来，set中的元素是不重复、无序的，其实就是类似dict类型的key，但是不保存 value，所以里面的类型必须是可hash的</p>
+<pre><code class="language-python">set1 = {1,2,3,4,'xiaoming'}
+set2 = {1,1,2,3,'xiaoming','xiaoming'}
+print (set1)
+print (set2)
+</code></pre>
+<h4 id="集合的常用操作">集合的常用操作</h4>
+<p>add 增加</p>
+<p>pop 随机删除一个</p>
+<p>remove 根据元素删除</p>
+<p>clear 清空set集合</p>
+<pre><code class="language-python"># 利用set的特性来进行列表去重
+list1 = [1,1,1,12,4,23,42,4,4]
+list2 = list(set(list1))
+print (list2)
+</code></pre>
+<h3 id="函数">函数</h3>
+<h4 id="函数的引入">函数的引入</h4>
+<p>为什么要有函数，比如看下面的例子：</p>
+<pre><code class="language-python">scores = 88
+if scores &gt;= 60 :
+	print ('及格了')
+else :
+	print ('不及格')
+	
+scores = 56
+if scores &gt;= 60 :
+	print ('及格了')
+else :
+	print ('不及格')
+</code></pre>
+<p>如果只有几个同学，可能复制几遍就可以了，但是如果全班同学大几十个人，要怎么去做统计呢。引入函数的概念，我们定义一个事情或者功能，等到需要的时候直接去用就可以了，那里这里定义的东西就是一个函数。</p>
+<p>函数是组织好的，可重复使用的，用来实现单一、或者相关联功能的代码块。</p>
+<p>函数能提高应用的模块性和代码的重复利用率。print()这就是python的一个内建函数，我们也可以自己创建函数，这被叫做用户自定义函数。</p>
+<h4 id="语法">语法</h4>
+<pre><code class="language-python">def 函数名(参数列表):
+	函数体
+    
+#函数名的命名和变量的命名规则一致，复习下    
+#简单的函数实例
+def hello():
+    print ('hello world')
+
+#执行函数
+hello()
+</code></pre>
+<h4 id="参数">参数</h4>
+<p>形参：写在函数生命位置的变量叫形参，形式上的一个完整，表示这个函数调用时需要一个参数。</p>
+<p>实参：在函数调用的时候给函数传递的值，叫实参。</p>
+<p>传参：将实际参数交给形式参数的过程被称为传参</p>
+<pre><code class="language-python">#带参数的函数实例
+def helloSomeone(name):
+	print ('hello %s' %name)
+    
+helloSomeone('xiaoming')
+</code></pre>
+<p>形参的分类：</p>
+<pre><code class="language-python">#按位置顺序排序的参数
+def helloSomeone(name1,name2):
+	print ('hello %s' %name1)
+	print ('hello %s' %name2)
+    
+helloSomeone('xiaoming','xiaohua')
+
+#name2就是一个默认值参数，在调用函数的时候，如果不给它传参，就会使用默认值
+def helloSomeone(name1,name2='xiaohua'):
+	print ('hello %s' %name1)
+	print ('hello %s' %name2)
+    
+helloSomeone('xiaoming','xiaoqiang')
+helloSomeone('xiaoming')
+</code></pre>
+<p>实参的分类：</p>
+<pre><code>#位置参数，按位置来传参
+def helloSomeone(name1,name2):
+	print ('hello %s' %name1)
+	print ('hello %s' %name2)
+    
+helloSomeone('xiaoming','xiaohua')
+
+#关键字参数，按关键字来传参
+def helloSomeone(name1,name2):
+	print ('hello %s' %name1)
+	print ('hello %s' %name2)
+    
+helloSomeone(name1='xiaoming',name2='xiaohua')
+
+#混合参数，位置参数必须在关键字参数前面
+def helloSomeone(name1,name2,name3):
+	print ('hello %s' %name1)
+	print ('hello %s' %name2)
+	print ('hello %s' %name3)
+helloSomeone('xiaoming','xiaohua','xiaoqiang')
+helloSomeone('xiaoming',name2='xiaohua',name3='xiaoqiang')
+
+#保存
+helloSomeone(name1='xiaoming',name2='xiaohua','xiaoqiang')
+</code></pre>
+<h4 id="返回值">返回值</h4>
+<p>return语句用于退出函数，并且在退出的时候选择性的向调用方返回一个表达式，不带参数值的return语句返回None</p>
+<pre><code class="language-python">def sum(a,b):
+	sum = a + b
+	return sum
+
+print (sum(1,2))
+
+def sum(a,b):
+	sum = a + b
+	return
+#返回none
+print (sum(1,2))
+
+</code></pre>
+<h4 id="全局变量和局部变量">全局变量和局部变量</h4>
+<p>定义在函数内部的变量只在局部作用域中使用，称为局部变量。</p>
+<p>定义在函数外的拥有全局作用域，称为全局变量。</p>
+<pre><code class="language-python"># 外面的total就是一个全局变量
+total = 0
+def sum(a,b):
+	# 这个total就是一个局部变量
+	total = a + b
+	print (total)
+
+print (total)
+
+
+# 外面的total就是一个全局变量
+total = 0
+def sum(a,b):
+	# 这个total就是一个局部变量
+    global total
+    total = a + b
+    print (total)
+
+sum(1,2)
+print (total)
+</code></pre>
+<h4 id="函数名的应用">函数名的应用</h4>
+<p>函数名是一个变量，但它是一个特殊的变量。</p>
+<pre><code class="language-python">def hello():
+	print ('helloworld')
+
+#赋值给其他变量，这个变量也拥有了和这个函数一样的功能
+hello2 = hello
+hello()
+
+#也可以和其他变量一样，用来作为函数的参数和函数的返回值
+def func1(var):
+    var()
+    return var
+
+hello3 = func1(hello)
+hello3()
+</code></pre>
+<h3 id="内置函数">内置函数</h3>
+<h4 id="内置函数的定义">内置函数的定义</h4>
+<p>什么是内置函数，就是python给尼提供库，拿来直接用的函数，比如前面一直用的print，到python3.6.2，python一共提供了68个内置函数，我们来讲讲一些常用的内置函数。</p>
+<h4 id="常用内置函数">常用内置函数</h4>
+<pre><code class="language-python">#输出和输入
+print ('hello')
+str1 = input('请输入')
+print (str1)
+
+
+#获取对象的内存地址
+a = 1
+b = 1
+print (id(a))
+print (id(b))
+
+#获取帮助
+print (help(print))
+
+#数字相关
+#bool()  将给定的数据转成bool值，不传参返回False
+print (bool(5))
+#int()	将给定的数据转成int值，不穿参返回0
+print (int('555'))
+#float()  将给定的数据转成float值，不传参返回0.0
+print (float('55.66'))
+
+#sum 求和  min最小值 max最大值
+list = [1,2,3,4]
+print (sum(list))
+print (min(list))
+print (max(list))
+
+#文件操作 open(file,mode='r') 常用模式 r 读  w从头覆盖写  a追加
+r = open('1.txt')
+print (r.read()) #全部读成一个字符串，同时把光标移动到最后
+r.close()
+#所以这里重头在读
+r = open('1.txt')
+print (r.readlines()) #按行分割成列表
+r.close()
+
+w = open('1.txt','w')
+w.write('11111')
+w.close()
+
+w = open('1.txt','a')
+w.write('11111')
+w.close()
+</code></pre>
+<h3 id="面向对象1">面向对象1</h3>
+<h4 id="面向对象的基本概念">面向对象的基本概念</h4>
+<ul>
+<li>我们之前学习的编程方式就是 面向过程的</li>
+<li>面向过程、面向对象是两种不同的编程方式</li>
+</ul>
+<p>面向过程怎么做：</p>
+<ol>
+<li>
+<p>收到一个需求，我们把完成需求的所有步骤，从头到尾逐步实现</p>
+<ol>
+<li>把某些功能独立的代码封装成一个又一个的函数</li>
+<li>最后完成的代码就是顺序的调用不同的函数</li>
+</ol>
+</li>
+</ol>
+<figure data-type="image" tabindex="6"><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566403081306.png" alt="1566403081306" loading="lazy"></figure>
+<p>面向对象：</p>
+<p>相比较函数，面向对象是更大的封装，根据职责或者说功能，在一个对象中去封装多个方法，你也可以理解为将函数进行分类</p>
+<p>我们需要在面向过程的基础上，再学习一些面向对象的语法。</p>
+<h4 id="类和对象">类和对象</h4>
+<p>类：	是对一群 具有 相同特征或者行为的事物的一个统称，是抽象的，不能直接使用，类的特征 被称为 属性，类的行为被称为方法。</p>
+<p>比如 类就相当于制造飞机的图纸，是一个模板，是负责用来创建对象的。比如飞机，飞机的长、宽、高就是飞机的特征也就是属性，比如飞机会飞就是飞机的行为，被称为方法。</p>
+<p>对象： 是由类创建出来的一个具体存在，可以直接使用，比如我们用飞机的图纸制造出一台真正的飞机，那么这个飞机就有了我们图纸中设想的长、宽、高，然后有飞的方法。</p>
+<p>所以，在程序开发中，应该</p>
+<ul>
+<li>先有类，再有对象</li>
+<li>一个类可以创建多个对象</li>
+<li>类中定义了的属性、方法，在对象创建后就会有对应的属性和方法</li>
+</ul>
+<h4 id="类的设计">类的设计</h4>
+<ul>
+<li>确定类名，分析整个业务流程，确定类名。</li>
+<li>对对象的特征描述，通常可以定义成为属性</li>
+<li>对象具有的行为，通常可以定义成方法</li>
+</ul>
+<p>练习1:</p>
+<ol>
+<li>
+<p>小明今天18岁，身高1.75，每天早上跑步，会去吃东西</p>
+</li>
+<li>
+<p>小美今年17岁，身高1.65，小美不跑步，喜欢吃东西</p>
+<p>类名： Person</p>
+<p>属性： name	age	height</p>
+<p>行为： run()	eat()</p>
+</li>
+</ol>
+<h4 id="定义简单的类">定义简单的类</h4>
+<p>面向对象是更大的封装，在一个类中封装多个方法，就可以通过这个类创建出来的对象，直接调用这些方法。</p>
+<pre><code class="language-python">class 类名:
+	def 方法1(self,参数列表):
+		pass
+	
+	def 方法2(self,参数列表):
+		pass
+</code></pre>
+<p>方法的定义格式和之前学习过的函数的定义方式几乎一样，但是区别在于第一个参数必须是self，稍后介绍self</p>
+<p>创建对象</p>
+<pre><code>对象变量 = 类名()
+</code></pre>
+<h4 id="第一个面向对象程序">第一个面向对象程序</h4>
+<p>需求： 小狗爱吃骨头，小狗旺旺叫</p>
+<p>类名：	dog</p>
+<p>方法：	eat()	wang()</p>
+<pre><code class="language-python">class Dog:
+    &quot;&quot;&quot;这是一个狗&quot;&quot;&quot;
+
+    def eat(self):
+        print(&quot;小狗吃骨头&quot;)
+
+    def wang(self):
+        print(&quot;旺旺&quot;)
+
+tom = Dog()
+tom.eat()
+tom.wang()
+</code></pre>
+<h4 id="self">Self</h4>
+<blockquote>
+<p>由哪一个对象调用的方法，方法内的self就是哪一个对象的引用</p>
+</blockquote>
+<pre><code class="language-python">class Dog:
+	
+	def eat(self):
+		print ('%s 吃骨头' % self.name)
+		
+tom = Dog()
+tom.name = 'Tom'
+tom.eat()
+
+kat = Dog()
+kat.name = 'kat'
+kat.eat()
+</code></pre>
+<p>在类的外部，通过 对象.，来访问对象的属性和方法</p>
+<p>在类的内部，通过self.  ,来访问对象的属性和方法</p>
+<h4 id="初始化方法">初始化方法</h4>
+<p>如果先调用方法，再设置属性，会如何呢</p>
+<pre><code class="language-python">tom = Dog()
+tom.eat()
+tom.name = 'Tom'
+# 会报错，对象没有 name的属性
+</code></pre>
+<p>所以，在开发过程中，不推荐在类的外部给对象增加属性，可能会存在这样的问题，对象包含属性，应该封装在类的内部</p>
+<blockquote>
+<p><code>__init__</code> 专门用来定义一个类具有哪些属性的方法，当使用类名来创建对象时，这个方法里面的内容就会自动运行</p>
+</blockquote>
+<pre><code class="language-python">class Dog:
+
+    def __init__(self):
+        print(&quot;初始化方法&quot;)
+       
+tom = Dog()
+</code></pre>
+<p>在开发中，如果希望在创建对象的同时，就设置对象属性，可以给init设置参数</p>
+<pre><code class="language-python">class Dog:
+	
+	def __init__(self,name):
+		print ('这是初始化方法')
+		self.name = name
+	
+	def eat(self):
+		print ('%s 吃骨头' % self.name)
+        
+tom = Dog('tom')
+tom.eat()
+</code></pre>
+<h4 id="内置方法">内置方法</h4>
+<blockquote>
+<p><code>__del__</code> 对象从内存中销毁前，会被自动调动</p>
+<p><code>__str__</code> 返回对象的描述信息，print函数输出使用，默认情况下， 会输出这个变量引用的对象是由哪一个类对象创建的，以及内存中的地址</p>
+</blockquote>
+<pre><code class="language-python">class Dog:
+
+    def __init__(self, name):
+
+        self.name = name
+
+        print(&quot;%s 创建了&quot; % self.name)
+
+    def __del__(self):
+
+        print(&quot;%s 销毁了&quot; % self.name)
+        
+    def __str__(self):
+        return &quot;我是小狗：%s&quot; % self.name
+
+# tom 是一个全局变量
+tom = Dog(&quot;Tom&quot;)
+
+print (tom)
+# del 关键字可以删除一个对象
+del tom
+
+</code></pre>
+<h4 id="私有属性和私有方法">私有属性和私有方法</h4>
+<blockquote>
+<p>私有属性: 只在对象内部使用，不能在外部使用的属性</p>
+<p>私有方法: 只在对象内部使用，不能在外部使用的方法</p>
+</blockquote>
+<p>在创建属性和方法时，在前面加上两个下划线即可</p>
+<pre><code class="language-python">class Dog:
+	
+	def __init__(self,name):
+		print ('这是初始化方法')
+		self.__name = name
+	
+	def __eat(self):
+		print ('%s 吃骨头' % self.name)
+        
+tom = Dog('tom')
+print (tom.name)
+tom.eat()
+</code></pre>
+<h3 id="面向对象2">面向对象2</h3>
+<h4 id="面向对象的三大特征">面向对象的三大特征</h4>
+<ul>
+<li>封装，根据职责将属性和方法封装到一个抽象的类中</li>
+<li>继承，实现代码的重用，相同的代码不需要重复的编写</li>
+<li>多态，不同的对象调用相同的方法，产生不同的执行结果</li>
+</ul>
+<h4 id="封装">封装</h4>
+<blockquote>
+<p>封装是面向对象编程的 一大特点，将属性和方法封装到一个抽象的类中，外界使用它时就创建对象，然后让对象调用方法</p>
+</blockquote>
+<p>实例:</p>
+<ul>
+<li>小华体重100公斤</li>
+<li>小华每次跑步减肥 1 公斤</li>
+<li>小华每次吃东西体重就会 增加2公斤</li>
+</ul>
+<pre><code class="language-python">class Person:
+	def __init__(self, name, weight):
+	
+		self.name = name
+		self.weight = weight
+		
+	def __str__(self):
+		
+		return &quot;我是 %s，我的体重是 %d&quot; % (self.name,self.weight)
+		
+	def run(self):
+		
+		self.weight = self.weight - 1
+		
+	def eat(self):
+	
+		self.weight = self.weight + 2
+		
+hua = Person('小华',100)
+hua.eat()
+hua.run()
+hua.run()
+print (hua)
+</code></pre>
+<h4 id="继承的基础语法">继承的基础语法</h4>
+<blockquote>
+<p>继承后，子类拥有父类的所有方法和属性</p>
+</blockquote>
+<pre><code class="language-python">class 类名(父类名):
+	pass
+</code></pre>
+<pre><code class="language-python">class Person:
+	def __init__(self, name, weight):
+	
+		self.name = name
+		self.weight = weight
+		
+	def __str__(self):
+		
+		return &quot;我是 %s，我的体重是 %d&quot; % (self.name,self.weight)
+		
+	def run(self):
+		
+		self.weight = self.weight - 1
+		
+	def eat(self):
+	
+		self.weight = self.weight + 2
+
+class Student(Person):
+	
+	pass
+	
+hua = Student('小华',100)
+hua.eat()	
+hua.run()
+hua.run()
+print (hua)
+</code></pre>
+<h4 id="方法的重写">方法的重写</h4>
+<blockquote>
+<p>当父类的方法实现不能满足子类需求的时候，可以对方法进行 重写</p>
+</blockquote>
+<pre><code class="language-python">class Person:
+	def __init__(self, name, weight):
+	
+		self.name = name
+		self.weight = weight
+		
+	def __str__(self):
+		
+		return &quot;我是 %s，我的体重是 %d&quot; % (self.name,self.weight)
+		
+	def run(self):
+		
+		print ('run -1')
+		self.weight = self.weight - 1
+		print (self.weight)
+		
+	def eat(self):
+		print ('eat +2')
+		self.weight = self.weight + 2
+		print (self.weight)
+		
+class Student(Person):
+	
+	def eat(self):
+		
+		print ('eat + 3')
+		self.weight = self.weight + 3
+		print (self.weight)
+		
+		# super(Student, self).eat()
+hua = Student('小华',100)
+hua.eat()	
+hua.run()
+print (hua)
+</code></pre>
+<h4 id="多继承">多继承</h4>
+<blockquote>
+<p>子类可以拥有多个父类，可以同多个父类中继承属性和方法</p>
+</blockquote>
+<pre><code class="language-python">class 子类名(子类A,子类B):
+	pass
+</code></pre>
+<pre><code class="language-python">class Student:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+
+    def __str__(self):
+        return &quot;我是 %s，我的体重是 %d&quot; % (self.name, self.weight)
+
+    def run(self):
+        print('run')
+        self.weight = self.weight - 1
+        print(self.weight)
+
+    def eat(self):
+
+        self.weight = self.weight + 2
+
+
+class Man:
+
+    def __init__(self):
+        print ('我是一个男人')
+
+class ManStudent(Man,Student):
+
+    pass
+
+xiaohua = ManStudent()
+</code></pre>
+<p>如果 不同的父类中存在同名的方法，那么子类对象在调用方法时，会按照继承顺序来查找，先查找自己的，然后查找第一个父类，然后查找第二个父类，但是，不要这么去做，在开发过程要尽量避免这种情况的发生。</p>
+<h4 id="object类">object类</h4>
+<p>在python3里，如果没有指定父类，会默认使用object类来作为该类的父类，object类已经提供了一些内置的属性和方法供我们使用，但是在python2里，没有这种设定，为了保证代码能在Python2和python3中同时使用，建议统一继承object</p>
+<pre><code class="language-python">class 类型(object):
+	pass
+</code></pre>
+<h4 id="多态">多态</h4>
+<blockquote>
+<p>在多态不同的子类对象调用的父类方法，产生不同的执行结果</p>
+<p>如len()函数就是一个多态的例子，传入list和传入str都会返回长度</p>
+</blockquote>
+<pre><code class="language-python">class Animal(object):
+
+
+    def animal_talk(self,obj):
+
+        obj.talk()
+
+
+class Cat(Animal):
+
+    def talk(self):
+
+        print ('miaomiaomiao')
+
+class Dog(Animal):
+
+    def talk(self):
+
+        print ('wangwangwang')
+
+tom = Cat()
+wangcai = Dog()
+
+a = Animal()
+a.animal_talk(tom)
+a.animal_talk(wangcai)
+</code></pre>
+<h3 id="面向对象3">面向对象3</h3>
+<h4 id="实例属性和实例方法">实例属性和实例方法</h4>
+<ul>
+<li>创建的对象叫做类的实例，这个动作叫做实例化</li>
+<li>对象的属性，叫做实例属性</li>
+<li>对象调用的方法叫做实例方法</li>
+<li>在对象中各自都拥有自己的实例属性</li>
+</ul>
+<figure data-type="image" tabindex="7"><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566659732324.png" alt="1566659732324" loading="lazy"></figure>
+<h4 id="类属性和类方法">类属性和类方法</h4>
+<blockquote>
+<p>在python中 一切皆为对象</p>
+</blockquote>
+<ul>
+<li>类也是一个特殊的对象，被叫做类对象</li>
+<li>在程序运行中，类也会被加载到内存中，但是只有一份</li>
+<li>所以在类中除了定义实例的属性和方法外，类对象还可以拥有自己的属性和方法</li>
+<li>通过类名的方式就可以访问类的属性或者类的方法</li>
+</ul>
+<pre><code class="language-python">class Dog(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Dog.count = Dog.count + 1
+
+dog1 = Dog('xiaoming')
+dog2 = Dog('xiaohua')
+dog3 = Dog('xiaoting')
+
+print(Dog.count)
+Dog.printcount()
+</code></pre>
+<p>类方法</p>
+<pre><code class="language-python">@classmethod
+def 类方法名(cls):
+    pass
+</code></pre>
+<ul>
+<li>classmethod是修饰器，告诉解释器这是一个类方法</li>
+<li>类方法的第一个参数是cls（用其他也可以，但是习惯用这个）</li>
+</ul>
+<pre><code class="language-python">class Dog(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Dog.count = Dog.count + 1
+
+
+    @classmethod
+    def printcount(cls):
+        print (cls.count)
+
+
+dog1 = Dog('xiaoming')
+dog2 = Dog('xiaohua')
+dog3 = Dog('xiaoting')
+
+print(Dog.count)
+Dog.printcount()
+</code></pre>
+<h4 id="静态方法">静态方法</h4>
+<blockquote>
+<p>在开发过程时，如果既不需要访问实例属性、也不需要访问类属性，就可以把这个方法封装成一个静态方法</p>
+</blockquote>
+<pre><code class="language-python">class Dog(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Dog.count = Dog.count + 1
+        Dog.printdog()
+
+
+    @staticmethod
+    def printdog():
+        print ('我是一只狗')
+
+
+dog1 = Dog('xiaoming')
+</code></pre>
+<h4 id="方法总结">方法总结</h4>
+<ul>
+<li>如果需要方法需要访问实例属性，封装为实例方法</li>
+<li>如果方法不要访问实例属性，需要访问类属性，封装为类方法</li>
+<li>如果方法不要访问实例属性也不需要访问类属性，封装为静态方法</li>
+</ul>
+<h4 id="单例设计模式">单例设计模式</h4>
+<blockquote>
+<p>设计模式是前人工作的总结和提炼，针对某一特定问题的成熟的解决方案，比如我要实现一个音乐播放器，那么我在这台电脑上只允许创建一个窗口</p>
+<p>单例设计模式，让类创建的对象，在系统中只有唯一的一个实例，每次执行类名（）返回的对象，内存地址都是相同的，也就是同一个对象</p>
+</blockquote>
+<p>在使用类名() 创建对象时，python的解释器首先会调用 <code>__new__</code>方法对对象分配空间，这个方法是由object基础提供的内置的静态方法，主要作用有两个，分配内存空间，返回对象的引用，为了实现单例模式，我们要重写这个方法</p>
+<pre><code class="language-python">class QQMusicPlayer(object):
+
+    # 定义类属性记录单例对象引用
+    instance = None
+
+    def __new__(cls, *args, **kwargs):
+
+        # 1. 判断类属性是否已经被赋值
+        if cls.instance is None:
+            cls.instance = super().__new__(cls)
+
+        # 2. 返回类属性的单例引用
+        return cls.instance
+</code></pre>
+<p>依然存在一个问题，每次类名()创建对象的时候，依然会执行init方法，我们需要再做一个判断 6786</p>
+<pre><code class="language-python">class QQMusicPlayer(object):
+
+    # 定义类属性记录单例对象引用
+    instance = None
+	flag = 0
+    
+    def __new__(cls, *args, **kwargs):
+
+        # 1. 判断类属性是否已经被赋值
+        if cls.instance is None:
+            cls.instance = super().__new__(cls)
+
+        # 2. 返回类属性的单例引用
+        return cls.instance
+    
+   def __init__(self):
+    	if QQMusicPlayer.flag == 0:
+            print(&quot;初始化音乐播放器&quot;)
+            QQMusicPlayer.flag = 1
+      
+</code></pre>
+<h3 id="异常">异常</h3>
+<h4 id="异常的概念">异常的概念</h4>
+<blockquote>
+<p>程序在运行过程中，如果遇到一个错误，那么就会停止程序的运行，并且提示错误信息，这就是异常，提示错误信息的动作，我们通常称为抛出异常</p>
+</blockquote>
+<h4 id="捕获异常">捕获异常</h4>
+<p>在开发过程中，如果对某些代码的执行不能确定是否能正确运行，那么就可以捕获异常，通过这种方式可以对突发事件做集中的处理，从而保证程序的稳定性和健壮性</p>
+<pre><code class="language-python">try:
+	尝试执行的代码
+except:
+	出现错误后的处理	
+</code></pre>
+<pre><code class="language-python">try:
+	num = int(input('请输入整数'))
+except:
+	print ('请输出整数哦')
+</code></pre>
+<h4 id="按错误类型执行代码">按错误类型执行代码</h4>
+<pre><code class="language-python">try:
+	num = int(input('请输入整数'))
+	result = 10 / num
+	print (result)
+except valueError:
+	print ('请输入正确的整数')
+except ZeroDivisionError:
+    print(&quot;除 0 错误&quot;)
+
+# 在开发中预判都所有的错误还是有一定的难度，如果希望程序无论出现任何错误都可以继续执行，那么可以再增加一个except
+except Exception as result:
+    print(&quot;未知错误 %s&quot; % result)
+</code></pre>
+<h4 id="传递异常">传递异常</h4>
+<blockquote>
+<p>当函数/方法执行出现异常时，会将异常一直传递到函数/方法的调用方，直到主程序，如果在主程序中，都没有异常处理，程序才会被终止</p>
+<p>所以，可以在主程序中捕获异常，而不需要在代码中加大量的代码</p>
+</blockquote>
+<pre><code class="language-python">class Dog:
+
+    def chu(self):
+        print (10/0)
+
+try:
+tom = Dog()
+tom.chu()
+except:
+    pass
+
+    
+</code></pre>
+<h4 id="主动抛出异常">主动抛出异常</h4>
+<blockquote>
+<p>在python中提供了异常类，在开发过程中，在某些特定的情况下，我们希望抛出一个异常</p>
+</blockquote>
+<pre><code class="language-python">a = 0 
+if a == 0:
+	raise RuntimeError('运行异常')
+   
+</code></pre>
+<h3 id="模块和包">模块和包</h3>
+<h4 id="模块和包的概念">模块和包的概念</h4>
+<blockquote>
+<p>每个以py为结为的文件都是一个模块</p>
+<p>包是包含多个模块的文件夹</p>
+</blockquote>
+<h4 id="导入模块">导入模块</h4>
+<pre><code class="language-python"># 导入整个模块,导入后可以使用模块提供的工具，而不需要通过模块名
+import 模块1
+import 模块2
+
+# 导入模块的部分工具
+from 模块1 import 工具名
+</code></pre>
+<pre><code class="language-python">import random
+
+# 生成随机数
+num = random.randint(0, 100)
+
+print(num)
+</code></pre>
+<h4 id="pip-安装第三方模块">pip 安装第三方模块</h4>
+<p>我们常用的知名的团队开发的模块和包，我们只需要知道怎么去安装和使用它们就可以了，避免重复造轮子，包括我们后面要学习的pyqt django都是现成的模块</p>
+<pre><code class="language-python">pip install 模块名
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">
+                <h3 class="post-title">
+                  HTTP协议基础知识
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge ">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge ">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

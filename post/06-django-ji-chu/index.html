@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>06——Django基础 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>06——Django基础</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge ">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="django简介">Django简介</h3>
+<h4 id="什么是软件框架">什么是软件框架</h4>
+<p>举个简单的例子，对于一个公司来说，公司中有各个职能部门，每个部门各司其职，通过部门之间的配合来完成工作，这些部门就形成了一个公司的组织架构。从某种意义上来说，公司就是一种框架。那么对应到软件设计上来说，软件框架是由其中的各个模块组成的，每个模块负责特定的功能，模块与模块之间相互协作来完成软件开发。</p>
+<p>一个公司，它是针对某一市场而成立的，而软件框架的设计，也是针对某一类软件问题而设计的，其目的主要是提高软件开发效率。</p>
+<h4 id="什么是mvc框架">什么是MVC框架</h4>
+<p>MVC的全拼为Model-View-Controller，一种软件设计模式，是为了将传统的输入（input）、处理（processing）、输出（output）任务运用到图形化用户交互模型中而设计的。随着标准输入输出设备的出现，开发人员只需要将精力集中在业务逻辑的分析与实现上。后来被推荐为Oracle旗下Sun公司Java EE平台的设计模式，并且受到越来越多的使用ColdFusion和PHP的开发者的欢迎。现在虽然不再使用原来的分工方式，但是这种分工的思想被沿用下来，广泛应用于软件工程中，是一种典型并且应用广泛的软件架构模式。后来，MVC的思想被应用在了Ｗeb开发方面，被称为Ｗeb MVC框架。</p>
+<p>MVC框架的核心思想是：解耦，让不同的代码块之间降低耦合，增强代码的可扩展性和可移植性，实现向后兼容。</p>
+<p>当前主流的开发语言如Java、PHP、Python中都有MVC框架。</p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1586142243982.png" alt="" loading="lazy"></figure>
+<h4 id="web-mvc各部分的功能">Ｗeb MVC各部分的功能</h4>
+<p>M全拼为Model，主要封装对数据库层的访问，对数据库中的数据进行增、删、改、查操作。</p>
+<p>V全拼为View，用于封装结果，生成页面展示的html内容。</p>
+<p>C全拼为Controller，用于接收请求，处理业务逻辑，与Model和View交互，返回结果。</p>
+<p>Django框架遵循MVC设计，并且有一个专有名词：MVT</p>
+<h4 id="mvt各部分的功能">MVT各部分的功能</h4>
+<p>M全拼为Model，与MVC中的M功能相同，负责和数据库交互，进行数据处理。</p>
+<p>V全拼为View，与MVC中的C功能相同，接收请求，进行业务处理，返回应答。</p>
+<p>T全拼为Template，与MVC中的V功能相同，负责封装构造要返回的html。</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1586142287009.png" alt="" loading="lazy"></figure>
+<h3 id="第一个django程序">第一个Django程序</h3>
+<h4 id="安装django环境">安装Django环境</h4>
+<p>pip install django</p>
+<ul>
+<li>创建项目</li>
+</ul>
+<pre><code class="language-python">django-admin startproject SMS(学校管理系统)
+</code></pre>
+<p>创建应用，这里应用的概念就相当于一个一个的功能模块，比如在一个电商网站中，用户管理、购物车、支付等等，就是一个一个的功能模块，我们用应用的概念将之区分开。</p>
+<ul>
+<li>创建应用</li>
+</ul>
+<pre><code>python manage.py startapp studentToClass
+</code></pre>
+<h4 id="目录结构介绍">目录结构介绍</h4>
+<ul>
+<li>
+<p>*init.py_*是一个空文件，表示当前目录booktest可以当作一个python包使用。</p>
+</li>
+<li>
+<p>tests.py文件用于开发测试用例，在实际开发中会有专门的测试人员，这个事情不需要我们来做。</p>
+</li>
+<li>
+<p>models.py文件跟数据库操作相关。</p>
+</li>
+<li>
+<p>views.py文件跟接收浏览器请求，进行处理，返回页面相关。</p>
+</li>
+<li>
+<p>admin.py文件跟网站的后台管理相关。</p>
+</li>
+<li>
+<p>migrations(与数据库相关)文件夹之后给大家介绍。</p>
+</li>
+</ul>
+<p>注册app</p>
+<p>settings.py中注册</p>
+<p>INSTALLED_APPS</p>
+<p>简易开发服务器</p>
+<p>在开发阶段，为了能够快速预览到开发的效果，django提供了一个纯python编写的轻量级web服务器，仅在开发阶段使用。</p>
+<p>运行服务器命令如下：</p>
+<pre><code>python manage.py runserver ip:端口
+例：
+python manage.py runserver
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1586142318732.png" alt="" loading="lazy"></figure>
+<h4 id="模型设计">模型设计</h4>
+<p>我们之前操作数据库是通过写sql语句，那么能不能不写sql语句就可以操作数据库呢？ 可以，就是通过接下来要给大家讲的<strong>ORM框架</strong>。</p>
+<p>ORM框架</p>
+<p>O是object，也就<strong>类对象</strong>的意思，R是relation，翻译成中文是关系，也就是关系数据库中<strong>数据表</strong>的意思，M是mapping，是<strong>映射</strong>的意思。在ORM框架中，它帮我们把类和数据表进行了一个映射，可以让我们<strong>通过类和类对象就能操作它所对应的表格中的数据</strong>。ORM框架还有一个功能，它可以<strong>根据我们设计的类自动帮我们生成数据库中的表格</strong>，省去了我们自己建表的过程。</p>
+<p>django中内嵌了ORM框架，不需要直接面向数据库编程，而是定义模型类，通过模型类和对象完成数据表的增删改查操作。</p>
+<p>使用django进行数据库开发的步骤如下：</p>
+<ul>
+<li>1.在models.py中定义模型类</li>
+<li>2.迁移</li>
+<li>3.通过类和对象完成数据增删改查操作</li>
+</ul>
+<p>1.定义模型类</p>
+<p>模型类定义在models.py文件中，继承自models.Model类。</p>
+<blockquote>
+<p>说明：不需要定义主键列，在生成时会自动添加，并且值为自动增长。</p>
+</blockquote>
+<p>设计班级类</p>
+<p>类名： classInfo</p>
+<p>班级名称：class_name  六年级一班</p>
+<p>班级号：class_id 601</p>
+<p>学生类： studentInfo</p>
+<p>学生学号：student_id</p>
+<p>学生姓名：student_name</p>
+<p>学生生日：student_birth</p>
+<pre><code class="language-python">from django.db import models
+
+# Create your models here.
+class classInfo(models.Model):
+    class_id = models.IntegerField()
+    class_name = models.CharField(max_length=20)
+
+
+class studentInfo(models.Model):
+    student_id = models.IntegerField()
+    student_name = models.CharField(max_length=20)
+    student_birth = models.DateField()
+    belong_class = models.ForeignKey('classInfo')
+</code></pre>
+<h4 id="生成迁移">生成迁移</h4>
+<pre><code class="language-python">python manage.py makemigrations  #生成迁移
+python manage.py migrate  # 迁移
+</code></pre>
+<h4 id="后台管理系统">后台管理系统</h4>
+<p>假设我们要设计一个新闻网站，我们需要编写展示给用户的页面，网页上展示的新闻信息是从哪里来的呢？<strong>是从数据库中查找到新闻的信息，然后把它展示在页面上</strong>。但是我们的网站上的新闻每天都要更新，这就意味着对数据库的增、删、改、查操作，那么我们需要每天写sql语句操作数据库吗?<br>
+如果这样的话，是不是非常繁琐，所以我们可以设计一个页面，通过对这个页面的操作来实现对新闻数据库的增删改查操作。那么问题来了，老板说我们需要在建立一个新网站，是不是还要设计一个页面来实现对新网站数据库的增删改查操作，但是这样的页面具有一个很大的重复性，那有没有一种方法能够让我们很快的生成管理数据库表的页面呢？<strong>有，那就是我们接下来要给大家讲的Django的后台管理</strong>。Django能够根据定义的模型类自动地生成管理页面。</p>
+<p>汉化</p>
+<pre><code>LANGUAGE_CODE = 'zh-hans' #使用中国语言
+TIME_ZONE = 'Asia/Shanghai' #使用中国上海时间
+</code></pre>
+<h5 id="创建管理员并登陆">创建管理员并登陆</h5>
+<pre><code>python manage.py createsuperuser
+python manage.py runserver
+http://127.0.0.1:8000/admin/
+</code></pre>
+<p>注册模型类</p>
+<pre><code>from django.contrib import admin
+from booktest.models import BookInfo,HeroInfo
+
+admin.site.register(classInfo)
+admin.site.register(studentInfo)
+</code></pre>
+<p>自定义管理页面</p>
+<pre><code class="language-python">from django.contrib import admin
+from studentToClass.models import *
+
+class classInfoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'class_id', 'class_name']
+
+class studentInfoAdmin(admin.ModelAdmin):
+    list_display = ['id','student_id','student_name','student_birth','belong_class']
+
+# Register your models here.
+admin.site.register(classInfo,classInfoAdmin)
+admin.site.register(studentInfo,studentInfoAdmin)
+</code></pre>
+<h5 id="视图">视图</h5>
+<p>后台管理页面做好了，接下来就要做公共访问的页面了。当我们刚刚在浏览器中输入 <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a> 之后，浏览器显示出了后台管理的登录页面，那有没有同学想过这个服务器是怎么给我们找到这个页面并返回呢？/admin/是我们想要请求的页面，服务器在收到这个请求之后，就一定对应着一个处理动作，这个处理动作就是帮我们产生页面内容并返回回来，这个过程是由<strong>视图</strong>来做的。</p>
+<p>对于django的设计框架MVT，用户在URL中请求的是视图，视图接收请求后进行处理，并将处理的结果返回给请求者。</p>
+<p>使用视图时需要进行两步操作：</p>
+<pre><code>* 1.定义视图函数
+* 2.配置URLconf
+</code></pre>
+<p>1.定义视图</p>
+<p>视图就是一个Python函数，被定义在views.py中。</p>
+<p>视图的必须有一个参数，一般叫request，视图必须返回HttpResponse对象，HttpResponse中的参数内容会显示在浏览器的页面上。</p>
+<p>打开studentToClass/views.py文件，定义视图index如下</p>
+<pre><code>from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse(&quot;index&quot;)
+</code></pre>
+<p>2.配置URLconf</p>
+<h5 id="查找视图的过程">查找视图的过程</h5>
+<p>请求者在浏览器地址栏中输入url，请求到网站后，获取url信息，然后与编写好的URLconf逐条匹配，如果匹配成功则调用对应的视图函数，如果所有的URLconf都没有匹配成功，则返回404错误。</p>
+<p>一条URLconf包括url规则、视图两部分：</p>
+<ul>
+<li>url规则使用正则表达式定义。</li>
+<li>视图就是在views.py中定义的视图函数。</li>
+</ul>
+<p>需要两步完成URLconf配置：</p>
+<ul>
+<li>1.在应用中定义URLconf</li>
+<li>2.包含到项目的URLconf中</li>
+</ul>
+<p>在booktest/应用下创建urls.py文件，定义代码如下：</p>
+<pre><code>from django.conf.urls import url
+from studentToClass import views
+urlpatterns = [
+    url(r'^$', views.index),
+]
+</code></pre>
+<p>包含到项目中：打开test1/urls.py文件，为urlpatterns列表增加项如下：</p>
+<pre><code>url(r'^', include('studentToClass.urls')),
+</code></pre>
+<p>test1/urls.py文件完整代码如下：</p>
+<pre><code>from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('studentToClass.urls')),
+]
+</code></pre>
+<h5 id="请求访问">请求访问</h5>
+<p>视图和URLconf都定义好了，接下来在浏览器地址栏中输入网址：</p>
+<pre><code>http://127.0.0.1:8000/
+</code></pre>
+<p>网页显示效果如下图，视图被成功执行了。</p>
+<h4 id="模板">模板</h4>
+<h5 id="问题">问题</h5>
+<p><strong>如何向请求者返回一个漂亮的页面呢？</strong></p>
+<p>肯定需要用到html、css，如果想要更炫的效果还要加入js，问题来了，这么一堆字段串全都写到视图中，作为HttpResponse()的参数吗？这样定义就太麻烦了吧，因为定义字符串是不会出任何效果和错误的，如果有一个专门定义前端页面的地方就好了。</p>
+<p>解决问题的技术来了：<strong>模板</strong>。</p>
+<p>在Django中，将前端的内容定义在模板中，然后再把模板交给视图调用，各种漂亮、炫酷的效果就出现了。</p>
+<p>创建模板</p>
+<p>为应用booktest下的视图index创建模板index.html，目录结构如下图：</p>
+<figure data-type="image" tabindex="4"><img src="https://childlike2333.github.io/post-images/1586142403955.png" alt="" loading="lazy"></figure>
+<p>设置查找模板的路径：打开settings.py文件，设置TEMPLATES的DIRS值</p>
+<pre><code>'DIRS': [os.path.join(BASE_DIR, 'templates')],
+</code></pre>
+<h5 id="定义模板">定义模板</h5>
+<p>打开templtes/booktest/index.html文件，定义代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;班级列表&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{title}}&lt;/h1&gt;
+{%for i in list%}
+{{i}}&lt;br&gt;
+{%endfor%}
+&lt;/body&gt;
+&lt;/html&gt; 
+</code></pre>
+<p>在模板中输出变量语法如下，变量可能是从视图中传递过来的，也可能是在模板中定义的。</p>
+<pre><code>{{变量名}}
+</code></pre>
+<p>在模板中编写代码段语法如下：</p>
+<pre><code>{%代码段%}
+</code></pre>
+<h5 id="视图调用模板">视图调用模板</h5>
+<p>调用模板分为三步骤：</p>
+<ul>
+<li>
+<p>1.找到模板</p>
+</li>
+<li>
+<p>2.定义上下文</p>
+</li>
+<li>
+<p>3.渲染模板</p>
+<p>打开浏览器刷新页面，显示效果如下图：</p>
+</li>
+</ul>
+<h5 id="视图调用模板简写">视图调用模板简写</h5>
+<p>视图调用模板都要执行以上三部分，于是Django提供了一个函数render封装了以上代码。 方法render包含3个参数：</p>
+<ul>
+<li>第一个参数为request对象</li>
+<li>第二个参数为模板文件路径</li>
+<li>第三个参数为字典，表示向模板中传递的上下文数据</li>
+</ul>
+<p>打开booktst/views.py文件，调用render的代码如下：</p>
+<pre><code class="language-python">from django.shortcuts import render
+
+# Create your views here.
+
+from django.shortcuts import render
+
+def index(request):
+    context = {'title':'班级列表','list':[1,2,3]}
+    return render(request,'index.html',context)
+</code></pre>
+<h4 id="完成">完成</h4>
+<p>index.html</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;班级列表&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{title}}&lt;/h1&gt;
+{%for class in classList%}
+&lt;!--{{class.class.id}} {{class.class_id}}: {{class.class_name}}&lt;br&gt; --&gt;
+{{class.class_id}}: &lt;a href=&quot;/{{class.id}}/&quot;&gt;{{class.class_name}}&lt;/a&gt;&lt;br&gt;
+{%endfor%}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>detail.html</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{title}}&lt;/h1&gt;
+{%for student in studentList%}
+{{student.student_id}},{{student.student_name}},{{student.student_birth}}&lt;br&gt;
+{%endfor%}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="viewspy">views.py</h5>
+<pre><code class="language-python">from django.shortcuts import render
+
+# Create your views here.
+
+from django.shortcuts import render
+
+from studentToClass.models import classInfo,studentInfo
+
+
+def index(request):
+
+
+    # 班级列表
+    classList = classInfo.objects.all()
+    context = {'title': '班级列表', 'classList':classList}
+
+    return render(request,'index.html',context)
+
+def detail(request,cid):
+
+    studentList = studentInfo.objects.filter(id=cid)
+
+    return render(request,'detail.html',{'studentList':studentList})
+</code></pre>
+<h5 id="urlspy">urls.py</h5>
+<pre><code class="language-python">from django.conf.urls import url
+
+from studentToClass import views
+
+urlpatterns = [
+    url(r'^$',views.index),
+    url(r'^(\d+)/$',views.detail)
+]
+</code></pre>
+<h3 id="模型">模型</h3>
+<h5 id="复习">复习</h5>
+<ul>
+<li>定义模型类</li>
+<li>迁移</li>
+<li>生成迁移</li>
+</ul>
+<h5 id="定义模型类">定义模型类</h5>
+<ul>
+<li>
+<p>模型类被定义在&quot;应用/models.py&quot;文件中，此例中为&quot;studentToClass/models.py&quot;文件。</p>
+</li>
+<li>
+<p>模型类必须继承自Model类，位于包django.db.models中。</p>
+</li>
+<li>
+<p>命名时不能是python的保留关键字</p>
+</li>
+<li>
+<p>不允许使用连续的下划线（由于django的查询方式决定的）</p>
+</li>
+<li>
+<p>通过字段类型的参数指定选项</p>
+</li>
+</ul>
+<h5 id="字段类型">字段类型</h5>
+<p>AutoField：自动增长的IntegerField，通常不用指定，不指定时Django会自动创建属性名为id的自动增长属性。</p>
+<p>BooleanField：布尔字段，值为True或False。</p>
+<p>NullBooleanField：支持Null、True、False三种值。</p>
+<p>CharField(max_length=字符长度)：字符串。</p>
+<ul>
+<li>参数max_length表示最大字符个数。</li>
+</ul>
+<p>TextField：大文本字段，一般超过4000个字符时使用。</p>
+<p>IntegerField：整数。</p>
+<p>DecimalField(max_digits=None, decimal_places=None)：十进制浮点数。</p>
+<ul>
+<li>参数max_digits表示总位数。</li>
+<li>参数decimal_places表示小数位数。</li>
+</ul>
+<p>FloatField：浮点数。</p>
+<p>DateField[auto_now=False, auto_now_add=False])：日期。</p>
+<ul>
+<li>参数auto_now表示每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false。</li>
+<li>参数auto_now_add表示当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false。</li>
+<li>参数auto_now_add和auto_now是相互排斥的，组合将会发生错误。</li>
+</ul>
+<p>TimeField：时间，参数同DateField。</p>
+<p>DateTimeField：日期时间，参数同DateField。</p>
+<p>FileField：上传文件字段。</p>
+<p>ImageField：继承于FileField，对上传的内容进行校验，确保是有效的图片</p>
+<h5 id="选项">选项</h5>
+<ul>
+<li>null：如果为True，表示允许为空，默认值是False。</li>
+<li>blank：如果为True，则该字段允许为空白，默认值是False。</li>
+<li><strong>对比：null是数据库范畴的概念，blank是表单验证范畴的</strong>。</li>
+<li>db_column：字段的名称，如果未指定，则使用属性的名称。</li>
+<li>db_index：若值为True, 则在表中会为此字段创建索引，默认值是False。</li>
+<li>default：默认值。</li>
+<li>primary_key：若为True，则该字段会成为模型的主键字段，默认值是False，一般作为AutoField的选项使用。</li>
+<li>unique：如果为True, 这个字段在表中必须有唯一值，默认值是False。</li>
+</ul>
+<h5 id="条件查询">条件查询</h5>
+<h6 id="查询等">查询等</h6>
+<p><strong>exact：表示判等。</strong></p>
+<pre><code>studentList = studentInfo.objects.filter(belong_class_id__exact=1)
+#studentList = studentInfo.objects.filter(belong_class=1)
+</code></pre>
+<p><strong>contains：是否包含。</strong></p>
+<blockquote>
+<p>说明：如果要包含%无需转义，直接写即可。</p>
+</blockquote>
+<p>例：查询书名包含'传'的图书。</p>
+<pre><code>studentList = studentInfo.objects.filter(student_name__contains=&quot;小&quot;)
+studentList = studentInfo.objects.filter(student_name__startswith=&quot;大&quot;)
+studentList = studentInfo.objects.filter(student_name__endswith=&quot;牛&quot;)
+</code></pre>
+<p><strong>startswith、endswith：以指定值开头或结尾。</strong></p>
+<p><strong>isnull：是否为null。</strong></p>
+<p>例：查询书名不为空的图书。</p>
+<pre><code>studentList = studentInfo.objects.filter(student_name__isnull=False)
+</code></pre>
+<h6 id="4-范围查询">4) 范围查询</h6>
+<p><strong>in：是否包含在范围内。</strong></p>
+<p>例：查询编号为1或3或5的图书</p>
+<pre><code>studentList = studentInfo.objects.filter(student_id__in=[60101,60202])
+</code></pre>
+<h6 id="比较查询">比较查询</h6>
+<p><strong>gt、gte、lt、lte：大于、大于等于、小于、小于等于。</strong></p>
+<p>例：查询编号大于3的图书</p>
+<pre><code>studentList = studentInfo.objects.filter(student_id_gt=60103)
+</code></pre>
+<p><strong>不等于的运算符，使用exclude()过滤器。</strong></p>
+<p>例：查询编号不等于3的图书</p>
+<pre><code>studentList = studentInfo.objects.exclude(student_id=60103)
+</code></pre>
+<p>例：查询1980年1月1日后发表的图书。</p>
+<pre><code>studentInfo.objects.filter(student_birth__gt=&quot;2019-08-04&quot;)
+</code></pre>
+<h4 id="f对象">F对象</h4>
+<p>之前的查询都是对象的属性与常量值比较，两个属性怎么比较呢？ 答：使用F对象，被定义在django.db.models中</p>
+<pre><code>from django.db.models import F
+studentList = studentInfo.objects.filter(student_id__gt=F('belong_class_id'))
+</code></pre>
+<h4 id="q对象">Q对象</h4>
+<p>多个过滤器逐个调用表示逻辑与关系，同sql语句中where部分的and关键字。</p>
+<pre><code>studentList = studentInfo.objects.filter(student_id__gt=60103, belong_class_id=1)
+</code></pre>
+<p>如果需要实现逻辑或or的查询，需要使用Q()对象结合|运算符，Q对象被义在django.db.models中。</p>
+<p>语法如下：</p>
+<pre><code>Q(属性名__运算符=值)
+</code></pre>
+<p>例：查询阅读量大于20的图书，改写为Q对象如下。</p>
+<pre><code>from django.db.models import Q
+...
+studentList = studentInfo.objects.filter(Q(student_id__gt=60103))
+</code></pre>
+<p>Q对象可以使用&amp;、|连接，&amp;表示逻辑与，|表示逻辑或。</p>
+<p>例：班级为2或者学号大于103</p>
+<pre><code>studentList = studentInfo.objects.filter(Q(student_id__gt=60103)|Q(belong_class_id=2))
+</code></pre>
+<p>Q对象前可以使用~操作符，表示非not。</p>
+<p>例：查询编号不等于3的图书。</p>
+<pre><code>studentList = studentInfo.objects.filter(~Q(belong_class_id=2))
+</code></pre>
+<h4 id="聚合函数">聚合函数</h4>
+<p>使用aggregate()过滤器调用聚合函数。聚合函数包括：Avg，Count，Max，Min，Sum，被定义在django.db.models中。</p>
+<p>例：查询图书的总阅读量。</p>
+<pre><code>from django.db.models import Sum
+...
+studentList = studentInfo.objects.aggregate(Sum('student_id'))
+</code></pre>
+<p>注意aggregate的返回值是一个字典类型，格式如下：</p>
+<pre><code>  {'聚合类小写__属性名':值}
+  如:{'student_id__sum': 360813}
+</code></pre>
+<p>使用count时一般不使用aggregate()过滤器。</p>
+<p>例：查询图书总数。</p>
+<pre><code>studentList = studentInfo.objects.count()
+</code></pre>
+<p>注意count函数的返回值是一个数字。</p>
+<p>查询集表示从数据库中获取的对象集合，在管理器上调用某些过滤器方法会返回查询集，查询集可以含有零个、一个或多个过滤器。过滤器基于所给的参数限制查询的结果，从Sql的角度，查询集和select语句等价，过滤器像where和limit子句。</p>
+<p><strong>返回查询集的过滤器如下</strong>：</p>
+<ul>
+<li>all()：返回所有数据。</li>
+<li>filter()：返回满足条件的数据。</li>
+<li>exclude()：返回满足条件之外的数据，相当于sql语句中where部分的not关键字。</li>
+<li>order_by()：对结果进行排序。</li>
+</ul>
+<p><strong>返回单个值的过滤器如下</strong>：</p>
+<ul>
+<li>get()：返回单个满足条件的对象
+<ul>
+<li>如果未找到会引发&quot;模型类.DoesNotExist&quot;异常。</li>
+<li>如果多条被返回，会引发&quot;模型类.MultipleObjectsReturned&quot;异常。</li>
+</ul>
+</li>
+<li>count()：返回当前查询结果的总条数。</li>
+<li>aggregate()：聚合，返回一个字典。</li>
+</ul>
+<p><strong>判断某一个查询集中是否有数据</strong>：</p>
+<ul>
+<li>exists()：判断查询集中是否有数据，如果有则返回True，没有则返回False。</li>
+</ul>
+<h4 id="两大特性">两大特性</h4>
+<ul>
+<li>惰性执行：创建查询集不会访问数据库，直到调用数据时，才会访问数据库，调用数据的情况包括迭代、序列化、与if合用。</li>
+<li>缓存：使用同一个查询集，第一次使用时会发生数据库的查询，然后把结果缓存下来，再次使用这个查询集时会使用缓存的数据。</li>
+</ul>
+<h4 id="限制查询集">限制查询集</h4>
+<p>可以对查询集进行取下标或切片操作，等同于sql中的limit和offset子句。</p>
+<blockquote>
+<p>注意：不支持负数索引。</p>
+</blockquote>
+<p>对查询集进行切片后返回一个新的查询集，不会立即执行查询。</p>
+<p>如果获取一个对象，直接使用[0]，等同于[0:1].get()，但是如果没有数据，[0]引发IndexError异常，[0:1].get()如果没有数据引发DoesNotExist异常。</p>
+<p>示例：获取第1、2项，运行查看。</p>
+<pre><code>list=BookInfo.objects.all()[0:2]
+</code></pre>
+<h3 id="视图-2">视图</h3>
+<h4 id="urlconf">URLconf</h4>
+<p>用户通过在浏览器的地址栏中输入网址请求网站，对于Django开发的网站，由哪一个视图进行处理请求，是由url匹配找到的。</p>
+<p>配置</p>
+<p>1）在SMS/settings.py中通过ROOT_URLCONF指定url配置，默认已经有此配置。</p>
+<figure data-type="image" tabindex="5"><img src="https://childlike2333.github.io/post-images/1586142445324.png" alt="" loading="lazy"></figure>
+<p>2）打开SMS/urls.py可以看到默认配置。</p>
+<figure data-type="image" tabindex="6"><img src="https://childlike2333.github.io/post-images/1586142462682.png" alt="" loading="lazy"></figure>
+<h5 id="注意点">注意点</h5>
+<ul>
+<li>
+<p>在SMS/urls.py中进行包含配置，在各自应用中创建具体配置。</p>
+</li>
+<li>
+<p>定义urlpatterns列表，存储url()对象，这个名称是固定的。</p>
+<blockquote>
+<p>urlpatterns中的每个正则表达式在第一次访问它们时被编译，这使得运行很快。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="语法">语法</h5>
+<p>url()对象，被定义在django.conf.urls包中，有两种语法结构：</p>
+<p><strong>语法一</strong>：包含，一般在自定义应用中创建一个urls.py来定义url。</p>
+<p>这种语法用于SMS/urls.py中，目的是将应用的urls配置到应用内部，数据更清晰并且易于维护。</p>
+<pre><code>url(正则,include('应用.urls'))
+</code></pre>
+<p>1）如示例在SMS/urls.py文件，包含booktest中的urls。</p>
+<pre><code>url(r'^',include('studentToClass.urls')),
+</code></pre>
+<ol>
+<li>如示例在SMS目录下创建urls.py文件。</li>
+</ol>
+<p><strong>语法二</strong>：定义，指定URL和视图函数的对应关系。</p>
+<p>在应用内部创建urls.py文件，指定请求地址与视图的对应关系。</p>
+<pre><code>url(正则,'视图函数名称')
+</code></pre>
+<p>1）如示例在studentToClass/urls.py中创建首页的url，代码如下</p>
+<pre><code>from django.conf.urls import url
+from booktest import views
+urlpatterns=[
+    url(r'^$',views.index),
+]
+</code></pre>
+<p>2）如示例在booktest/views.py中创建视图index</p>
+<pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+  return HttpResponse(&quot;视图函数index&quot;)
+</code></pre>
+<h5 id="获取值">获取值</h5>
+<p>请求的url被看做是一个普通的python字符串，进行匹配时不包括域名、get或post参数。 如请求地址如下：</p>
+<pre><code>http://127.0.0.1:8000/arg1
+</code></pre>
+<p>1）去除掉域名和参数部分，并将最前面的/去除后，只剩下如下部分与正则匹配。</p>
+<pre><code>arg1/
+</code></pre>
+<p>2）打开booktest/urls.py文件，定义与这个地址匹配的url如下：</p>
+<pre><code>url(r'^arg(\d+)/$',views.get_arg)
+</code></pre>
+<p>3）在booktest/views.py中创建视图show_arg。</p>
+<pre><code>def get_arg(request,arg):
+
+    return HttpResponse('arg%s'%arg)
+</code></pre>
+<p>4）启动服务器，输入上面的网址，浏览器中效果如下图。</p>
+<figure data-type="image" tabindex="7"><img src="https://childlike2333.github.io/post-images/1586142479024.png" alt="" loading="lazy"></figure>
+<p>可以在匹配过程中从url中捕获参数，每个捕获的参数都作为一个普通的python字符串传递给视图。</p>
+<p>二</p>
+<p>通过request获取</p>
+<p><a href="http://127.0.0.1:8000/arg99/?name=5">http://127.0.0.1:8000/arg99/?name=5</a></p>
+<pre><code>def get_arg(request,arg):
+
+    name = request.GET.get('name')
+
+    return HttpResponse('arg%s,%s'%(arg,name))
+</code></pre>
+<h4 id="错误视图">错误视图</h4>
+<p>视图就是python中的函数，视图一般被定义在&quot;应用/views.py&quot;文件中，此例中为&quot;booktest/views.py&quot;文件。视图必须返回一个HttpResponse对象或子对象作为响应。响应可以是一张网页的HTML内容，一个重定向，一个404错误等。</p>
+<p>视图的第一个参数必须为HttpRequest实例，还可能包含下参数如：</p>
+<ul>
+<li>通过正则表达式组获得的关键字参数。</li>
+<li>通过正则表达式组获取的位置参数。</li>
+</ul>
+<h5 id="内置错误视图">内置错误视图</h5>
+<p>Django内置处理HTTP错误的视图，主要错误及视图包括：</p>
+<ul>
+<li>404错误：page not found视图</li>
+<li>500错误：server error视图</li>
+</ul>
+<p>如果想看到错误视图而不是调试信息，需要修改test3/setting.py文件的DEBUG项。</p>
+<pre><code>DEBUG = False
+ALLOWED_HOSTS = ['*', ]
+</code></pre>
+<h5 id="404错误及视图">404错误及视图</h5>
+<p>将请求地址进行url匹配后，没有找到匹配的正则表达式，则调用404视图，这个视图会调用404.html的模板进行渲染。视图传递变量request_path给模板，表示导致错误的URL。</p>
+<p>1）在templates中创建404.html。</p>
+<p>2）定义代码如下：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+找不到了
+&lt;hr/&gt;
+{{request_path}}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>3）在浏览器中输入如下网址：</p>
+<pre><code>http://127.0.0.1:8000/test/
+</code></pre>
+<p>4）运行效果如下图：</p>
+<h5 id="500错误及视图">500错误及视图</h5>
+<p>在视图中代码运行报错会发生500错误，调用内置错误视图，使用templates/500.html模板渲染。</p>
+<p>视图处理过程如下图：</p>
+<h4 id="httpreqeust对象">HttpReqeust对象</h4>
+<p>服务器接收到http协议的请求后，会根据报文创建HttpRequest对象，这个对象不需要我们创建，直接使用服务器构造好的对象就可以。<strong>视图的第一个参数必须是HttpRequest对象</strong>，在django.http模块中定义了HttpRequest对象的API。</p>
+<h5 id="属性">属性</h5>
+<blockquote>
+<p>下面除非特别说明，属性都是只读的。</p>
+</blockquote>
+<ul>
+<li>path：一个字符串，表示请求的页面的完整路径，不包含域名和参数部分。</li>
+<li>method：一个字符串，表示请求使用的HTTP方法，常用值包括：'GET'、'POST'。
+<ul>
+<li>在浏览器中给出地址发出请求采用get方式，如超链接。</li>
+<li>在浏览器中点击表单的提交按钮发起请求，如果表单的method设置为post则为post请求。</li>
+</ul>
+</li>
+<li>encoding：一个字符串，表示提交的数据的编码方式。
+<ul>
+<li>如果为None则表示使用浏览器的默认设置，一般为utf-8。</li>
+<li>这个属性是可写的，可以通过修改它来修改访问表单数据使用的编码，接下来对属性的任何访问将使用新的encoding值。</li>
+</ul>
+</li>
+<li>GET：QueryDict类型对象，类似于字典，包含get请求方式的所有参数。</li>
+<li>POST：QueryDict类型对象，类似于字典，包含post请求方式的所有参数。</li>
+<li>FILES：一个类似于字典的对象，包含所有的上传文件。</li>
+<li>COOKIES：一个标准的Python字典，包含所有的cookie，键和值都为字符串。</li>
+<li>session：一个既可读又可写的类似于字典的对象，表示当前的会话，只有当Django 启用会话的支持时才可用，详细内容见&quot;状态保持&quot;。</li>
+<li>运行服务器，在浏览器中浏览首页，可以在浏览器“开发者工具”中看到请求信息如下图：</li>
+</ul>
+<h5 id="示例">示例</h5>
+<p>接下来演示属性path、method、encoding，对于GET、POST、FILES、COOKIES、session后面会有详细讲解。</p>
+<h5 id="path-encoding">path、encoding</h5>
+<p>1）打开booktest/views.py文件，代码如下：</p>
+<pre><code>print ('%s,%s'%(request.path,request.encoding))
+</code></pre>
+<h5 id="method">method</h5>
+<p>1）打开booktest/views.py文件，编写视图method_show，代码如下：</p>
+<pre><code>return HttpResponse(request.method)
+</code></pre>
+<p>3）修改templates/booktest/下创建index.html文件，添加代码如下：</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;首页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+...
+...
+2.request对象的method属性：&lt;br/&gt;
+&lt;a href='/arg22/'&gt;get方式&lt;/a&gt;&lt;br/&gt;
+&lt;form method=&quot;post&quot; action=&quot;/arg22/&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;post方式&quot;&gt;
+&lt;/form&gt;
+&lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>4）打开浏览器，输入如下网址：</p>
+<pre><code>http://127.0.0.1:8000/
+</code></pre>
+<p>5）浏览效果如下图：</p>
+<p>6）点击链接，转到method_show，浏览效果如下图:</p>
+<ol>
+<li>回到method_test页面，点击按钮，转到method_post，浏览效果如下图，报错了。</li>
+</ol>
+<p>8）打开test3/settings.py文件，将MIDDLEWARE_CLASSES项的csrf注释。</p>
+<p>9）回到浏览器中刷新，浏览效果如下图，点击“继续”按钮。</p>
+<p>10）最终浏览效果如下图：</p>
+<p>QueryDict对象</p>
+<ul>
+<li>定义在django.http.QueryDict</li>
+<li>HttpRequest对象的属性GET、POST都是QueryDict类型的对象</li>
+<li>与python字典不同，QueryDict类型的对象用来处理同一个键带有多个值的情况</li>
+<li>方法get()：根据键获取值</li>
+<li>如果一个键同时拥有多个值将获取最后一个值</li>
+<li>如果键不存在则返回None值，可以设置默认值进行后续处理</li>
+</ul>
+<pre><code>dict.get('键',默认值)
+可简写为
+dict['键']
+</code></pre>
+<ul>
+<li>方法getlist()：根据键获取值，值以列表返回，可以获取指定键的所有值</li>
+<li>如果键不存在则返回空列表[]，可以设置默认值进行后续处理</li>
+</ul>
+<pre><code>dict.getlist('键',默认值)
+</code></pre>
+<h5 id="getandpost属性">GetandPost属性</h5>
+<h5 id="get属性">GET属性</h5>
+<p>请求格式：在请求地址结尾使用?，之后以&quot;键=值&quot;的格式拼接，多个键值对之间以&amp;连接。</p>
+<p>例：网址如下</p>
+<pre><code>http://127.0.0.1/?a=10&amp;b=20&amp;c=python
+</code></pre>
+<p>其中的请求参数为：</p>
+<pre><code>a=10&amp;b=20&amp;c=python
+</code></pre>
+<ul>
+<li>分析请求参数，键为'a'、'b'、'c'，值为'10'、'20'、'python'。</li>
+<li>在Django中可以使用HttpRequest对象的GET属性获得get方方式请求的参数。</li>
+<li>GET属性是一个QueryDict类型的对象，键和值都是字符串类型。</li>
+<li>键是开发人员在编写代码时确定下来的。</li>
+<li>值是根据数据生成的。</li>
+</ul>
+<h5 id="post属性">Post属性</h5>
+<pre><code class="language-python">get方式:&lt;br/&gt;
+&lt;a href=&quot;/arg66/?username=1&amp;passwd=2&quot;&gt;get方式提交数据&lt;/a&gt;&lt;br/&gt;
+post方式:&lt;br/&gt;
+&lt;form method=&quot;post&quot; action=&quot;/arg/&quot;&gt;
+    账号：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br/&gt;
+    密码：&lt;input type=&quot;password&quot; name=&quot;passwd&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<pre><code>username = request.POST.get('username')
+passwd = request.POST.get('passwd')
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">
+                <h3 class="post-title">
+                  05——前端基础
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge ">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge secondary">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge warning">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>05——前端基础 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>05——前端基础</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge secondary">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="前端开发概述">前端开发概述</h2>
+<h4 id="什么是前端开发">什么是前端开发</h4>
+<blockquote>
+<p>前端开发也叫做web前端开发，它指的是基于web的互联网产品的页面(也可叫界面)开发及功能开发。</p>
+</blockquote>
+<h4 id="什么是互联网产品">什么是互联网产品</h4>
+<blockquote>
+<p>互联网产品就是指网站为满足用户需求而创建的用于运营的功能及服务，百度搜索、淘宝、QQ、微博、网易邮箱等都是互联网产品。</p>
+</blockquote>
+<h4 id="前端需要的技术">前端需要的技术</h4>
+<p>UI设计师设计出来的页面样式效果图</p>
+<p>把效果图布局成页面： HTML语言和CSS语言</p>
+<p>页面功能的开发：javascript和一些框架</p>
+<h2 id="html语言">HTML语言</h2>
+<h3 id="html概述">HTML概述</h3>
+<h4 id="什么是html语言">什么是HTML语言</h4>
+<blockquote>
+<p>HTML是 HyperText Mark-up Language 的首字母简写，意思是超文本标记语言，超文本指的是超链接，标记指的是标签，是一种用来制作网页的语言，这种语言由一个个的标签组成，用这种语言制作的文件保存的是一个文本文件，文件的扩展名为html或者htm，一个html文件就是一个网页，html文件用编辑器打开显示的是文本，可以用文本的方式编辑它，如果用浏览器打开，浏览器会按照标签描述内容将文件渲染成网页，显示的网页可以从一个网页链接跳转到另外一个网页。</p>
+</blockquote>
+<h4 id="html文档类型">HTML文档类型</h4>
+<p>xhtml 1.0 是html5之前常用的一个版本，不过目前html5已经基本取代了xhtml 1.0，在html5中增加了标签元素以及元素属性。</p>
+<h4 id="第一个html">第一个HTML</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;  &lt;!-- 文档声明--&gt;
+&lt;html lang=&quot;en&quot;&gt;  &lt;!-- 定义html文档的整体,en定义网页的语言为英文，定义为中文是zh-CN,没啥关系，一般作为分析统计用--&gt;
+&lt;head&gt; &lt;!-- head标签负责对网页进行一些设置以及定义标题，设置包括定义网页的编码格式，外链css样式文件和javascript文件等--&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt; &lt;!-- 标题的内容会显示在标题栏--&gt;
+&lt;/head&gt;
+&lt;body&gt; &lt;!--内编写网页上显示的内容 --&gt;
+注释： &lt;!-- 这是一段注释 --&gt;
+什么是前端
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="html标签">HTML标签</h3>
+<h4 id="标题标签">标题标签</h4>
+<p>通过 &lt;h1&gt;、&lt;h2&gt;、&lt;h3&gt;、&lt;h4&gt;、&lt;h5&gt;、&lt;h6&gt;,标签可以在网页上定义6种级别的标题。6种级别的标题表示文档的6级目录层级关系，比如说： &lt;h1&gt;用作主标题，其后是 &lt;h2&gt;，再其次是&lt;h3&gt;，以此类推。搜索引擎会使用标题将网页的结构和内容编制索引，所以网页上使用标题是很重要的。</p>
+<h4 id="段落标签">段落标签</h4>
+<p>段落标签:  &lt;p&gt;标签定义一个文本段落，一个段落含有默认的上下间距，段落之间会用这种默认间距隔开</p>
+<h4 id="换行标签">换行标签</h4>
+<p>代码中成段的文字，直接在代码中回车换行，在渲染成网页时候不认这种换行，如果真想换行，可以在代码的段落中插入&lt;br&gt; 或者&lt;br |/&gt;来强制换行</p>
+<h4 id="空格">空格</h4>
+<p>代码中成段的文字，如果文字间想空多个空格，在代码中空多个空格，在渲染成网页时只会显示一个空格，如果想显示多个空格，可以使用空格的字符实体,代码如下：&amp;nbsp;</p>
+<p>在网页上显示 “&lt;” 和 “&gt;” 会误认为是标签，想在网页上显示“&lt;”和“&gt;”可以使用它们的字符实体，比如： 3 &amp;lt; 5   &amp;gt</p>
+<h4 id="html块标签">html块标签</h4>
+<p>块元素 &lt;div&gt;： 表示一块内容，没有具体的语义，但是非常重要</p>
+<p>行内元素&lt;span&gt; : 表示一行中的一小段内容，没有具体的语义</p>
+<h4 id="图像标签">图像标签</h4>
+<p>&lt;img&gt;标签可以在网页上插入一张图片，它是独立使用的标签，它的常用属性有：</p>
+<ul>
+<li>src属性 定义图片的引用地址</li>
+<li>alt属性 定义图片加载失败时显示的文字，搜索引擎会使用这个文字收录图片、盲人读屏软件会读取这个文字让盲人识别图片，所以此属性非常重要。</li>
+</ul>
+<pre><code>&lt;img src=&quot;images/pic.jpg&quot; alt=&quot;产品图片&quot; /&gt;
+</code></pre>
+<h4 id="绝对路径和相对路径">绝对路径和相对路径</h4>
+<p>像网页上插入图片这种外部文件，需要定义文件的引用地址，引用外部文件还包括引用外部样式表，javascript等等，引用地址分为绝对地址和相对地址。</p>
+<ul>
+<li>绝对地址：相对于磁盘的位置去定位文件的地址</li>
+<li>相对地址：相对于引用文件本身去定位被引用的文件地址</li>
+</ul>
+<p>绝对地址在整体文件迁移时会因为磁盘和顶层目录的改变而找不到文件，相对路径就没有这个问题。相对路径的定义技巧：</p>
+<ul>
+<li>“ ./ ” 表示当前文件所在目录下，比如：“./pic.jpg” 表示当前目录下的pic.jpg的图片，这个使用时可以省略。</li>
+<li>“ ../ ” 表示当前文件所在目录下的上一级目录，比如：“../images/pic.jpg” 表示当前目录下的上一级目录下的images文件夹中的pic.jpg的图片</li>
+</ul>
+<h4 id="链接标签">链接标签</h4>
+<p>&lt;a&gt;标签可以在网页上定义一个链接地址，它的常用属性有：</p>
+<ul>
+<li>href属性 定义跳转的地址</li>
+<li>title属性 定义鼠标悬停时弹出的提示文字框</li>
+<li>target属性 定义链接窗口打开的位置
+<ul>
+<li>target=&quot;_self&quot; 缺省值，新页面替换原来的页面，在原来位置打开</li>
+<li>target=&quot;_blank&quot; 新页面会在新开的一个浏览器窗口打开</li>
+</ul>
+</li>
+</ul>
+<pre><code>&lt;a href=&quot;#&quot;&gt;&lt;/a&gt; &lt;!--  # 表示链接到页面顶部   --&gt;
+&lt;a href=&quot;http://www.itcast.cn/&quot; title=&quot;跳转的传智播客网站&quot;&gt;传智播客&lt;/a&gt;
+&lt;a href=&quot;2.html&quot; target=&quot;_blank&quot;&gt;测试页面2&lt;/a&gt;
+</code></pre>
+<h4 id="有编号列表">有编号列表</h4>
+<h5 id="有序列表">有序列表</h5>
+<p>在网页上定义一个有编号的内容列表可以用<ol>、<li>配合使用来实现，代码如下：</p>
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;列表文字一&lt;/li&gt;
+    &lt;li&gt;列表文字二&lt;/li&gt;
+    &lt;li&gt;列表文字三&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<h5 id="无序列表">无序列表</h5>
+<p>在网页上定义一个无编号的内容列表可以用<ul>、<li>配合使用来实现，代码如下：</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻标题一&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻标题二&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻标题三&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h4 id="表格">表格</h4>
+<p>&lt;table&gt;标签：声明一个表格，它的常用属性如下：</p>
+<ul>
+<li>border属性 定义表格的边框，设置值是数值</li>
+<li>cellpadding属性 定义单元格内容与边框的距离，设置值是数值</li>
+<li>cellspacing属性 定义单元格与单元格之间的距离，设置值是数值</li>
+<li>align属性 设置整体表格相对于浏览器窗口的水平对齐方式,设置值有：left | center | right</li>
+</ul>
+<p>2、&lt;tr&gt;标签：定义表格中的一行</p>
+<p>3、&lt;td&gt;和&lt;th&gt;标签：定义一行中的一个单元格，td代表普通单元格，th表示表头单元格，它们的常用属性如下：</p>
+<ul>
+<li>align 设置单元格中内容的水平对齐方式,设置值有：left | center | right</li>
+<li>valign 设置单元格中内容的垂直对齐方式 top | middle | bottom</li>
+<li>colspan 设置单元格水平合并，设置值是数值</li>
+<li>rowspan 设置单元格垂直合并，设置值是数值</li>
+</ul>
+<h3 id="表单">表单</h3>
+<p>表单用于搜集不同类型的用户输入，表单由不同类型的标签组成，相关标签及属性用法如下：</p>
+<p>1、&lt;form&gt;标签 定义整体的表单区域</p>
+<ul>
+<li>action属性 定义表单数据提交地址</li>
+<li>method属性 定义表单提交的方式，一般有“get”方式和“post”方式</li>
+</ul>
+<p>2、&lt;label&gt;标签 为表单元素定义文字标注</p>
+<p>3、&lt;input&gt;标签 定义通用的表单元素</p>
+<ul>
+<li>type属性
+<ul>
+<li>type=&quot;text&quot; 定义单行文本输入框</li>
+<li>type=&quot;password&quot; 定义密码输入框</li>
+<li>type=&quot;radio&quot; 定义单选框</li>
+<li>type=&quot;checkbox&quot; 定义复选框</li>
+<li>type=&quot;file&quot; 定义上传文件</li>
+<li>type=&quot;submit&quot; 定义提交按钮</li>
+<li>type=&quot;reset&quot; 定义重置按钮</li>
+<li>type=&quot;button&quot; 定义一个普通按钮</li>
+<li>type=&quot;image&quot; 定义图片作为提交按钮，用src属性定义图片地址</li>
+<li>type=&quot;hidden&quot; 定义一个隐藏的表单域，用来存储值</li>
+</ul>
+</li>
+<li>value属性 定义表单元素的值</li>
+<li>name属性 定义表单元素的名称，此名称是提交数据时的键名</li>
+</ul>
+<p>4、&lt;textarea&gt;标签 定义多行文本输入框</p>
+<p>5、&lt;select&gt;标签 定义下拉表单元素</p>
+<p>6、&lt;option&gt;标签 与&lt;select&gt;标签配合，定义下拉表单元素中的选项</p>
+<p><strong>注册表单实例：</strong></p>
+<pre><code class="language-html">&lt;form action=&quot;http://www...&quot; method=&quot;get&quot;&gt;
+&lt;p&gt;
+&lt;label&gt;姓名：&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;密码：&lt;/label&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;性别：&lt;/label&gt;
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;0&quot; /&gt; 男
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot; /&gt; 女
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;爱好：&lt;/label&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;sing&quot; /&gt; 唱歌
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;run&quot; /&gt; 跑步
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;swiming&quot; /&gt; 游泳
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;照片：&lt;/label&gt;
+&lt;input type=&quot;file&quot; name=&quot;person_pic&quot;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;个人描述：&lt;/label&gt;
+&lt;textarea name=&quot;about&quot;&gt;&lt;/textarea&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;label&gt;籍贯：&lt;/label&gt;
+&lt;select name=&quot;site&quot;&gt;
+    &lt;option value=&quot;0&quot;&gt;北京&lt;/option&gt;
+    &lt;option value=&quot;1&quot;&gt;上海&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;广州&lt;/option&gt;
+    &lt;option value=&quot;3&quot;&gt;深圳&lt;/option&gt;
+&lt;/select&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;input type=&quot;submit&quot; name=&quot;&quot; value=&quot;提交&quot;&gt;
+&lt;!-- input类型为submit定义提交按钮  
+     还可以用图片控件代替submit按钮提交，一般会导致提交两次，不建议使用。如：
+     &lt;input type=&quot;image&quot; src=&quot;xxx.gif&quot;&gt;
+--&gt;
+&lt;input type=&quot;reset&quot; name=&quot;&quot; value=&quot;重置&quot;&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+</code></pre>
+<h2 id="css">CSS</h2>
+<h3 id="css概述">CSS概述</h3>
+<p>为了让网页元素的样式更加丰富，也为了让网页的内容和样式能拆分开，CSS由此思想而诞生，CSS是 Cascading Style Sheets<br>
+的首字母缩写，意思是层叠样式表。有了CSS，html中大部分表现样式的标签就废弃不用了，html只负责文档的结构和内容，表现形式完全交给CSS，html文档变得更加简洁。</p>
+<h3 id="css基本语法及页面引用">CSS基本语法及页面引用</h3>
+<h4 id="基本语法">基本语法</h4>
+<p>css的定义方法是：</p>
+<blockquote>
+<p>选择器 { 属性:值; 属性:值; 属性:值;}</p>
+</blockquote>
+<p>选择器是将样式和页面元素关联起来的名称，属性是希望设置的样式属性每个属性有一个或多个值。代码示例：</p>
+<pre><code>/*
+    css注释 ctrl+shift+&quot;/&quot;
+*/
+
+
+div{ 
+    width:100px; 
+    height:100px; 
+    color:red 
+}
+</code></pre>
+<h4 id="css页面引入方法">css页面引入方法</h4>
+<p>1、外联式：通过link标签，链接到外部样式表到页面中。</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/main.css&quot;&gt;
+</code></pre>
+<p>2、嵌入式：通过style标签，在网页上创建嵌入的样式表。</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    div{ width:100px; height:100px; color:red }
+    ......
+&lt;/style&gt;
+</code></pre>
+<p>3、内联式：通过标签的style属性，在标签上直接写样式。</p>
+<pre><code>&lt;div style=&quot;width:100px; height:100px; color:red &quot;&gt;......&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;content-Type&quot; charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;style&gt;
+        #d2 {color: green}
+    &lt;/style&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;d1&quot; style=&quot;color: red&quot;&gt;我是一个div标签&lt;/div&gt;
+&lt;div id=&quot;d2&quot;&gt;我是一个div&lt;/div&gt;
+&lt;div id=&quot;d3&quot;&gt;我是一个div&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-css">/*
+这是 测试CSS引入的一个文件
+*/
+
+#d3 {color: blue}
+</code></pre>
+<h3 id="css文本设置">CSS文本设置</h3>
+<p>常用的应用文本的css样式：</p>
+<ul>
+<li>
+<p>color 设置文字的颜色，如： color:red;</p>
+</li>
+<li>
+<p>font-size 设置文字的大小，如：font-size:12px;</p>
+</li>
+<li>
+<p>font-family 设置文字的字体，如：font-family:'微软雅黑';</p>
+</li>
+<li>
+<p>font-style 设置字体是否倾斜，如：font-style:'normal';  设置不倾斜，font-style:'italic';设置文字倾斜</p>
+</li>
+<li>
+<p>font-weight 设置文字是否加粗，如：font-weight:bold; 设置加粗 font-weight:normal 设置不加粗</p>
+</li>
+<li>
+<p>line-height 设置文字的行高，设置行高相当于在每行文字的上下同时加间距， 如：line-height:24px;   <img src="https://childlike2333.github.io/post-images/1586141951791.jpg" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>font 同时设置文字的几个属性，写的顺序有兼容问题，建议按照如下顺序写： font：是否加粗 字号/行高 字体；如： font:normal 12px/36px '微软雅黑';</p>
+</li>
+<li>
+<p>text-decoration 设置文字的下划线，如：text-decoration:none; 将文字下划线去掉</p>
+</li>
+<li>
+<p>text-indent 设置文字首行缩进，如：text-indent:24px; 设置文字首行缩进24px   <img src="https://childlike2333.github.io/post-images/1586142046989.jpg" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>text-align 设置文字水平对齐方式，如text-align:center 设置文字水平居中</p>
+</li>
+</ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;style&gt;
+        #t1 {color: green;
+            font-size:13px;
+            font-family: '微软雅黑';
+            font-style:italic;
+            font-weight:bold;
+            line-height: 24px;
+            text-decoration:underline;
+            text-align: center;
+        }
+
+    &lt;/style&gt;
+
+    &lt;div id=&quot;t1&quot;&gt;为了让网页元素的样式更加丰富，也为了让网页的内容和样式能拆分开，CSS由此思想而诞生，CSS是 Cascading Style Sheets
+的首字母缩写，意思是层叠样式表。有了CSS，html中大部分表现样式的标签就废弃不用了，html只负责文档的结构和内容，表现形式完全交给CSS，html文档变得更加简洁。&lt;/div&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="css颜色表示法">css颜色表示法</h3>
+<p>css颜色值主要有三种表示方法：</p>
+<p>1、颜色名表示，比如：red 红色，gold 金色</p>
+<p>2、rgb表示，比如：rgb(255,0,0)表示红色,</p>
+<p><em>RGB</em>色彩模式是工业界的一种颜色标准，是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，<em>RGB</em>即是代表红、绿、蓝三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是目前运用最广的颜色系统之一。</p>
+<p>3、16进制数值表示，比如：#ff0000 表示红色，这种可以简写成 #f00，而16进制数值表示则就是将rgb的数值转换成3个16进制数来进行表示</p>
+<h3 id="css选择器">css选择器</h3>
+<p>常用的选择器有如下几种：</p>
+<h5 id="1-标签选择器">1、标签选择器</h5>
+<p>标签选择器，此种选择器影响范围大，建议尽量应用在层级选择器中。<br>
+举例：</p>
+<pre><code>*{margin:0;padding:0}
+div{color:red}   
+
+
+&lt;div&gt;....&lt;/div&gt;   &lt;!-- 对应以上两条样式 --&gt;
+&lt;div class=&quot;box&quot;&gt;....&lt;/div&gt;   &lt;!-- 对应以上两条样式 --&gt;
+</code></pre>
+<h5 id="2-id选择器">2、id选择器</h5>
+<p>通过id名来选择元素，元素的id名称不能重复，所以一个样式设置项只能对应于页面上一个元素，不能复用，id名一般给程序使用，所以不推荐使用id作为选择器。<br>
+举例：</p>
+<pre><code>#box{color:red} 
+
+&lt;div id=&quot;box&quot;&gt;....&lt;/div&gt;   &lt;!-- 对应以上一条样式，其它元素不允许应用此样式 --&gt;
+</code></pre>
+<h5 id="3-类选择器">3、类选择器</h5>
+<p>通过类名来选择元素，一个类可应用于多个元素，一个元素上也可以使用多个类，应用灵活，可复用，是css中应用最多的一种选择器。<br>
+举例：</p>
+<pre><code>.red{color:red}
+.big{font-size:20px}
+.mt10{margin-top:10px} 
+
+&lt;div class=&quot;red&quot;&gt;....&lt;/div&gt;
+&lt;h1 class=&quot;red big mt10&quot;&gt;....&lt;/h1&gt;
+&lt;p class=&quot;red mt10&quot;&gt;....&lt;/p&gt;
+</code></pre>
+<h5 id="4-层级选择器">4、层级选择器</h5>
+<p>主要应用在选择父元素下的子元素，或者子元素下面的子元素，可与标签元素结合使用，减少命名，同时也可以通过层级，防止命名冲突。<br>
+举例：</p>
+<pre><code>.box span{color:red}
+.box .red{color:pink}
+.red{color:red}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;span&gt;....&lt;/span&gt;
+    &lt;a href=&quot;#&quot; class=&quot;red&quot;&gt;....&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;h3 class=&quot;red&quot;&gt;....&lt;/h3&gt;
+</code></pre>
+<h5 id="5-组选择器">5、组选择器</h5>
+<p>多个选择器，如果有同样的样式设置，可以使用组选择器。<br>
+举例：</p>
+<pre><code>.box1,.box2,.box3{width:100px;height:100px}
+.box1{background:red}
+.box2{background:pink}
+.box2{background:gold}
+
+&lt;div class=&quot;box1&quot;&gt;....&lt;/div&gt;
+&lt;div class=&quot;box2&quot;&gt;....&lt;/div&gt;
+&lt;div class=&quot;box3&quot;&gt;....&lt;/div&gt;
+</code></pre>
+<h5 id="6-伪类及伪元素选择器">6、伪类及伪元素选择器</h5>
+<p>常用的伪类选择器有hover，表示鼠标悬浮在元素上时的状态，伪元素选择器有before和after,它们可以通过样式在元素中插入内容。</p>
+<pre><code>.box1:hover{color:red}
+.box2:before{content:'行首文字';}
+.box3:after{content:'行尾文字';}
+
+
+&lt;div class=&quot;box1&quot;&gt;....&lt;/div&gt;
+&lt;div class=&quot;box2&quot;&gt;....&lt;/div&gt;
+&lt;div class=&quot;box3&quot;&gt;....&lt;/div&gt;
+</code></pre>
+<p>Css的内容还有非常的多，包括模型，浮动，定位等等，但是这部分不是我们学习的重点，我们只需要学会什么是CSS，并且能够试着修改它的部分属性即可，我们已经有非常多优秀的前端开源框架，去做这部分的属性，提供给我们最编辑的使用方法，比如 layui、 elementUI等等，他们都提供了最简便的使用方式，让我们能够构建复杂的界面，layui更是面向后端服务器端开发者的框架。</p>
+<h2 id="javascript">JavaScript</h2>
+<p>JavaScript是运行在浏览器端的脚步语言，JavaScript主要解决的是前端与用户交互的问题，包括使用交互与数据交互。 JavaScript是浏览器解释执行的，前端脚本语言还有JScript（微软，IE独有），ActionScript( Adobe公司，需要插件)等。</p>
+<p><strong>前端三大块</strong><br>
+1、HTML：页面结构<br>
+2、CSS：页面表现：元素大小、颜色、位置、隐藏或显示、部分动画效果<br>
+3、JavaScript：页面行为：部分动画效果、页面与用户的交互、页面功能</p>
+<h3 id="javascript嵌入页面的方式">JavaScript嵌入页面的方式</h3>
+<p>1、行间事件（主要用于事件）</p>
+<pre><code>&lt;input type=&quot;button&quot; name=&quot;&quot; onclick=&quot;alert('ok！');&quot;&gt;
+</code></pre>
+<p>2、页面script标签嵌入</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;        
+    alert('ok！');
+&lt;/script&gt;
+</code></pre>
+<p>3、外部引入</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/index.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; onclick=&quot;alert('ok！');&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    alert('ok！');
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-js">alert('ok！');
+</code></pre>
+<h3 id="变量">变量</h3>
+<p>JavaScript 是一种弱类型语言，javascript的变量类型由它的值来决定。 定义变量需要用关键字 'var'</p>
+<pre><code> var iNum = 123;
+ var sTr = 'asd';
+
+ //同时定义多个变量可以用&quot;,&quot;隔开，公用一个‘var’关键字
+
+ var iNum = 45,sTr='qwe',sCount='68';
+</code></pre>
+<p><strong>变量类型</strong></p>
+<p>5种基本数据类型：<br>
+1、number 数字类型<br>
+2、string 字符串类型<br>
+3、boolean 布尔类型 true 或 false<br>
+4、undefined  undefined类型，变量声明未初始化，它的值就是undefined<br>
+5、null null类型，表示空对象，如果定义的变量将来准备保存对象，可以将变量初始化为null,在页面上获取不到对象，返回的值就是null</p>
+<p>1种复合类型：<br>
+object</p>
+<p><strong>javascript语句与注释</strong></p>
+<p>1、一条javascript语句应该以“;”结尾</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;    
+var iNum = 123;
+var sTr = 'abc123';
+function fnAlert(){
+    alert(sTr);
+};
+fnAlert();
+&lt;/script&gt;
+</code></pre>
+<p>2、javascript注释</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;    
+
+// 单行注释
+var iNum = 123;
+/*  
+    多行注释
+    1、...
+    2、...
+*/
+var sTr = 'abc123';
+&lt;/script&gt;
+</code></pre>
+<p><strong>变量、函数、属性、函数参数命名规范</strong></p>
+<p>1、区分大小写<br>
+2、第一个字符必须是字母、下划线（_）或者美元符号（$）<br>
+3、其他字符可以是字母、下划线、美元符或数字</p>
+<h3 id="获取元素方法一">获取元素方法一</h3>
+<p>可以使用内置对象document上的getElementById方法来获取页面上设置了id属性的元素，获取到的是一个html对象，然后将它赋值给一个变量，比如：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var oDiv = document.getElementById('div1');
+&lt;/script&gt;
+....
+&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;
+</code></pre>
+<p>上面的语句，如果把javascript写在元素的上面，就会出错，因为页面上从上往下加载执行的，javascript去页面上获取元素div1的时候，元素div1还没有加载，解决方法有两种：</p>
+<p>第一种方法：将javascript放到页面最下边</p>
+<pre><code>....
+&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;
+....
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var oDiv = document.getElementById('div1');
+&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>第二种方法：将javascript语句放到window.onload触发的函数里面,获取元素的语句会在页面加载完后才执行，就不会出错了。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function(){
+        var oDiv = document.getElementById('div1');
+    }
+&lt;/script&gt;
+
+....
+
+&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;
+</code></pre>
+<h3 id="操作元素属性">操作元素属性</h3>
+<p>获取的页面元素，就可以对页面元素的属性进行操作，属性的操作包括属性的读和写。</p>
+<p><strong>操作属性的方法</strong><br>
+1、“.” 操作<br>
+2、“[ ]”操作</p>
+<p><strong>属性写法</strong></p>
+<p>1、html的属性和js里面属性写法一样<br>
+2、“class” 属性写成 “className”<br>
+3、“style” 属性里面的属性，有横杠的改成驼峰式，比如：“font-size”，改成”style.fontSize”</p>
+<p>通过“.”操作属性：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;input1&quot; value=&quot;这是一个输入框&quot;&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    window.onload = function(){
+        var oInput = document.getElementById('input1');
+        oInput.value = &quot;233333&quot;;
+        oInput.style.color = 'blue';
+        oInput.style.fontSize = '24px';
+    }
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>innerHTML</strong><br>
+innerHTML可以读取或者写入标签包裹的内容</p>
+<p>对象.innerText 设置标签里面的文本</p>
+<p>对象.innerHTML设置可以为标签设置html内容</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;input1&quot; value=&quot;这是一个输入框&quot;&gt;
+&lt;a id=&quot;aHref&quot; href=&quot;www.baidu.com&quot;&gt;百度&lt;/a&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    window.onload = function(){
+        var oInput = document.getElementById('input1');
+        oInput.value = &quot;233333&quot;;
+        oInput.style.color = 'blue';
+        oInput.style.fontSize = '24px';
+
+        var aHref = document.getElementById('aHref')
+        //aHref.innerText = '腾讯'
+        aHref.innerHTML = '&lt;p&gt;这是一个测试&lt;p/&gt;';
+
+    }
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="函数">函数</h3>
+<p>函数就是重复执行的代码片。</p>
+<p><strong>函数定义与执行</strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    // 函数定义
+    function fnAlert(){
+        alert('hello!');
+    }
+    // 函数执行
+    fnAlert();
+&lt;/script&gt;
+</code></pre>
+<p><strong>变量与函数预解析</strong><br>
+JavaScript解析过程分为两个阶段，先是编译阶段，然后执行阶段，在编译阶段会将function定义的函数提前，并且将var定义的变量声明提前，将它赋值为undefined。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;    
+    fnAlert();       // 弹出 hello！
+    alert(iNum);  // 弹出 undefined
+    function fnAlert(){
+        alert('hello!');
+    }
+    var iNum = 123;
+&lt;/script&gt;
+</code></pre>
+<p><strong>提取行间事件</strong><br>
+在html行间调用的事件可以提取到javascript中调用，从而做到结构与行为分离。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;input1&quot; value=&quot;这是一个输入框&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;弹出输入的内容&quot; onclick=&quot;fnAlert()&quot;&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+        function fnAlert(){
+            var oInput = document.getElementById('input1');
+            inputValue = oInput.value;
+            alert(inputValue)
+        }
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>匿名函数</strong></p>
+<p>定义的函数可以不给名称，这个叫做匿名函数，可以将匿名函数直接赋值给元素绑定的事件来完成匿名函数的调用。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;input1&quot; value=&quot;这是一个输入框&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;弹出输入的内容&quot; id=&quot;button1&quot;&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    var but1 = document.getElementById('button1');
+    but1.onclick = function () {
+        var oInput = document.getElementById('input1');
+        inputValue = oInput.value;
+        alert(inputValue)
+    }
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>函数传参</strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function fnAlert(a){
+        alert(a);
+    }
+    fnAlert(12345);
+&lt;/script&gt;
+</code></pre>
+<p><strong>函数'return'关键字</strong><br>
+函数中'return'关键字的作用：<br>
+1、返回函数执行的结果<br>
+2、结束函数的运行<br>
+3、阻止默认行为</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+function fnAdd(iNum01,iNum02){
+    var iRs = iNum01 + iNum02;
+    return iRs;
+    alert('here!');
+}
+
+var iCount = fnAdd(3,4);
+alert(iCount);  //弹出7
+&lt;/script&gt;
+</code></pre>
+<h3 id="条件语句">条件语句</h3>
+<p>通过条件来控制程序的走向，就需要用到条件语句。</p>
+<p><strong>运算符</strong><br>
+1、算术运算符： +(加)、 -(减)、 *(乘)、 /(除)、 %(求余)<br>
+2、赋值运算符：=、 +=、 -=、 *=、 /=、 %=<br>
+3、条件运算符：<mark>、</mark>=、&gt;、&gt;=、&lt;、&lt;=、!=、&amp;&amp;(而且)、||(或者)、!(否)</p>
+<p><strong>if else</strong></p>
+<pre><code>var iNum01 = 3;
+var iNum02 = 5;
+var sTr;
+if(iNum01&gt;iNum02){
+    sTr = '大于';
+}
+else
+{
+    sTr = '小于';
+}
+alert(sTr);
+</code></pre>
+<p><strong>理解练习</strong><br>
+制作单个按钮点击切换元素的显示和隐藏效果</p>
+<p><strong>多重if else语句</strong></p>
+<pre><code>var iNow = 1;
+if(iNow==1)
+{
+    ... ;
+}
+else if(iNow==2)
+{
+    ... ;
+}
+else
+{
+    ... ;
+}
+</code></pre>
+<p><strong>switch语句</strong><br>
+多重if else语句可以换成性能更高的switch语句</p>
+<pre><code>var iNow = 1;
+
+switch (iNow){
+    case 1:
+        ...;
+        break;
+    case 2:
+        ...;
+        break;    
+    default:
+        ...;
+}
+</code></pre>
+<h3 id="数组及操作方法">数组及操作方法</h3>
+<p>数组就是一组数据的集合，javascript中，数组里面的数据可以是不同类型的。</p>
+<p><strong>定义数组的方法</strong></p>
+<pre><code>//对象的实例创建
+var aList = new Array(1,2,3);
+
+//直接量创建
+var aList2 = [1,2,3,'asd'];
+</code></pre>
+<p><strong>操作数组中数据的方法</strong><br>
+1、获取数组的长度：aList.length;</p>
+<pre><code>var aList = [1,2,3,4];
+alert(aList.length); // 弹出4
+</code></pre>
+<p>2、用下标操作数组的某个数据：aList[0];</p>
+<pre><code>var aList = [1,2,3,4];
+alert(aList[0]); // 弹出1
+</code></pre>
+<p>3、join()  将数组成员通过一个分隔符合并成字符串</p>
+<pre><code>var aList = [1,2,3,4];
+alert(aList.join('-')); // 弹出 1-2-3-4
+</code></pre>
+<p>4、push() 和 pop() 从数组最后增加成员或删除成员</p>
+<pre><code>var aList = [1,2,3,4];
+aList.push(5);
+alert(aList); //弹出1,2,3,4,5
+aList.pop();
+alert(aList); // 弹出1,2,3,4
+</code></pre>
+<p>5、unshift()和 shift()  从数组前面增加成员或删除成员</p>
+<pre><code>var aList = [1,2,3,4];
+aList.unshift(5);
+alert(aList); //弹出5,1,2,3,4
+aList.shift();
+alert(aList); // 弹出1,2,3,4
+</code></pre>
+<p>6、reverse() 将数组反转</p>
+<pre><code>var aList = [1,2,3,4];
+aList.reverse();
+alert(aList);  // 弹出4,3,2,1
+</code></pre>
+<p>7、indexOf() 返回数组中元素第一次出现的索引值</p>
+<pre><code>var aList = [1,2,3,4,1,3,4];
+alert(aList.indexOf(1));
+</code></pre>
+<p>8、splice() 在数组中增加或删除成员</p>
+<pre><code>var aList = [1,2,3,4];
+aList.splice(2,1,7,8,9); //从第2个元素开始，删除1个元素，然后在此位置增加'7,8,9'三个元素
+alert(aList); //弹出 1,2,7,8,9,4
+</code></pre>
+<p><strong>多维数组</strong><br>
+多维数组指的是数组的成员也是数组的数组。</p>
+<pre><code>var aList = [[1,2,3],['a','b','c']];
+
+alert(aList[0][1]); //弹出2;
+</code></pre>
+<p>批量操作数组中的数据，需要用到循环语句</p>
+<h3 id="循环语句">循环语句</h3>
+<p>程序中进行有规律的重复性操作，需要用到循环语句。</p>
+<p><strong>for循环</strong></p>
+<pre><code>for(var i=0;i&lt;len;i++)
+{
+    ......
+}
+</code></pre>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var aList = [1,2,3,4];
+    for(var i=0;i&lt;aList.length;i++){
+        alert(aList[i])
+    }
+&lt;/script&gt; 
+</code></pre>
+<p><strong>while循环</strong></p>
+<pre><code>var i=0;
+
+while(i&lt;8){
+    ......
+    i+;
+}
+</code></pre>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var aList = [1,2,3,4];
+    var i = 0;
+    while(i&lt;aList.length){
+        alert(aList[i])
+        i = i + 1;
+    }
+&lt;/script&gt;
+</code></pre>
+<p><strong>数组去重</strong></p>
+<pre><code>var aList = [1,2,3,4,4,3,2,1,2,3,4,5,6,5,5,3,3,4,2,1];
+
+var aList2 = [];
+
+for(var i=0;i&lt;aList.length;i++)
+{
+    if(aList.indexOf(aList[i])==i)
+    {
+        aList2.push(aList[i]);
+    }
+}
+
+alert(aList2);
+</code></pre>
+<h3 id="字符串处理方法">字符串处理方法</h3>
+<p>1、字符串合并操作：“ + ”</p>
+<pre><code>var iNum01 = 12;
+var iNum02 = 24;
+var sNum03 = '12';
+var sTr = 'abc';
+alert(iNum01+iNum02);  //弹出36
+alert(iNum01+sNum03);  //弹出1212 数字和字符串相加等同于字符串相加
+alert(sNum03+sTr);     // 弹出12abc
+</code></pre>
+<p>2、parseInt() 将数字字符串转化为整数</p>
+<pre><code>var sNum01 = '12';
+var sNum02 = '24';
+var sNum03 = '12.32';
+alert(sNum01+sNum02);  //弹出1224
+alert(parseInt(sNum01)+parseInt(sNum02))  //弹出36
+alert(sNum03)   //弹出数字12 将字符串小数转化为数字整数
+</code></pre>
+<p>3、parseFloat() 将数字字符串转化为小数</p>
+<pre><code>var sNum03 = '12.32'
+alert(parseFloat(sNum03));  //弹出 12.32 将字符串小数转化为数字小数
+</code></pre>
+<p>4、split() 把一个字符串分隔成字符串组成的数组</p>
+<pre><code>var sTr = '2017-4-22';
+var aRr = sTr.split(&quot;-&quot;);
+var aRr2= sTr.split(&quot;&quot;);
+
+alert(aRr);  //弹出['2017','4','2']
+alert(aRr2);  //弹出['2','0','1','7','-','4','-','2','2']
+</code></pre>
+<p>5、charAt() 获取字符串中的某一个字符</p>
+<pre><code>var sId = &quot;#div1&quot;;
+var sTr = sId.charAt(0);
+alert(sTr); //弹出 #
+</code></pre>
+<p>6、indexOf() 查找字符串是否含有某字符</p>
+<pre><code>var sTr = &quot;abcdefgh&quot;;
+var iNum = sTr.indexOf(&quot;c&quot;);
+alert(iNum); //弹出2
+</code></pre>
+<p>7、substring() 截取字符串  用法： substring(start,end)（不包括end）</p>
+<pre><code>var sTr = &quot;abcdefghijkl&quot;;
+var sTr2 = sTr.substring(3,5);
+var sTr3 = sTr.substring(1);
+
+alert(sTr2); //弹出 de
+alert(sTr3); //弹出 bcdefghijkl
+</code></pre>
+<p>8、toUpperCase() 字符串转大写</p>
+<pre><code>var sTr = &quot;abcdef&quot;;
+var sTr2 = sTr.toUpperCase();
+alert(sTr2); //弹出ABCDEF
+</code></pre>
+<p>9、toLowerCase() 字符串转小写</p>
+<pre><code>var sTr = &quot;ABCDEF&quot;;
+var sTr2 = sTr.toLowerCase();
+alert(sTr2); //弹出abcdef
+</code></pre>
+<p><strong>字符串反转</strong></p>
+<pre><code>var str = 'asdfj12jlsdkf098';
+var str2 = str.split('').reverse().join('');
+
+alert(str2);
+</code></pre>
+<h3 id="调试程序的方法">调试程序的方法</h3>
+<p>1、alert</p>
+<p>2、console.log</p>
+<p>3、document.title</p>
+<h2 id="jquery">Jquery</h2>
+<h3 id="jquery介绍">jquery介绍</h3>
+<p>jQuery是目前使用最广泛的javascript函数库。据统计，全世界排名前100万的网站，有46%使用jQuery，远远超过其他库。微软公司甚至把jQuery作为他们的官方库。</p>
+<p>jQuery的版本分为1.x系列和2.x、3.x系列，1.x系列兼容低版本的浏览器，2.x、3.x系列放弃支持低版本浏览器，目前使用最多的是1.x系列的。</p>
+<p>jquery是一个函数库，一个js文件，页面用script标签引入这个js文件就可以使用。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.12.2.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>jquery的口号和愿望 Write Less, Do More（写得少，做得多）</p>
+<p>1、<a href="http://jquery.com/">http://jquery.com/</a> 官方网站<br>
+2、<a href="https://code.jquery.com/">https://code.jquery.com/</a>   版本下载</p>
+<h3 id="jquery加载">jquery加载</h3>
+<p>将获取元素的语句写到页面头部，会因为元素还没有加载而出错，jquery提供了ready方法解决这个问题，它的速度比原生的 window.onload 更快。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+
+$(document).ready(function(){
+
+     ......
+
+});
+
+&lt;/script&gt;
+</code></pre>
+<p>可以简写为：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+
+$(function(){
+
+     ......
+
+});
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="jquery选择器">jquery选择器</h3>
+<p><strong>jquery用法思想一</strong><br>
+选择某个网页元素，然后对它进行某种操作</p>
+<p><strong>jquery选择器</strong><br>
+jquery选择器可以快速地选择元素，选择规则和css样式相同，使用length属性判断是否选择成功。</p>
+<pre><code>$('#myId') //选择id为myId的网页元素
+$('.myClass') // 选择class为myClass的元素
+$('li') //选择所有的li元素
+$('#ul1 li span') //选择id为为ul1元素下的所有li下的span元素
+$('input[name=first]') // 选择name属性等于first的input元素
+</code></pre>
+<p><strong>对选择集进行过滤</strong></p>
+<pre><code>$('div').has('p'); // 选择包含p元素的div元素
+$('div').not('.myClass'); //选择class不等于myClass的div元素
+$('div').filter('.myClass'); //选择class等于myClass的div元素
+$('div').eq(5); //选择第6个div元素
+</code></pre>
+<p><strong>选择集转移</strong></p>
+<pre><code>$('div').prev(); //选择div元素前面紧挨的同辈元素
+$('div').prevAll(); //选择div元素之前所有的同辈元素
+$('div').next(); //选择div元素后面紧挨的同辈元素
+$('div').nextAll(); //选择div元素后面所有的同辈元素
+$('div').parent(); //选择div的父元素
+$('div').children(); //选择div的所有子元素
+$('div').siblings(); //选择div的同级元素
+$('div').find('.myClass'); //选择div内的class等于myClass的元素
+</code></pre>
+<p><strong>判断是否选择到了元素</strong><br>
+jquery有容错机制，即使没有找到元素，也不会出错，可以用length属性来判断是否找到了元素,length等于0，就是没选择到元素，length大于0，就是选择到了元素。</p>
+<pre><code>var $div1 = $('#div1');
+var $div2 = $('#div2');
+alert($div1.length); // 弹出1
+alert($div2.length); // 弹出0
+......
+&lt;div id=&quot;div1&quot;&gt;这是一个div&lt;/div&gt;
+</code></pre>
+<h3 id="jquery样式操作">jquery样式操作</h3>
+<p><strong>jquery用法思想二</strong><br>
+同一个函数完成取值和赋值</p>
+<p><strong>操作行间样式</strong></p>
+<pre><code>// 获取div的样式
+$(&quot;div&quot;).css(&quot;width&quot;);
+$(&quot;div&quot;).css(&quot;color&quot;);
+
+//设置div的样式
+$(&quot;div&quot;).css(&quot;width&quot;,&quot;30px&quot;);
+$(&quot;div&quot;).css(&quot;height&quot;,&quot;30px&quot;);
+$(&quot;div&quot;).css({fontSize:&quot;30px&quot;,color:&quot;red&quot;});
+</code></pre>
+<p><strong>特别注意</strong><br>
+选择器获取的多个元素，获取信息获取的是第一个，比如：$(&quot;div&quot;).css(&quot;width&quot;)，获取的是第一个div的width。</p>
+<p><strong>操作样式类名</strong></p>
+<pre><code>$(&quot;#div1&quot;).addClass(&quot;divClass2&quot;) //为id为div1的对象追加样式divClass2
+$(&quot;#div1&quot;).removeClass(&quot;divClass&quot;)  //移除id为div1的对象的class名为divClass的样式
+$(&quot;#div1&quot;).removeClass(&quot;divClass divClass2&quot;) //移除多个样式
+$(&quot;#div1&quot;).toggleClass(&quot;anotherClass&quot;) //重复切换anotherClass样式
+</code></pre>
+<h3 id="绑定click事件">绑定click事件</h3>
+<p>给元素绑定click事件，可以用如下方法：</p>
+<pre><code>$('#btn1').click(function(){
+
+    // 内部的this指的是原生对象
+
+    // 使用jquery对象用 $(this)
+
+})
+</code></pre>
+<p><strong>获取元素的索引值</strong><br>
+有时候需要获得匹配元素相对于其同胞元素的索引位置，此时可以用index()方法获取</p>
+<pre><code>var $li = $('.list li').eq(1);
+alert($li.index()); // 弹出1
+......
+&lt;ul class=&quot;list&quot;&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+    &lt;li&gt;6&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h3 id="jquery特殊效果">jquery特殊效果</h3>
+<pre><code>fadeIn() 淡入
+
+    $btn.click(function(){
+
+        $('#div1').fadeIn(1000,'swing',function(){
+            alert('done!');
+        });
+
+    });
+
+fadeOut() 淡出
+fadeToggle() 切换淡入淡出
+hide() 隐藏元素
+show() 显示元素
+toggle() 切换元素的可见状态
+slideDown() 向下展开
+slideUp() 向上卷起
+slideToggle() 依次展开或卷起某个元素
+</code></pre>
+<h3 id="尺寸相关-滚动事件">尺寸相关、滚动事件</h3>
+<p>1、获取和设置元素的尺寸</p>
+<pre><code>width()、height()    获取元素width和height  
+innerWidth()、innerHeight()  包括padding的width和height  
+outerWidth()、outerHeight()  包括padding和border的width和height  
+outerWidth(true)、outerHeight(true)   包括padding和border以及margin的width和height
+</code></pre>
+<p>2、获取元素相对页面的绝对位置</p>
+<pre><code>offset()
+</code></pre>
+<p><strong>课堂练习</strong></p>
+<p>加入购物车动画</p>
+<p>3、获取浏览器可视区宽度高度</p>
+<pre><code>$(window).width();
+$(window).height();
+</code></pre>
+<p>4、获取页面文档的宽度高度</p>
+<pre><code>$(document).width();
+$(document).height();
+</code></pre>
+<p>5、获取页面滚动距离</p>
+<pre><code>$(document).scrollTop();  
+$(document).scrollLeft();
+</code></pre>
+<p>6、页面滚动事件</p>
+<pre><code>$(window).scroll(function(){  
+    ......  
+})
+</code></pre>
+<h3 id="jquery属性操作">jquery属性操作</h3>
+<p>1、html() 取出或设置html内容</p>
+<pre><code>// 取出html内容
+
+var $htm = $('#div1').html();
+
+// 设置html内容
+
+$('#div1').html('&lt;span&gt;添加文字&lt;/span&gt;');
+</code></pre>
+<p>2、prop() 取出或设置某个属性的值</p>
+<pre><code>// 取出图片的地址
+
+var $src = $('#img1').prop('src');
+
+// 设置图片的地址和alt属性
+
+$('#img1').prop({src: &quot;test.jpg&quot;, alt: &quot;Test Image&quot; });
+</code></pre>
+<h4 id="json">json</h4>
+<p>json是 JavaScript Object Notation 的首字母缩写，单词的意思是javascript对象表示法，这里说的json指的是类似于javascript对象的一种数据格式，目前这种数据格式比较流行，逐渐替换掉了传统的xml数据格式。</p>
+<p>javascript自定义对象：</p>
+<pre><code>var oMan = {
+    name:'tom',
+    age:16,
+    talk:function(s){
+        alert('我会说'+s);
+    }
+}
+</code></pre>
+<p>json格式的数据：</p>
+<pre><code>{
+    &quot;name&quot;:&quot;tom&quot;,
+    &quot;age&quot;:18
+}
+</code></pre>
+<p>与json对象不同的是，json数据格式的属性名称和字符串值需要用双引号引起来，用单引号或者不用引号会导致读取数据错误。</p>
+<p>json的另外一个数据格式是数组，和javascript中的数组字面量相同。</p>
+<pre><code>[&quot;tom&quot;,18,&quot;programmer&quot;]
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">
+                <h3 class="post-title">
+                  03——PyQt基础
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge secondary">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge ">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge ">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge success">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

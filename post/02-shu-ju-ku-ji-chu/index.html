@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>02——数据库基础 | Childlike</title>
+<meta name="description" content="不忘初心 方得始终">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://childlike2333.github.io/favicon.ico?v=1586147188025">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://childlike2333.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://childlike2333.github.io">Childlike</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://childlike2333.github.io/post/ji-yu-mo-xing-de-ce-shi-mbttan-suo" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>02——数据库基础</h1>
+            <p class="article-meta">
+              2020-04-06
+              
+                <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge secondary">
+                  课程
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h4 id="数据库概念">数据库概念</h4>
+<blockquote>
+<p>数据库，简而言之可视为电子化的文件柜——存储电子文件的处所，用户可以对文件中的数据运行新增、截取、更新、删除等操作。</p>
+<p>​       所谓“数据库”系以一定方式储存在一起、能予多个用户共享、具有尽可能小的冗余度、与应用程序彼此独立的数据集合</p>
+</blockquote>
+<blockquote>
+<p>数据库管理系统，是为管理数据库而设计的电脑软件系统，一般具有存储、截图、安全保障、备份等基础功能</p>
+</blockquote>
+<blockquote>
+<p>现在我们通常使用关系型数据库管理系统来存储和管理数据，所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。</p>
+</blockquote>
+<p>展示出来的界面：</p>
+<figure data-type="image" tabindex="1"><img src="https://childlike2333.github.io/post-images/1586141496839.png" alt="" loading="lazy"></figure>
+<p>实际存储数据内容：</p>
+<figure data-type="image" tabindex="2"><img src="https://childlike2333.github.io/post-images/1586141533026.png" alt="" loading="lazy"></figure>
+<ul>
+<li>表头： 每一列的名称</li>
+<li>列： 具有相同数据类型的数据的集合</li>
+<li>行：每一行用来描述某条记录的具体信息</li>
+<li>值：行的具体信息，每个值必须与该列的数据类型相同</li>
+<li>键：特殊的列，这一列的值在当前列中具有唯一性</li>
+</ul>
+<h4 id="关系型数据库的特点">关系型数据库的特点</h4>
+<ul>
+<li>数据库以表格的形式出现</li>
+<li>每行为各种记录名称</li>
+<li>每列位记录名称所对应的数据域</li>
+<li>许多的行和列组成一张表单</li>
+<li>若干的表单组成 database 数据库</li>
+</ul>
+<h4 id="mysql数据库">MySQL数据库</h4>
+<p>MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。MySQL 是一种关联数据库管理系统，关联数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。</p>
+<ul>
+<li>MySQL 是开源的，所以你不需要支付额外的费用。</li>
+<li>MySQL 支持大型的数据库。可以处理拥有上千万条记录的大型数据库。</li>
+<li>MySQL 使用标准的 SQL 数据语言形式。</li>
+<li>MySQL 可以运行于多个系统上，并且支持多种语言。这些编程语言包括 C、C++、Python、Java、Perl、PHP、Eiffel、Ruby 和 Tcl 等。</li>
+<li>MySQL 对PHP有很好的支持，PHP 是目前最流行的 Web 开发语言。</li>
+<li>MySQL 支持大型数据库，支持 5000 万条记录的数据仓库，32 位系统表文件最大可支持 4GB，64 位系统支持最大的表文件为8TB。</li>
+<li>MySQL 是可以定制的，采用了 GPL 协议，你可以修改源码来开发自己的 MySQL 系统</li>
+</ul>
+<h4 id="mysql的安装">MySQL的安装</h4>
+<blockquote>
+<p>https://dev.mysql.com/downloads/mysql/ 官网提供了所有平台的MySQL版本下载，下载对应版本的MySQL，下载完成后根据引导安装即可。</p>
+</blockquote>
+<p>在windows下跟随引导安装mysql完成后，安装过程中会提示设置账号和密码，这里直接将账号和密码设置为root /root ,完成安装，想要在cmd中进入msyql的命令行，必须将mysql添加到系统环境变量Path路径中。</p>
+<blockquote>
+<p>C:\Program Files\MySQL\MySQL Server 5.6\bin</p>
+</blockquote>
+<p>在命令行中执行mysql -uroot -proot，进入到mysql的命令行</p>
+<figure data-type="image" tabindex="3"><img src="https://childlike2333.github.io/post-images/1586141568182.png" alt="" loading="lazy"></figure>
+<h4 id="navicat-数据库管理工具">Navicat 数据库管理工具</h4>
+<p>下载并安装navicat进行数据库管理</p>
+<h4 id="创建-删除数据库">创建、删除数据库</h4>
+<p><code>create database 数据库名;</code></p>
+<p><code>drop database 数据库名;</code></p>
+<h4 id="选择数据库">选择数据库</h4>
+<p><code>use 数据库名</code></p>
+<p>接下来你的所有操作都会在这个数据库中执行</p>
+<h4 id="mysql数据类型">MySQL数据类型</h4>
+<p>在mysql中支持多种类型的数据结构，大致可以分为三类： 数值、时间和字符串。</p>
+<ul>
+<li>数值类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:left">范围（有符号）</th>
+<th style="text-align:left">范围（无符号）</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT</td>
+<td style="text-align:left">1 字节</td>
+<td style="text-align:left">(-128，127)</td>
+<td style="text-align:left">(0，255)</td>
+<td style="text-align:left">小整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT</td>
+<td style="text-align:left">2 字节</td>
+<td style="text-align:left">(-32 768，32 767)</td>
+<td style="text-align:left">(0，65 535)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT</td>
+<td style="text-align:left">3 字节</td>
+<td style="text-align:left">(-8 388 608，8 388 607)</td>
+<td style="text-align:left">(0，16 777 215)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">INT或INTEGER</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">(-2 147 483 648，2 147 483 647)</td>
+<td style="text-align:left">(0，4 294 967 295)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">(-9,223,372,036,854,775,808，9 223 372 036 854 775 807)</td>
+<td style="text-align:left">(0，18 446 744 073 709 551 615)</td>
+<td style="text-align:left">极大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
+<td style="text-align:left">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
+<td style="text-align:left">单精度 浮点数值</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td style="text-align:left">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td style="text-align:left">双精度 浮点数值</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL</td>
+<td style="text-align:left">对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td style="text-align:left">依赖于M和D的值</td>
+<td style="text-align:left">依赖于M和D的值</td>
+<td style="text-align:left">小数值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>时间类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小 (字节)</th>
+<th style="text-align:left">范围</th>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">1000-01-01/9999-12-31</td>
+<td style="text-align:left">YYYY-MM-DD</td>
+<td style="text-align:left">日期值</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">'-838:59:59'/'838:59:59'</td>
+<td style="text-align:left">HH:MM:SS</td>
+<td style="text-align:left">时间值或持续时间</td>
+</tr>
+<tr>
+<td style="text-align:left">YEAR</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1901/2155</td>
+<td style="text-align:left">YYYY</td>
+<td style="text-align:left">年份值</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td style="text-align:left">YYYY-MM-DD HH:MM:SS</td>
+<td style="text-align:left">混合日期和时间值</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">1970-01-01 00:00:00/2038结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td style="text-align:left">YYYYMMDD HHMMSS</td>
+<td style="text-align:left">混合日期和时间值，时间戳</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>字符串类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR</td>
+<td style="text-align:left">0-255字节</td>
+<td style="text-align:left">定长字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR</td>
+<td style="text-align:left">0-65535 字节</td>
+<td style="text-align:left">变长字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYBLOB</td>
+<td style="text-align:left">0-255字节</td>
+<td style="text-align:left">不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYTEXT</td>
+<td style="text-align:left">0-255字节</td>
+<td style="text-align:left">短文本字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">0-65 535字节</td>
+<td style="text-align:left">二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">TEXT</td>
+<td style="text-align:left">0-65 535字节</td>
+<td style="text-align:left">长文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB</td>
+<td style="text-align:left">0-16 777 215字节</td>
+<td style="text-align:left">二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMTEXT</td>
+<td style="text-align:left">0-16 777 215字节</td>
+<td style="text-align:left">中等长度文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB</td>
+<td style="text-align:left">0-4 294 967 295字节</td>
+<td style="text-align:left">二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGTEXT</td>
+<td style="text-align:left">0-4 294 967 295字节</td>
+<td style="text-align:left">极大文本数据</td>
+</tr>
+</tbody>
+</table>
+<p>CHAR 和 VARCHAR 的区别：</p>
+<p>定义一个char[10]和varchar[10],如果存进去的是‘abcd’,那么char所占的长度依然为10，除了字符‘abcd’外，后面跟六个空格，而varchar就立马把长度变为4了，取数据的时候，char类型的要用trim()去掉多余的空格，而varchar是不需要的。</p>
+<h4 id="mysql创建数据表">MySQL创建数据表</h4>
+<p><code>create table 表名 (字段名称，字段类型(长度));</code></p>
+<pre><code class="language-mysql">#int后面不写长度，会给默认长度11
+#一般来说 我们会把主键设置为 自动递增，每次增加一行数据，主键+1
+create table school(
+	school_id int auto_increment,
+	school_code int(5),
+	school_name varchar(100),
+	school_addr varchar(100),
+	insert_time datetime,
+	primary key(school_id)
+);
+</code></pre>
+<h4 id="删除数据表">删除数据表</h4>
+<p><code>drop table 表名</code></p>
+<p><code>drop table school;</code></p>
+<h4 id="插入数据">插入数据</h4>
+<pre><code class="language-mysql">insert into table_name (field1,field2,....)  values (value1,value2,....);
+insert into table_name values (value1,value2,....);
+</code></pre>
+<pre><code class="language-mysql">#类似python中的位置参数和 关键字参数
+insert into school(school_code,school_name,school_addr,insert_time)
+values
+(11111,&quot;北京大学&quot;,&quot;中国北京&quot;,now());
+insert into school(school_code,school_name,school_addr,insert_time)
+values
+(22222,&quot;清华大学&quot;,&quot;中国北京&quot;,now());
+insert into school(school_code,school_name,school_addr,insert_time)
+values
+(33333,&quot;北京科技大学&quot;,&quot;中国北京&quot;,now());
+insert into school
+values
+(4,44444,&quot;哈佛大学&quot;,&quot;美国&quot;,now());
+insert into school
+values
+(0,55555,&quot;哈尔滨佛学院&quot;,&quot;哈尔滨&quot;,now());
+</code></pre>
+<h4 id="查询数据">查询数据</h4>
+<pre><code class="language-mysql">select 数据名称1,数据名称2
+from 表名
+where 条件
+limit 查询条数
+offset 查询偏移
+
+# 查询全部
+select * from school;
+
+# 查询全部的学校编号和名字
+select school_code,school_name from school;
+
+# 查询来自中国北京的学校编码和名字
+select school_code,school_name from school where school_addr = &quot;中国北京&quot;;
+
+# 查询来自中国北京的学校编码和名字，只显示2条
+select school_code,school_name from school where school_addr = &quot;中国北京&quot; limit 2;
+
+# 查询来自中国北京的学校编码和名称，从第二条开始查询，只显示1条
+select school_code,school_name from school where school_addr = &quot;中国北京&quot; limit 2 offset 2;
+</code></pre>
+<h4 id="where-语句">Where 语句</h4>
+<blockquote>
+<p>where 语句类似python语言中的if条件，检索出满足条件的数据，同时可以使用and or逻辑语句来查询</p>
+</blockquote>
+<pre><code class="language-mysql">select school_code,school_name from school where school_addr = &quot;中国北京&quot; and school_name = &quot;北京大学&quot;;
+
+select school_code,school_name from school where school_addr = &quot;中国北京&quot; or school_addr = &quot;美国&quot;;
+</code></pre>
+<p>在where语句中还可以使用操作符来进行匹配</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">等号，检测两个值是否相等，如果相等返回true</td>
+<td style="text-align:left">(A = B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;&gt;, !=</td>
+<td style="text-align:left">不等于，检测两个值是否相等，如果不相等返回true</td>
+<td style="text-align:left">(A != B) 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td>
+<td style="text-align:left">(A &gt; B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td>
+<td style="text-align:left">(A &lt; B) 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=</td>
+<td style="text-align:left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td>
+<td style="text-align:left">(A &gt;= B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">小于等于号，检测左边的值是否小于于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td>
+<td style="text-align:left">(A &lt;= B) 返回 true</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">select school_code,school_name from school where school_id &gt;= 3;
+</code></pre>
+<h4 id="like语句">like语句</h4>
+<pre><code># where 条件中还可以用like语句来进行模糊匹配
+# 查询出名字包含北京的大学信息
+# like通常和%一起使用，但是如果不使用%那么他的效果就和 =号一样
+select school_code,school_name from school where school_name like &quot;北京%&quot;;
+</code></pre>
+<h4 id="更新数据">更新数据</h4>
+<pre><code class="language-python">#将查询出来的结果中的字段进行更新，可以同时更新多个字段
+
+update table_name set field1=new-value1,field2=new-value2
+where 条件
+
+update school set school_code=12345,school_addr='中国首都北京' where school_name = &quot;北京大学&quot;; 
+</code></pre>
+<h4 id="删除数据">删除数据</h4>
+<pre><code class="language-mysql">#将查询出来的结果全部删除
+
+delete from 表名 where 条件
+
+delete from school where school_addr = &quot;美国&quot;;
+</code></pre>
+<h4 id="排序">排序</h4>
+<pre><code class="language-mysql"># 将查询出来的结果排序
+select 字段1，字段2 from 表1，表2
+order by 字段1，字段2
+
+select * from school order by school_code;
+
+select * from school order by school_code desc;
+
+select * from school order by school_code,school_name;
+
+select * from school order by school_code,school_name desc;
+</code></pre>
+<h4 id="分组">分组</h4>
+<pre><code>select 字段 from 表
+where 条件
+group by 字段;
+
+select * from school
+group by school_addr;
+
+#计算出现的次数
+select *,count(*) from school
+group by school_addr;
+</code></pre>
+<h4 id="union-操作符">UNION 操作符</h4>
+<blockquote>
+<p>union操作符用于连接两个以上的select语句的结果组合到一个结果集合中</p>
+</blockquote>
+<pre><code class="language-mysql">select 字段名称1，字段名称2 from 表名
+where 查询条件
+union [all]
+select 字段名称1，字段名称2 from 表名
+where 查询条件
+</code></pre>
+<pre><code class="language-mysql">create table school(
+	id int auto_increment,
+	school_code int(5),
+	school_name varchar(100),
+	school_addr varchar(100),
+	primary key(id)
+);
+
+insert into school(school_code,school_name,school_addr)
+values
+(11111,&quot;北京大学&quot;,&quot;中国北京&quot;),
+(22222,&quot;清华大学&quot;,&quot;中国北京&quot;),
+(33333,&quot;北京科技大学&quot;,&quot;中国北京&quot;),
+(44444,&quot;哈佛大学&quot;,&quot;美国&quot;),
+(55555,&quot;哈尔滨佛学院&quot;,&quot;中国哈尔滨&quot;);
+
+create table student(
+	id int auto_increment,
+	student_name varchar(100),
+	school_name varchar(100),
+	primary key(id)
+);
+
+insert into student(student_name,school_name)
+values
+(&quot;张一&quot;,&quot;福州大学&quot;),
+(&quot;李二&quot;,&quot;山东大学&quot;),
+(&quot;苏四&quot;,&quot;北京大学&quot;),
+(&quot;钱五&quot;,&quot;清华大学&quot;);
+
+# union合并两个结果集，删除重复的数据
+select school_name from school
+union
+select school_name from student;
+
+select school_name,school_addr from school
+union
+select student_name,school_name from student;
+
+#union合并两个结果集，不删除重复的数据
+select school_name from school
+union all
+select school_name from student;
+</code></pre>
+<h4 id="聚合函数">聚合函数</h4>
+<pre><code>用于对一组值进行统计，并且返回唯一值，这些函数被称为聚合函数
+</code></pre>
+<pre><code class="language-mysql">count()	统计记录的条数
+sum()	求和函数，求出表中某个字段所有值的总和
+avg()	求出某个字段，所有值的平均数
+max()	求出某个字段的最大值
+min()	求出某个字段的最小值
+
+create table student(
+	id int auto_increment,
+	student_id varchar(100),
+	student_name varchar(100),.
+	student_grade int,
+	primary key(id)
+);
+
+insert into student(student_id,student_name,student_grade)
+values
+(10101,&quot;小明&quot;,65),
+(10101,&quot;小华&quot;,28),
+(10101,&quot;小李&quot;,98),
+(10101,&quot;小花&quot;,25),
+(10101,&quot;小琴&quot;,98),
+(10101,&quot;小马&quot;,100),
+(10101,&quot;小宋&quot;,65);
+
+select count(student_grade) from student;
+select sum(student_grade) from student;
+select avg(student_grade) from student;
+select max(student_grade) from student;
+select min(student_grade) from student;
+</code></pre>
+<h4 id="连接查询">连接查询</h4>
+<p>SQL中的常用连接查询，交叉连接、内连接、外连接</p>
+<blockquote>
+<p>交叉连接：从一张表表中循环取出每一条记录，每条记录都去另外一张表进行匹配，最终形成的结果叫做笛卡尔积se</p>
+</blockquote>
+<pre><code class="language-mysql">select 字段1,字段2 from 表1 cross join 表2
+select 字段1,字段2 from 表1，表2，
+
+create table uniforms(
+	id int auto_increment,
+	model varchar(100),
+	primary key(id)
+);
+
+insert into uniforms(model)
+values
+('a'),
+('b'),
+('c');
+
+create table student(
+	id int auto_increment,
+	student_name varchar(100),
+	school_name varchar(100),
+	primary key(id)
+);
+
+insert into student(student_name,school_name)
+values
+(&quot;张一&quot;,&quot;福州大学&quot;),
+(&quot;李二&quot;,&quot;山东大学&quot;),
+(&quot;苏四&quot;,&quot;北京大学&quot;),
+(&quot;钱五&quot;,&quot;清华大学&quot;);
+
+select * from student,uniforms;
+select * from student cross join uniforms;
+select mode from student cross join uniforms;
+</code></pre>
+<blockquote>
+<p>内连接: 组合两个表的记录，返回关联字段相符的记录，也就是返回两个表的交集部分</p>
+</blockquote>
+<figure data-type="image" tabindex="4"><img src="C:%5CWindows.old%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1568296973205.png" alt="1568296973205" loading="lazy"></figure>
+<pre><code class="language-mysql">create table student(
+	id int auto_increment,
+	student_name varchar(100),
+	school_name varchar(100),
+	primary key(id)
+);
+
+insert into student(student_name,school_name)
+values
+(&quot;张一&quot;,&quot;福州大学&quot;),
+(&quot;李二&quot;,&quot;山东大学&quot;),
+(&quot;苏四&quot;,&quot;北京大学&quot;),
+(&quot;钱五&quot;,&quot;清华大学&quot;);
+
+
+create table student_grade(
+	id int auto_increment,
+	student_name varchar(100),.
+	grade int,
+	primary key(id)
+);
+
+insert into student_grade(student_name,grade)
+values
+(&quot;张一&quot;,65),
+(&quot;李二&quot;,28),
+(&quot;孟五&quot;,65),
+(&quot;钱六&quot;,28);
+
+select * from student join student_grade on student.student_name = student_grade.student_name;
+
+select student.student_name,student.school_name,student_grade.grade from student join student_grade on student.student_name = student_grade.student_name;
+</code></pre>
+<blockquote>
+<p>外连接:</p>
+<p>分为 左连接 、右连接</p>
+</blockquote>
+<pre><code class="language-mysql">有null
+select * from student left join student_grade on student.student_name = student_grade.student_name;
+
+select * from student_grade left join student on student.student_name = student_grade.student_name;
+
+有null
+select * from student_grade right join student on student.student_name = student_grade.student_name;
+
+select * from student right join student_grade on student.student_name = student_grade.student_name;
+</code></pre>
+<p>9856</p>
+<h4 id="一对一关系">一对一关系</h4>
+<blockquote>
+<p>两个表，第一个表中的某一行与第二个表中的一行相关，同时第二个表中的某一行吗，也只与第一个表中的一行相关，这两个表为1对1关系。</p>
+</blockquote>
+<ul>
+<li>一个表包含了太多的数据列，于是分离成两个表</li>
+<li>为了划分不同的安全级别</li>
+<li>常用的数据组成一个表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>学校表</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>学校资产表</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>学校编码</td>
+<td>学校名称</td>
+<td>学校地址</td>
+<td></td>
+<td>id</td>
+<td>学校表id（外键）</td>
+<td>学校资产</td>
+</tr>
+<tr>
+<td>1</td>
+<td>11111</td>
+<td>北京大学</td>
+<td>中国北京</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22222</td>
+<td>清华大学</td>
+<td>中国北京</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+<td>400</td>
+</tr>
+<tr>
+<td>3</td>
+<td>33333</td>
+<td>北京科技大学</td>
+<td>中国北京</td>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td>300</td>
+</tr>
+<tr>
+<td>4</td>
+<td>44444</td>
+<td>哈佛大学</td>
+<td>美国</td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td>500</td>
+</tr>
+<tr>
+<td>5</td>
+<td>55555</td>
+<td>哈尔滨佛学院</td>
+<td>中国哈尔滨</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">create table school(
+	id int auto_increment,
+	school_code int(5),
+	school_name varchar(100),
+	school_addr varchar(100),
+	primary key(id)
+);
+insert into school(school_code,school_name,school_addr)
+values
+(11111,&quot;北京大学&quot;,&quot;中国北京&quot;),
+(22222,&quot;清华大学&quot;,&quot;中国北京&quot;),
+(33333,&quot;北京科技大学&quot;,&quot;中国北京&quot;),
+(44444,&quot;哈佛大学&quot;,&quot;美国&quot;),
+(55555,&quot;哈尔滨佛学院&quot;,&quot;中国哈尔滨&quot;);
+
+# unique表示唯一性
+create table assets(
+	id int auto_increment,
+	assets_num int,
+	school_id int unique,
+    primary key(id),
+	constraint fk_school foreign key(school_id) references school(id)
+);
+
+insert into assets(assets_num,school_id)
+values
+(500,1),
+(400,2),
+(300,3),
+(500,4),
+(5,5);
+
+select * from school a left join assets b on a.id = b.school_id;
+
+</code></pre>
+<h4 id="一对多关系">一对多关系</h4>
+<blockquote>
+<p>第一张表的一行可以与第二张表的多行相对应</p>
+<p>一对多关系是最常见的关系类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>学校表</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>学校编码</td>
+<td>学校名称</td>
+<td>学校地址</td>
+</tr>
+<tr>
+<td>1</td>
+<td>11111</td>
+<td>北京大学</td>
+<td>中国北京</td>
+</tr>
+<tr>
+<td>2</td>
+<td>22222</td>
+<td>清华大学</td>
+<td>中国北京</td>
+</tr>
+<tr>
+<td>3</td>
+<td>33333</td>
+<td>北京科技大学</td>
+<td>中国北京</td>
+</tr>
+<tr>
+<td>4</td>
+<td>44444</td>
+<td>哈佛大学</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>5</td>
+<td>55555</td>
+<td>哈尔滨佛学院</td>
+<td>中国哈尔滨</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>老师表</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>老师编码</td>
+<td>老师名字</td>
+<td>老师所属学校id</td>
+</tr>
+<tr>
+<td>1</td>
+<td>101</td>
+<td>李白</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>102</td>
+<td>杜甫</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>103</td>
+<td>白居易</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>201</td>
+<td>孟浩然</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>202</td>
+<td>李贺</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>301</td>
+<td>苏轼</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">create table teacher(
+	id int auto_increment,
+	teacher_code int,
+	teacher_name varchar(100),
+	school_id int,
+	primary key(id),
+	constraint fk_teacher foreign key(school_id) references school(id)
+);
+
+insert into teacher(teacher_code,teacher_name,school_id)
+values
+(101,&quot;李白&quot;,1),
+(102,&quot;杜甫&quot;,1),
+(103,&quot;白居易&quot;,1),
+(104,&quot;孟浩然&quot;,2),
+(202,&quot;李贺&quot;,2),
+(301,&quot;苏轼&quot;,3);
+</code></pre>
+<h4 id="多对多关系">多对多关系</h4>
+<blockquote>
+<p>多对多的关系是无法直接在两张表中表示关系的，需要借助第三张表</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>老师表</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>老师-学生表</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>老师编码</td>
+<td>老师名字</td>
+<td>老师所属学校id</td>
+<td></td>
+<td>id</td>
+<td>老师id</td>
+<td>学生id</td>
+</tr>
+<tr>
+<td>1</td>
+<td>101</td>
+<td>李白</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>102</td>
+<td>杜甫</td>
+<td>1</td>
+<td></td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>103</td>
+<td>白居易</td>
+<td>1</td>
+<td></td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>201</td>
+<td>孟浩然</td>
+<td>2</td>
+<td></td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>202</td>
+<td>李贺</td>
+<td>2</td>
+<td></td>
+<td>5</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>301</td>
+<td>苏轼</td>
+<td>3</td>
+<td></td>
+<td>6</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7</td>
+<td>2</td>
+<td>7</td>
+</tr>
+<tr>
+<td>学生表</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>id</td>
+<td>学生学号</td>
+<td>学生名字</td>
+<td></td>
+<td></td>
+<td>9</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>10101</td>
+<td>小明</td>
+<td></td>
+<td></td>
+<td>10</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10102</td>
+<td>小华</td>
+<td></td>
+<td></td>
+<td>11</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10103</td>
+<td>小李</td>
+<td></td>
+<td></td>
+<td>12</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>10104</td>
+<td>小花</td>
+<td></td>
+<td></td>
+<td>13</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>10105</td>
+<td>小琴</td>
+<td></td>
+<td></td>
+<td>14</td>
+<td>3</td>
+<td>7</td>
+</tr>
+<tr>
+<td>6</td>
+<td>10106</td>
+<td>小马</td>
+<td></td>
+<td></td>
+<td>15</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>10107</td>
+<td>小宋</td>
+<td></td>
+<td></td>
+<td>16</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">create table teacher(
+	id int auto_increment,
+	teacher_code int,
+	teacher_name varchar(100),
+	primary key(id)
+);
+
+insert into teacher(teacher_code,teacher_name)
+values
+(101,&quot;李白&quot;),
+(102,&quot;杜甫&quot;),
+(103,&quot;白居易&quot;),
+(104,&quot;孟浩然&quot;),
+(202,&quot;李贺&quot;),
+(301,&quot;苏轼&quot;);
+
+create table student(
+	id int auto_increment,
+	student_id int,
+	student_name varchar(100),
+	primary key(id)
+);
+
+insert into student(student_id,student_name)
+values
+(10101,&quot;小明&quot;),
+(10101,&quot;小华&quot;),
+(10101,&quot;小李&quot;),
+(10101,&quot;小花&quot;),
+(10101,&quot;小琴&quot;),
+(10101,&quot;小马&quot;),
+(10101,&quot;小宋&quot;);
+
+create table tearcher2student(
+id int auto_increment,
+teacher_id int,
+student_id int,
+constraint fk_student2 foreign key(student_id) references student(id),
+constraint fk_tearcher2 foreign key(teacher_id) references teacher(id),
+primary key(id)
+);
+
+insert into tearcher2student(teacher_id,student_id)
+values
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(2,1),
+(2,2),
+(2,3),
+(2,4),
+(3,5),
+(3,6),
+(3,7);
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">
+                <h3 class="post-title">
+                  01——Python基础
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://childlike2333.github.io/images/avatar.png?v=1586147188025" class="no-responsive avatar">
+    <div class="text-muted">不忘初心 方得始终</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/07-django-shi-zhan/">07——Django实战</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/06-django-ji-chu/">06——Django基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/05-qian-duan-ji-chu/">05——前端基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/03-pyqt-ji-chu/">03——PyQt基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/02-shu-ju-ku-ji-chu/">02——数据库基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/01-python-ji-chu/">01——Python基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/http-xie-yi-ji-chu-zhi-shi/">HTTP协议基础知识</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/nginx-dai-li-pei-zhi-https-yuan-zhan-bing-zhi-chi-quic-xie-yi/">nginx代理配置https源站并支持quic协议</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-tools/">FQA——Tools</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://childlike2333.github.io/post/fqa-python/">FQA——Python</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://childlike2333.github.io/tag/SIEQ9aZjt/" class="badge warning">
+          课程
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/sZJ8DmK4e/" class="badge warning">
+          python
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/9v1rpI7jx/" class="badge warning">
+          网络
+        </a>
+      
+        <a href="https://childlike2333.github.io/tag/7aJyFyvuP/" class="badge secondary">
+          工具
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://childlike2333.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
